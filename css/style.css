@@ -5,6 +5,8 @@
     --prime-green:hsl(160, 62%, 50%);
     --light-green:hsl(160, 80%, 70%);
     --dark-green:hsl(160, 80%, 30%);
+    --dark-gray:hsl(0, 0%, 30%);
+    --light-gray:hsl(0, 0%, 95%);
     --theme-font: 'Poppins', sans-serif;
 }
 body {
@@ -15,6 +17,9 @@ body {
 a {
     color:var(--prime-green);
     text-decoration: none;
+}
+p {
+    color: var(--dark-gray);
 }
 h1, h2, h3, h4 {
     line-height: 150%;
@@ -32,14 +37,18 @@ h3 {
 }
 nav {
     padding-bottom: 0px;
+    margin-top: 10px;
     margin-bottom: 40px;
-    border-bottom: 1px dotted gray;
+    box-shadow: 0 3px 5px 0 rgba(128, 128, 128, 0.2);
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 nav ul {
     font-size: 1.2rem;
     list-style: none;
     margin: 0; padding: 0;
-    margin-top: 20px;
     line-height: 50px;
     display: flex;
     gap: 10px;
@@ -60,7 +69,7 @@ section.home {
 .home div {
     flex: 30%;
     aspect-ratio: 1;
-    background-color: #e5e5e5;
+    color:var(--light-gray);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -128,25 +137,40 @@ section.instructions a:hover {
     opacity: 100%;
 }
 footer {
-    color: gray;
+    color:var(--dark-gray);
     font-size: 0.9rem;
     font-family: var(--theme-font);
-    margin: 50px auto;
+    margin: 0px auto;
+    margin-top: 40px;
+    padding: 30px 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color:var(--light-gray);
 }
 div.share {
     margin: 50px auto;
     width: 200px; 
 }
 div.share h4 {
+    color:var(--dark-green);
     text-align: center;
 }
 div.share img {
     width: 200px;
     object-fit: contain;
+    border-radius: 15px;
 }
-
+footer p {
+    text-align: center;
+}
 .lb-data .lb-caption {
     color: white;
     font-size: 1.2rem;
     line-height: 180%;
+}
+
+@media screen and (max-width:600px) {
+    h3 {
+        font-size: 1.6rem;
+    }
 }
