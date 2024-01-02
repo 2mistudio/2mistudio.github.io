@@ -17,14 +17,14 @@ a {
     text-decoration: none;
 }
 h1, h2, h3, h4 {
-    line-height: 180%;
+    line-height: 150%;
 }
 h3 {
     font-size: 2rem;
     font-family: var(--theme-font);
     font-weight: 600;
     display: inline-block;
-    background: linear-gradient(to top,var(--light-green) 30%, transparent 0% );
+    background: linear-gradient(to top,var(--light-green) 13%, transparent 0% );
 }
 .wrap {
     width: 75%;
@@ -132,6 +132,15 @@ footer {
     font-size: 0.9rem;
     font-family: var(--theme-font);
     margin: 50px auto;
+}
+div.share {
+    margin: 50px auto;
+    width: 200px; height: 200px;
+    background-color: lightgoldenrodyellow;
+}
+div.share img {
+    width: 200px;
+    object-fit: contain;
 }
 
 .lb-data .lb-caption {
