@@ -16,6 +16,9 @@ a {
     color:var(--prime-green);
     text-decoration: none;
 }
+h1, h2, h3, h4 {
+    line-height: 180%;
+}
 h3 {
     font-size: 2rem;
     font-family: var(--theme-font);
