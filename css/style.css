@@ -31,6 +31,10 @@ h3 {
     display: inline-block;
     background: linear-gradient(to top,var(--light-green) 13%, transparent 0% );
 }
+summary {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
 .wrap {
     width: 75%;
     margin-inline: auto;
@@ -136,6 +140,10 @@ section.instructions a {
 section.instructions a:hover {
     opacity: 100%;
 }
+section.instructions img {
+    position: relative;
+    z-index: -1;
+}
 footer {
     color:var(--dark-gray);
     font-size: 0.9rem;
@@ -162,6 +170,9 @@ div.share img {
 }
 footer p {
     text-align: center;
+}
+.lb-outerContainer {
+    background-color: black;
 }
 .lb-data .lb-caption {
     color: white;
