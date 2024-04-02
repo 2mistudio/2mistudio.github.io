@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* General Settings */
+* {box-sizing: border-box;}
+body {
+    font-family: "Poppins", sans-serif;
+}
+img {
+    display: block;
+    width: 100%;
+}
+h1 {
+    color: rgb(255, 204, 0);
+    font-size: 3rem;
+    text-align: center;
+}
+h3,p {margin: 0;}
+
+/* Layout Settings */
+section {
+    padding: 2rem;
+    padding-top: 1rem;
+    background-color:hsl(60, 30%, 88%);
+    border-radius: 1.5rem;
+}
+.card_wrap {
+    padding-top: 7rem;/*因為角色會向上移動，所以預先保留可以移動的空間*/
+}
+.card {
+    width: 200px;
+    height: 200px;
+    border-radius: 1rem;
+    position: relative;/*因為小卡內部的元素會用絕對定位*/
+    cursor: pointer;
+}
+.card_image {
+    width: 120px;/*控制角色圖片大小*/
+    position: absolute;/*設定絕對定位方便移動*/
+    left: 50%;/*左右居中*/
+    scale: 0.8;
+    transition: scale 0.2s ease-in;
+    transform-origin: bottom;/*設定變形的基準點*/
+}
+.card_content {
+    position: absolute;
+    margin-inline: 1rem;
+    bottom: 1rem;/*強迫靠齊小卡底部*/
+}
+.card_content h3 {
+    transition: scale 0.2s ease-in;
+    transform-origin: left;/*設定變形的基準點*/
+}
+.card_content p {
+    color: white;
+}
+
+/*Card Hover Settings*/
+.card:hover .card_image {
+    scale: 1;/*滑鼠移上小卡的時候放大角色圖片*/
+} 
+.card:hover h3 {
+    scale: 1.5;/*滑鼠移上小卡的時候放大標題文字*/
+}
+
+/*Character Specific Settings*/
+.nook {
+    color: hsl(160, 60%, 35%);;
+    background-color: hsl(160, 60%, 75%);
+}
+.nook .card_image {
+    top: -75px;/*微調角色高度*/
+    translate: -54%;/*微調角色水平位置*/
+}
+.isabelle {
+    color: hsl(24, 100%, 35%);
+    background-color: hsl(24, 100%, 75%);
+}
+.isabelle .card_image {
+    top: -90px;/*微調角色高度*/
+    translate: -50%;/*微調角色水平位置*/
+}
+.sally {
+    color: hsl(346, 91%, 33%);
+    background-color: hsl(346, 91%, 83%);
+}
+.sally .card_image {
+    top: -20px;/*微調角色高度*/
+    translate: -43%;/*微調角色水平位置*/
+}
+.muffy {
+    color: hsl(295, 91%, 33%);
+    background-color: hsl(295, 91%, 83%);
+}
+.muffy .card_image {
+    top: -20px;/*微調角色高度*/
+    translate: -50%;/*微調角色水平位置*/
+}
+.tank {
+    color: hsl(200, 91%, 33%);
+    background-color: hsl(200, 91%, 83%);
+}
+.tank .card_image {
+    top: -65px;/*微調角色高度*/
+    translate: -50%;/*微調角色水平位置*/
+}
+.dotty{
+    color: hsl(200, 3%, 55%);
+    background-color: hsl(200, 3%, 83%);
+}
+.dotty .card_image {
+    top: -110px;/*微調角色高度*/
+    translate: -50%;/*微調角色水平位置*/
+}
+.apollo{
+    color: hsl(180, 1%, 63%);
+    background-color: hsl(180, 20%, 83%);
+}
+.apollo .card_image {
+    top: -25px;/*微調角色高度*/
+    translate: -50%;/*微調角色水平位置*/
+}
+
+
+/*Overwrite Owl-Carousel Original Setting*/
+.owl-carousel {
+    width: 700px;
+    margin-inline: auto;
+}
+.owl-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+.owl-nav button {
+    font-size: 0.9rem!important;/* !important 強迫複寫原來的設定*/
+    color: hsl(0, 0%, 50%)!important;
+    background-color: hsl(208, 0%, 97%)!important;
+    border-radius: 1rem!important;
+    width: 4.5rem;
+    line-height: 1.8rem!important;
+}
+.owl-nav button:hover {
+    scale: 1.1;
+    color: hsl(0, 0%, 0%)!important;
+    background-color: white!important;
+}
+.owl-dots {
+    display: none;/*隱藏預設的點點*/
+}
