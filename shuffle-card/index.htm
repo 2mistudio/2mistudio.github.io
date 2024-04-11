@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Card Picker</title>
+<link rel="stylesheet" href="style.css">
+<style>
+</style>
+</head>
+<body>
+
+<h1>Random Card Picker</h1>
+<div id="cardContainer">
+    <!-- Initially displayed cards -->
+</div>
+
+<button id="shuffleButton">Shuffle Cards</button>
+
+
+<script src="script.js"></script>
+<script>
+function shuffleCards() {
+    // Shuffle the cards array
+    for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+}
+
+function displayCards() {
+    // Select the container for the displayed cards
+    const cardContainer = document.getElementById('cardContainer');
+
+    // Clear current displayed cards
+    cardContainer.innerHTML = '';
+
+    // Display the first 3 cards
+    for (let i = 0; i < 3; i++) {
+        const card = cards[i];
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card');
+                cardElement.innerHTML = `
+                <div class="card-inner">
+                    <div class="card-back">
+                        <img src="cards/Pokemon_Trading_Card_Game_cardback.jpg" alt="Pokemon Trading Card">
+                        </div>
+                    <div class="card-front">
+                        <img src="${card.src}" alt="${card.alt}">
+                    </div>
+                </div>`;
+        // Add click detection to flip the card
+        cardElement.addEventListener('click', function() {
+            cardElement.classList.toggle('flip');
+        });
+        cardContainer.appendChild(cardElement);
+    }
+}
+
+// Function to shuffle cards and display
+function shuffleAndDisplayCards() {
+    shuffleCards();
+    displayCards();
+}
+
+// Add event listener to shuffle button
+document.getElementById('shuffleButton').addEventListener('click', shuffleAndDisplayCards);
+
+// Initial display of cards
+displayCards();
+
+</script>
+
+</body>
+</html>
