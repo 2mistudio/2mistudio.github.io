@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player with ChatGPT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+    <div class="player flex">
+        <img id="cover" src="" alt="封面" class="cover">
+        <div id="song-info" class="song-info">
+            <h2 id="title">音樂名稱</h2>
+        </div>
+        <div class="wave">
+            <!-- <img src="image/equalizer-small.svg" alt=""> -->
+            <lottie-player id="equalizer" src="image/equalizer.json" background="transparent"  speed="0.5"  style="width: 70px; height: 20px;"></lottie-player>
+        </div>
+        <div class="tools flex">
+            <button id="prev" class="control">上一首</button>
+            <button id="play" class="control">播放</button>
+            <button id="pause" class="control" style="display: none;">暫停</button>
+            <button id="next" class="control">下一首</button>
+        </div>
+        <div class="time flex">
+            <span id="current-time">00:00</span>
+             <progress type="range" id="progress" class="progress" value="0" min="0" max="100" > </progress>
+            <span id="duration">00:00</span>
+        </div>
+        
+    </div>
+</div>
+    <audio id="audio"></audio>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
