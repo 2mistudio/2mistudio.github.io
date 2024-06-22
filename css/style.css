@@ -24,15 +24,21 @@ a {
 strong {
     color: var(--dark-gray);
 }
+.red {
+    color: hsl(0, 100%, 40%);
+}
 h1, h2, h3, h4 {
     line-height: 150%;
 }
 h3 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-family: var(--theme-font);
     font-weight: 600;
     display: inline-block;
     background: linear-gradient(to top,var(--light-green) 13%, transparent 0% );
+}
+h4 {
+    font-size: 1.1rem;
 }
 details {
     margin-bottom: 1rem;
