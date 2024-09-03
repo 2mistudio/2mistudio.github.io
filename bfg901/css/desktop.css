@@ -264,6 +264,9 @@ section .update-list {
 .practitioner .count::after {
     background-image: url(../image/icon/icon-practitioner.svg);
 }
+.student .count::after {
+    background-image: url(../image/icon/icon-student.svg);
+}
 /* 提升 ESG */
 /*--------------------------------*/
 section.elevate > p {
