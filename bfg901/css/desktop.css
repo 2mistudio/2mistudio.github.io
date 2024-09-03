@@ -678,7 +678,12 @@ line-height: 140%;
     line-height: 150%; /* 24px */
 }
 .tutor-modal aside {
-    padding-top: 6px;
+    padding-top: 6px;    overflow: hidden;
+
+}
+.tutor-modal aside.tutor-detail {
+    height: 510px;
+    overflow: hidden scroll;
 }
 .tutor-modal aside p {
 font-size: 18px;
@@ -693,6 +698,14 @@ margin-bottom: 24px;
     border-radius: 20px;
     padding: 3px 16px;
     margin-right: 3px;
+}
+.tutor-modal aside ul {
+    margin-left: 20px;
+    list-style-type: disc;    
+}
+.tutor-modal aside li {
+    padding-left: 10px;
+    line-height: 180%;
 }
 .tutor-modal button {
     width: 42px; height: 42px;
