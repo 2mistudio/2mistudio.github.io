@@ -937,11 +937,11 @@ table.graph-gri thead th {
 }
 .course-image {
     height: 230px;
+    overflow: hidden;
 }
 .course-image img {
-    width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit:cover;
 }
 
 .course-card ul {
