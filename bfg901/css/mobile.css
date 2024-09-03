@@ -991,6 +991,9 @@ table.graph-gri thead th {
     background: none;
     line-height: 140%;
 }
+.course-intro .button-medium {
+    margin-top: 20px;
+}
 
 /*Course List*/
 
@@ -1226,3 +1229,72 @@ ul.course-info li{
 
 
 /*Category Page M: 永續新聞*/
+#news article {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 2px solid var(--S-80);
+    border-radius: 16px;
+    margin-bottom: 26px;
+    padding: 20px;
+}
+article.news-list aside {
+    width: 100%; 
+    border: 2px solid;
+    border-radius: 12px;
+    overflow: hidden;
+}
+article.news-list main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+article.news-list .sub-title {
+    line-height: 160%;
+    margin-bottom: 0;
+}
+article.news-list h4.date {
+    font-size: 17px;
+}
+article.news-list main .tag {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    flex-wrap: wrap;
+}
+article.news-list main .tag span {
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 20px;
+}
+article.news-list main p {
+    font-size: 16px;
+    color: var(--BFG-Neutral-Gray);
+    line-height: 170%;
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+article.news-list main .button-medium {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin-left: 0;
+    padding:6px 36px;
+    padding-bottom: 10px;
+    border-radius: 50px;
+}
+
+article.news-detail {
+    border: none!important;
+    padding: 0px!important;
+}
+article.news-detail .heading-image {
+    width: 100%; 
+    border: 2px solid;
+    border-radius: 12px;
+    overflow: hidden;
+}
