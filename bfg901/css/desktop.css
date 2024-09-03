@@ -361,8 +361,10 @@ section.tutors h2 {
     margin-bottom: 40px;
 }
 .tutor-card {
-    flex: 1;
+    flex: 0;
+    flex-basis: 258px;
     cursor: pointer;
+    justify-content: start;
 }
 .tutor-image {
     overflow: hidden;
@@ -515,12 +517,12 @@ section.partner .wrap {
     transition: .2s ease-in-out;
 }
 .main-partner a:hover img{
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 .alliance {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
     gap: 4px;
     margin-bottom: 56px;
 }
@@ -539,7 +541,7 @@ section.partner .wrap {
     transition: .2s ease-in-out;
 }
 .alliance a:hover img{
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 /* Footer */
 /*--------------------------------*/
