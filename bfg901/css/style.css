@@ -278,7 +278,9 @@ table.graph-gri .title-bia {
 
 
 /*Category Page: 課程與活動*/
-.course nav.sub-nav a.submenu-course, .forum nav.sub-nav a.submenu-forum, .tutor nav.sub-nav a.submenu-tutor {
+.course nav.sub-nav a.submenu-course, 
+.forum nav.sub-nav a.submenu-forum, 
+.tutor nav.sub-nav a.submenu-tutor {
     color: var(--BFG-Neutral-White);
     background-color: var(--BFG-Prime-Green);
 }
@@ -352,8 +354,54 @@ main p.date {
     background-color: var(--PB-80);
 }
 
+/*參與見證*/
+.testimony nav.sub-nav a.submenu-testimony, 
+.pastevets nav.sub-nav a.submenu-pastevets {
+    color: var(--BFG-Neutral-White);
+    background-color: var(--BFG-Prime-Green);
+}
+ul.review-standards li:nth-child(1) {
+    background: 
+    linear-gradient(180deg,
+     rgba(42, 97, 152, 0.60) 0%, 
+     rgba(127.13, 173.40, 219.67, 0.60) 100%);
+}
+ul.review-standards li:nth-child(2) {
+    background: 
+    linear-gradient(180deg, 
+     rgba(126.17, 180.54, 23.46, 0.80) 0%,
+     rgba(189.14, 213.09, 143.91, 0.80) 100%);
+}
+ul.review-standards li:nth-child(3) {
+    background: 
+    linear-gradient(180deg,
+     rgba(197.88, 127.28, 6.12, 0.80) 0%,
+     rgba(248.08, 191.22, 93.62, 0.80) 100%);
+}
+ul.review-standards li:nth-child(4) {
+    background: 
+    linear-gradient(180deg,
+     rgba(224.40, 185.42, 0, 0.80) 0%, 
+     rgba(255, 226.65, 91.80, 0.80) 100%);
+}
+ul.review-standards li{
+    border: 4px solid var(--S-80);
+    transition: .2s;
+}
+ul.review-standards li:hover{
+    border: 4px solid var(--BFG-Second-Green);
+}
+ul.review-standards li::before {
+    background-color: var(--BFG-Neutral-Clean);
+    transition: .2s;
+}
+ul.review-standards li:hover:before {
+    background-color: var(--BFG-Second-Green);
+}
+
 /*Category Page: 永續新聞*/
-.news nav.sub-nav a.submenu-esg, .media nav.sub-nav a.submenu-media {
+.news nav.sub-nav a.submenu-esg, 
+.media nav.sub-nav a.submenu-media {
     color: var(--BFG-Neutral-White);
     background-color: var(--BFG-Prime-Green);
 }

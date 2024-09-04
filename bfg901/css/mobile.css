@@ -306,6 +306,9 @@ section .update-list {
 .practitioner .count::after {
     background-image: url(../image/icon/icon-practitioner.svg);
 }
+.student .count::after {
+    background-image: url(../image/icon/icon-student.svg);
+}
 /* Mobile: 提升 ESG */
 /*--------------------------------*/
 section.elevate > p {
@@ -790,9 +793,11 @@ header menu a::after {
     background-color:var(--S-60);
 }
 #testimony header menu a.testimony::after {
+    width: 20%; 
     background-color:var(--S-60);
 }
 #news header menu a.news::after {
+    width: 20%; 
     background-color:var(--S-60);
 }
 
@@ -848,8 +853,8 @@ header menu a::after {
 .category .main-title,.category .sub-title { 
     width: 100%!important;
 }
-.category .content-wrap-medium .sub-title {
-    margin-top: 40px;
+.category .sub-title {
+    margin-top: 36px;
     line-height: 160%;
 }
 .category .content-wrap-medium ul,ol {
@@ -1225,11 +1230,45 @@ ul.course-info li{
 #activity .tutor-modal .tutor-image {
     height: 240px;
 }
+
 /*Category Page M: 參與見證*/
+ul.review-standards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 20px;
+}
+ul.review-standards li{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--PB-20);
+    font-size: 28px;
+    font-weight: 700;
+    height: 210px;
+    margin: 0; 
+    padding: 36px 0;
+    border: 3px solid var(--S-80);
+    border-radius: 16px;
+    background: none;
+    position: relative;
+}
 
-
+#testimony article aside {
+    order: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+#testimony article main {
+    order: 2;
+}
+#testimony article main .sub-title{
+    margin-block: 24px;
+}
 /*Category Page M: 永續新聞*/
-#news article {
+#news article,
+#testimony article {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -1238,36 +1277,44 @@ ul.course-info li{
     margin-bottom: 26px;
     padding: 20px;
 }
-article.news-list aside {
+article.news-list aside, 
+article.testimony-list aside {
     width: 100%; 
     border: 2px solid;
     border-radius: 12px;
     overflow: hidden;
 }
-article.news-list main {
+article.news-list main,
+article.testimony-list main {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
-article.news-list .sub-title {
+article.news-list .sub-title,
+article.testimony-list .sub-title {
     line-height: 160%;
-    margin-bottom: 0;
+    margin-block: 0!important;
 }
-article.news-list h4.date {
+article.news-list h4.date,
+article.testimony-list h4.date {
     font-size: 17px;
 }
-article.news-list main .tag {
+article.news-list main .tag,
+article.testimony-list main .tag {
     display: flex;
     gap: 10px;
     font-size: 14px;
     flex-wrap: wrap;
 }
-article.news-list main .tag span {
+article.news-list main .tag span,
+article.testimony-list main .tag span
+ {
     display: inline-block;
     padding: 6px 20px;
     border-radius: 20px;
 }
-article.news-list main p {
+article.news-list main p,
+article.testimony-list main p {
     font-size: 16px;
     color: var(--BFG-Neutral-Gray);
     line-height: 170%;
@@ -1278,7 +1325,8 @@ article.news-list main p {
     -webkit-line-clamp: 3;
     overflow: hidden;
 }
-article.news-list main .button-medium {
+article.news-list main .button-medium,
+article.testimony-list main .button-medium {
     display: inline-block;
     text-align: center;
     width: 100%;
@@ -1301,8 +1349,9 @@ article.news-detail {
 }
 article.news-detail .heading-image {
     width: 100%; 
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: hidden;
+    /* margin-bottom: 8px; */
 }
 .news-detail .tag {
     display: flex;
@@ -1313,7 +1362,7 @@ article.news-detail .heading-image {
 .news-detail .tag span {
     display: block;
     font-size: 14px;
-    padding: 6px 16px;
+    padding: 6px 12px;
 }
 .news-detail .date {
     font-size: 17px;
