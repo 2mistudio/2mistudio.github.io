@@ -44,7 +44,7 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 100%; 
-    width: 88%;
+    width: 88%!important;
     margin: 0 auto;
     margin-bottom: 32px;
 }
@@ -563,7 +563,7 @@ section.partner .wrap {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
     gap: 6px;
     margin-bottom: 40px;
 }
@@ -845,8 +845,8 @@ header menu a::after {
     width: 90%;
     margin: 0 auto;
 }
-.category .main-title,.sub-title { 
-    width: 100%;
+.category .main-title,.category .sub-title { 
+    width: 100%!important;
 }
 .category .content-wrap-medium .sub-title {
     margin-top: 40px;
@@ -1092,7 +1092,7 @@ table.graph-gri thead th {
 
 /*Course Detail Page*/
 .heading-title {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 900;
     text-align: center;
     line-height: 140%;
@@ -1292,9 +1292,73 @@ article.news-detail {
     border: none!important;
     padding: 0px!important;
 }
+.news-detail .content-wrap-heading {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 article.news-detail .heading-image {
     width: 100%; 
-    border: 2px solid;
     border-radius: 12px;
     overflow: hidden;
+}
+.news-detail .tag {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+}
+.news-detail .tag span {
+    display: block;
+    font-size: 14px;
+    padding: 6px 16px;
+}
+.news-detail .date {
+    font-size: 17px;
+}
+.news-detail .heading-title::after {
+    bottom: -40px;
+}
+.news-detail figure {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.news-detail figcaption {
+    font-size: 14px;
+    text-align: center;
+    line-height: 160%;
+    margin-top: 12px;
+}
+
+.news-detail blockquote {
+    color: var(--BFG-Prime-Green);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 180%;
+    letter-spacing: 4.50px;
+    padding: 0 10px 0 20px;
+    margin-block: 42px;
+    margin-top: 50px;
+    position: relative;
+}
+.news-detail blockquote::before {
+    content: url(../image/icon/icon-quote-start-green.svg);
+    position: absolute;
+    left: 0px; top: -36px;
+}
+.news-detail blockquote::after {
+    content: url(../image/icon/icon-quote-end-green.svg);
+    position: absolute;
+    right: 0px; bottom: -32px;
+}
+.news-detail h4.quote {
+    color: var(--BFG-Prime-Green);
+    text-align: center;
+    text-indent: 0;
+    font-size: 16px;
+    line-height: 170%;
+    margin-block: 30px;
 }

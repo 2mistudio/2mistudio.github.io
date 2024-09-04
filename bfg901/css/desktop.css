@@ -1304,6 +1304,7 @@ article.news-list main .button-medium {
 .news-detail .tag {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 .news-detail .tag span {
     display: block;
