@@ -1,7 +1,6 @@
 // 初始化 Firebase
 const firebaseConfig = {
     // 貼上你的 Firebase 配置
-    const firebaseConfig = {
         apiKey: "AIzaSyC5hND33E65gFQE8g8r48r1yCSbtliuWHw",
         authDomain: "twomistudio-board.firebaseapp.com",
         databaseURL: "https://twomistudio-board-default-rtdb.asia-southeast1.firebasedatabase.app",
