@@ -1,14 +1,13 @@
 // 初始化 Firebase
 const firebaseConfig = {
-    // 貼上你的 Firebase 配置
-        apiKey: "AIzaSyC5hND33E65gFQE8g8r48r1yCSbtliuWHw",
-        authDomain: "twomistudio-board.firebaseapp.com",
-        databaseURL: "https://twomistudio-board-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "twomistudio-board",
-        storageBucket: "twomistudio-board.firebasestorage.app",
-        messagingSenderId: "83895449141",
-        appId: "1:83895449141:web:7a735450f8bdf985dfe37c"
-      };
+    apiKey: "AIzaSyC5hND33E65gFQE8g8r48r1yCSbtliuWHw",
+    authDomain: "twomistudio-board.firebaseapp.com",
+    databaseURL: "https://twomistudio-board-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "twomistudio-board",
+    storageBucket: "twomistudio-board.firebasestorage.app",
+    messagingSenderId: "83895449141",
+    appId: "1:83895449141:web:7a735450f8bdf985dfe37c"
+  };
   
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
