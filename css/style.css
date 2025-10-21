@@ -98,7 +98,8 @@ nav li:not(:last-child)::after{
 dt {
     color: var(--dark-gray);
     font-weight: bold;
-    line-height: 3rem;
+    font-size: 1.1rem;
+    margin-block: 1rem;
 }
 
 section.home {
