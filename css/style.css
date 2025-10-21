@@ -24,9 +24,11 @@ a {
 strong {
     color: var(--dark-gray);
 }
-.red {
-    color: hsl(0, 100%, 40%);
+img {
+    display: block;
+    width: 100%;
 }
+
 h1, h2, h3, h4 {
     line-height: 150%;
 }
@@ -46,6 +48,21 @@ details {
 summary {
     font-size: 1.2rem;
     cursor: pointer;
+}
+figcaption {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: small;
+    line-height: 1.3rem;
+}
+.flex {
+    display: flex;
+}
+.red {
+    color: hsl(0, 100%, 40%);
+}
+.smaller {
+    font-size: smaller;
 }
 .wrap {
     width: 75%;
@@ -75,6 +92,12 @@ nav li:not(:last-child)::after{
     color: var(--light-green);
     font-size: smaller;
 }
+dt {
+    color: var(--dark-gray);
+    font-weight: bold;
+    line-height: 3rem;
+}
+
 section.home {
     width: 750px;
     margin: 20px auto;
