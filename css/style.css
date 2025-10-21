@@ -58,6 +58,9 @@ figcaption {
 .flex {
     display: flex;
 }
+.flex-wrap {
+    flex-wrap: wrap;
+}
 .red {
     color: hsl(0, 100%, 40%);
 }
@@ -216,5 +219,8 @@ footer p {
 @media screen and (max-width:600px) {
     h3 {
         font-size: 1.6rem;
+    }
+    .flex {
+        flex-wrap: wrap;
     }
 }
