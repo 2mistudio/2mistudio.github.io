@@ -80,11 +80,23 @@ figcaption {
     padding-inline: 1.5rem;
     padding-block: 0.5rem;
     position: fixed;
-    bottom: 2rem;
+    bottom: 1.6rem;
     right: 1rem;
-    background-color:var(--light-gray);
-    transition: background 0.3s;
+    z-index: 1000;
+    background-color:hsla(0, 0%, 95%, 0);
+    background-clip: padding-box,border-box;
+    background-origin: border-box;
+    border: solid 0.2rem rgba(0,0,0,0);
+    opacity: 0;/*Hide the Top Button Initially*/
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
 }
+.button-top.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
 .button-top:hover {
     color: white;
     background-color: var(--prime-green);
