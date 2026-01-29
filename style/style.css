@@ -83,7 +83,7 @@ figcaption {
     bottom: 1.6rem;
     right: 1rem;
     z-index: 1000;
-    background-color:hsla(0, 0%, 95%, 0);
+    background-color:hsla(0, 0%, 0%, 0);
     background-clip: padding-box,border-box;
     background-origin: border-box;
     border: solid 0.2rem rgba(0,0,0,0);
@@ -99,7 +99,8 @@ figcaption {
     }
 .button-top:hover {
     color: white;
-    background-color: var(--prime-green);
+    background-image: none;
+    background-color: var(--prime-green)!important;
 }
 nav {
     padding-bottom: 0;
@@ -266,7 +267,18 @@ footer p {
     font-size: 1.2rem;
     line-height: 180%;
 }
-
+#page-css .sub-nav .css-home a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-csshistory .sub-nav .css-history a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css3 .sub-nav .css-css3 a {
+    color: white;
+    background-color: var(--prime-green);
+}
 @media screen and (max-width:600px) {
     h3 {
         font-size: 1.6rem;
