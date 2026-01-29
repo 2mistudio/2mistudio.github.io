@@ -12,15 +12,16 @@
     <div class="wrap">
         <ul>
             <li><a href="../">Home</a></li>
+            <li><a href="index.htm">CSS</a></li>
             <li><a href="#">CSS的發展歷程</a></li>
         </ul>  
     </div>  
     </nav>  
     <div class="wrap">
         <ul class="sub-nav">
-            <li><a href="index.htm">CSS</a></li>
-            <li><a href="history.htm">CSS 的發展歷程</a></li>
-            <li><a href="css3.htm">關於 CSS 3</a></li>
+            <li class="css-home"><a href="index.htm">CSS</a></li>
+            <li class="css-history"><a href="history.htm">CSS 的發展歷程</a></li>
+            <li class="css-css3"><a href="css3.htm">關於 CSS 3</a></li>
         </ul>
     <h1>CSS的發展歷程</h1>
 <h2>形成時期 (1994 - 1995)</h2>
@@ -31,9 +32,9 @@
 <h2>標準化與早期實作 (1996 - 1999)</h2>
 <ul>
     <li><strong>1996年: </strong> CSS 第一版 (CSS 1) 於 12 月 17 日正式發佈為 W3C 推薦標準。同年，微軟的 Internet Explorer 3 發表，並對該標準提供了有限的早期支援。</li>
-    <li><strong>1997年: </strong> 為了應對日益增長的複雜性，W3C 成立了專門的 CSS 工作小組。</li>
+    <li><strong>1997年: </strong> 為了應對日益增長的複雜性，W3C 成立了專門的 CSS 工作小組 ( CSSWG - <a target="_blank" href="https://www.w3.org/groups/wg/css/"> CSS Working Group</a> )。</li>
     <li><strong>1998年: </strong> CSS 第二版 (CSS 2) 於 5 月 12 日發佈。同年註冊了 text/css MIME 類型。</li>
-    <li><strong>1999年: </strong> 開始規劃 CSS 第三版 (CSS 3)，其設計將細部功能分開成各自獨立的「模組 Module」形式開發，而非如同 CSS 2 一般的大型版本規格書<sup>註</sup>。</li>
+    <li><strong>1999年: </strong> 開始規劃 CSS 第三版 (<a href="css3.htm">CSS 3</a>)，將 CSS 的細部功能分開成各自獨立的「模組 Module」形式開發，而非如同 CSS 2 一般的大型版本規格書<sup><a href="css3.htm">註</a></sup>。</li>
 </ul>
 <h2>在不同瀏覽器之間的互通與掙扎 (2000 - 2009)</h2>
 <ul>
@@ -43,17 +44,19 @@
 <li><strong>2004年: </strong> CSS 2.1 達到「CR 候選推薦」(W3C Candidate Recommendation)狀態，主要修正原始 CSS2 中的錯誤。同年十一月 Mozilla 基金會及其子公司 Mozilla 開發的自由開源網頁瀏覽器 Firefox 正式推出，並完整支援 CSS 1 標準。</li>
 <li><strong>2005年: </strong>為了加速推動瀏覽器開發商遵循 CSS 標準， Lie 針對微軟的 IE 發起了 Acid2 測試。同年四月蘋果 Safari 2.0 推出，成為首個通過該測試的瀏覽器。</li>
 <li><strong>2006年: </strong>Mozilla Suite 終止開發(包含其中的瀏覽器)，Firefox 成為 Mozilla 旗下的唯一瀏覽器。</li>
-<li><strong>2008年: </strong> Google 推出瀏覽器 Google Chrome，在第一款測試版中 Chrome 就已經順利通過 Acid1 及 Acid2 測試，並且在 Acid3 測試中取得高分。同年 Firefox 3.0 也正式通過 Acid2 測試。</li>
-<li><strong>2009年: </strong> 微軟 Internet Explorer 8 通過 Acid2 測試，並支援大部分的 CSS 2.1 標準以及少部分的 CSS3，市場上的主要瀏覽器終於實現能夠互通的 CSS 的願景，結束了長期以來不同瀏覽器顯示結果不一致的問題。</li>
+
+    <li><strong>2007年: </strong> 由於 CSS 3 不再以版本為更新命名，為了方便瀏覽器開發商與網路開發者更容易的分辨 CSS 的發展狀態，W3C 轉向發佈快照 (CSS Snapshots)，用來總結哪些 CSS 模組當前是穩定可用的。</li>
+
+    <li><strong>2008年: </strong> Google 推出瀏覽器 Google Chrome，在第一款測試版中 Chrome 就已經順利通過 Acid1 及 Acid2 測試，並且在 Acid3 測試中取得高分。同年 Firefox 3.0 也正式通過 Acid2 測試。</li>
+    
+    <li><strong>2009年: </strong> 微軟 Internet Explorer 8 通過 Acid2 測試，並支援大部分的 CSS 2.1 標準以及少部分的 CSS3，市場上的主要瀏覽器終於實現能夠互通的 CSS 的願景，結束了長期以來不同瀏覽器顯示結果不一致的問題。</li>
 </ul>
 <h2>模組化時代與現代網路 (2010年至今)</h2>
 <ul>
-    <li><strong>2011年: </strong>可以說是 CSS 3 的元年。除了 CSS 2.1 終於正式成為「REC 完整推薦標準」(W3C Recommendation) 之外。CSS3 Color Module 也成為第一個通過「REC 完整推薦標準」的新 CSS 3 模組。 <br>從此時開始 CSS 3 各種模組開發飛快的進展，各家瀏覽器(主要是 Chrome，Firefox 跟 Safari) 也開始快速的追趕 CSS 3 的新標準。</li>
+    <li><strong>2011年: </strong>可以說是 CSS 3 的元年。除了 CSS 2.1 終於正式成為「REC 完整推薦標準」(W3C Recommendation) 之外。<a href="css3.htm">CSS3 Color Module Level 3</a> 也成為第一個通過「REC 完整推薦標準」的新 CSS 3 模組。 <br>從此時開始 CSS 3 各種功能模組開發飛快的進展，各家瀏覽器 ( 主要是 Chrome，Firefox 跟 Safari ) 也開始快速的追趕 CSS 3 的新標準。</li>
     
-    <li><strong>2012年: </strong>CSS 3 的 Media Queries Level 3 成為「REC 完整推薦標準」，象徵了響應式網頁時代的開始。</li>
+    <li><strong>2012年: </strong>CSS 3 的 Media Queries Level 3 成為「REC 完整推薦標準」，象徵了響應式網頁時代正式展開。</li>
     <li><strong>2014年: </strong> 網絡社群慶祝 Lie 提出首個 CSS 提案滿 20 週年。</li>
-    
-    <li><strong>2015年: </strong> 由於 CSS 3 不再以版本為更新命名，為了方便瀏覽器開發商與網路開發者更容易的分辨 CSS 的發展狀態，W3C 轉向發佈 (快照 Snapshots)，用來總結哪些 CSS 模組當前是穩定可用的。</li>
     
     <li><strong>2020年: </strong>隨著 Snapshots 版本越來越多，也越來越容易混淆，開發人員一直在思考是否要重新給 CSS 版本一個清楚的定義。W3C CSS Working Group 於是成立了一個社群小組，開始討論如何為開發者建立一個具版本參考價值的文檔，可能被稱為 「CSS4」，儘管現代 CSS 仍持續以獨立模組形式演進。</li>
     
