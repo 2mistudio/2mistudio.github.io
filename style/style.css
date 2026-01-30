@@ -134,6 +134,10 @@ ul.sub-nav {
     list-style: none;
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.sub-nav li {
+    flex-shrink: 0;
 }
 .sub-nav li a {
     display: block;
@@ -279,6 +283,23 @@ footer p {
     color: white;
     background-color: var(--prime-green);
 }
+#page-browser .sub-nav .browser-home a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-browserwar .sub-nav .browser-war a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-firefox .sub-nav .browser-firefox a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-safari .sub-nav .browser-safari a {
+    color: white;
+    background-color: var(--prime-green);
+}
+
 @media screen and (max-width:600px) {
     h3 {
         font-size: 1.6rem;
