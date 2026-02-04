@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+    <title>瀏覽器大戰 - The Browser War</title>
+</head>
+<body id="page-browser">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="index.htm">瀏覽器</a></li>
+            <li><a href="#">瀏覽器大戰</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+        <ul class="sub-nav">
+            <li class="browser-home"><a href="index.htm">瀏覽器</a></li>
+            <li class="browser-dev"><a href="devtools.htm">開發人員工具</a></li>
+            <li class="browser-war"><a href="war.htm">瀏覽器大戰</a></li>
+            <li class="browser-firefox"><a href="firefox.htm">火狐狸誕生的故事</a></li>
+            <li class="browser-safari"><a href="safari.htm">關於 Safari 的故事</a></li>
+        </ul>
+
+    <h1>關於瀏覽器</h1>
+
+    <p>對網頁開發者來說，瀏覽器不僅僅只是一個「上網用的工具」，它更像是網頁作品的畫布、翻譯者甚至最後的審查官。網頁開發者一定要在瀏覽器開啟並測試過網頁內容，才能交付成品；精確一點來說，必須要在客戶或大多數使用者所使用的瀏覽環境中測試沒問題才能讓網頁上線。</p>
+
+    <p>舉例來說，早期在 WYSIWYG (所見即所得) 工具盛行的時候，設計師往往習慣在網頁編輯工具 ( 例如 Dreamweaver ) 裡確認結果，但設計完成之後，網站在瀏覽器中打開，卻發現了許多設計的時候看不到的問題。</p>
+
+    <p>再舉一個更常遭遇到的例子。網頁設計好了之後，設計師在自己的電腦上用瀏覽器打開測試沒問題，但網頁傳到了客戶手上，用客戶的電腦打開卻出現問題。經過一番來回討論溝通之後，發現客戶用的瀏覽器跟設計師用的不同。</p>
+
+    <p>從以上的兩個例子，我們可以發現瀏覽器對「網頁設計師」及「網頁開發者」的重要性。身為一個設計／開發人員，不僅需要清楚網頁設計的基本技術，甚至對網頁運行的環境 ( 瀏覽器 )，也必須有相當程度的認知與了解。</p>
+
+    <h2>瀏覽器的核心引擎</h2>
+
+    <p>引擎是瀏覽器最重要的核心，為了完美執行 HTML、CSS 和 JavaScript 程式代碼，甚至圖片、聲音、影片⋯等等多媒體，瀏覽器必須具備「排版引擎」以及「邏輯引擎」。</p>
+
+
+    <p><strong>「排版引擎」</strong>負責將程式碼轉化為肉眼可見的「視覺畫面」。它會將 HTML、CSS 程式碼繪製成一般人看得懂的內容。</p>
+
+<p><strong>「邏輯引擎」</strong>負責「執行邏輯」。它會將 JavaScript 編譯成電腦可以直接執行的機器碼。</p>
+
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>瀏覽器</th>
+        <th>排版引擎</th>
+        <th>JavaScript 引擎</th>
+        <th>支援的作業系統</th>
+    </tr>
+    <tr>
+        <th>Chrome</th>
+        <td><a href="https://www.chromium.org/blink/" target="_blank" rel="noopener noreferrer">Blink</a></td>
+        <td><a href="https://v8.dev/" target="_blank" rel="noopener noreferrer">V8</a></td>
+        <td>Windows / MacOS / Android / iOS</td>
+    </tr>
+    <tr>
+        <th>Safari</th>
+        <td><a href="https://webkit.org/" target="_blank" rel="noopener noreferrer">WebKit</a></td>
+        <td><a href="https://docs.webkit.org/Deep%20Dive/JSC/JavaScriptCore.html" target="_blank" rel="noopener noreferrer"> JavaScriptCore</a></td>
+        <td>MacOS / iOS</td>
+    </tr>
+    <tr>
+        <th>Edge</th>
+        <td><a href="https://www.chromium.org/blink/" target="_blank" rel="noopener noreferrer">Blink</a></td>
+        <td><a href="https://v8.dev/" target="_blank" rel="noopener noreferrer">V8</a></td>
+        <td>Windows / MacOS / Android / iOS</td>
+    </tr>
+    <tr>
+        <th>Firefox</th>
+        <td><a href="https://firefox-source-docs.mozilla.org/overview/gecko.html" target="_blank" rel="noopener noreferrer">Gecko</a></td>
+        <td><a href="https://firefox-source-docs.mozilla.org/js/i" target="_blank" rel="noopener noreferrer">SpiderMonkey</a></td>
+        <td>Windows / MacOS / Android / iOS</td>
+    </tr>
+    <tr>
+        <th>Opera</th>
+        <td><a href="https://www.chromium.org/blink/" target="_blank" rel="noopener noreferrer">Blink</a></td>
+        <td><a href="https://v8.dev/" target="_blank" rel="noopener noreferrer">V8</a></td>
+        <td>Windows / MacOS / Android / iOS</td>
+    </tr>
+</table>
+</div>
+<p>因為不同的瀏覽器使用的引擎不同，這導致了所謂的<strong>「相容性問題」</strong>。同樣的 CSS 代碼，在 Chrome 看起來很完美，在 Safari 上就有可能會跑版。</p>
+
+<h2>瀏覽器的版本與市占率</h2>
+
+<p>除了引擎不一樣會有「相容性問題」之外，瀏覽器的版本對網頁內容的顯示也有很大的影響。瀏覽器推出後，會陸續有「安全性更新」以及「功能性更新」。「功能性的更新」除了瀏覽器本身功能增加之外，更多是為了支援新的網頁技術，像是 HTML、CSS 和 JavaScript 的新功能等等。</p>
+
+<p>因此設計網頁時必須要先確認你用的技術有哪些瀏覽器支援，哪些不支援；換個角度來說，網頁開發人員必須隨時關注瀏覽器的 <strong>「市占率狀況」</strong>，還有各個 <strong>「版本與支援的功能」</strong>。</p>
+
+<p>那麼，要如何獲取瀏覽器的發展，跟決定那些功能可以使用呢？我們一般會參考下面三個方向：</p>
+
+<ul>
+    <li><strong>專案的用戶資料 ( <a href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer">Google Analytics</a> )</strong> <br>一般商業客戶通常會在網站上安裝 Google Analytics ( 又稱 GA) ，透過 GA 後台的技術分析資料，可以精準的了解網站受眾透過什麼裝置上網，使用哪種瀏覽器與上網裝置。是最精準的重要參考資料。</li>
+    <li><strong>全球與地區市佔率 ( <a href="https://gs.statcounter.com/browser-market-share" target="_blank" rel="noopener noreferrer">StatCounter</a> )</strong><br> 透過  StatCounter 網站，可以免費查詢全球瀏覽器跟上網裝置的分布現況。還可以細分到每個地區與國家 (因為分布狀況有可能不同)。</li>
+    <li><strong>技術支援查詢 ( <a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer">Can I Use</a> )</strong> <br>Can I Use 是網頁開發者必備的「技術百科」網站，透過數據顯示目前各項 HTML/CSS/JS 等網路技術，在不同瀏覽器的支援度。使用者除了參考紅、綠色塊來理解各家瀏覽器的相容性之外。也可透過 <a href="https://web-platform-dx.github.io/web-features/" target="_blank" rel="noopener noreferrer">Basekine 標記</a> 來快速判斷這些新技術使已經否穩定可用。
+    </li>
+</ul>
+
+
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="../js/script.js"></script>
+</body>
+</html>
