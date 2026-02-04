@@ -164,6 +164,25 @@ dt {
     margin-block: 1rem;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    line-height: 240%;
+}
+table tr:first-child > th {
+    color: black;
+    border-bottom: 1px solid gray;
+}
+table tr:not(:last-child) {
+    border-bottom: 1px solid lightgray;
+}
+table th,td {
+    text-align: center;
+    white-space: nowrap
+}
+.table-wrap {
+    overflow-x: auto;
+}
 section.home {
     width: 750px;
     margin: 20px auto;
@@ -291,6 +310,10 @@ footer p {
     background-color: var(--prime-green);
 }
 #page-browser .sub-nav .browser-home a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-devtools .sub-nav .browser-dev a {
     color: white;
     background-color: var(--prime-green);
 }
