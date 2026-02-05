@@ -52,6 +52,11 @@ summary {
     font-size: 1.2rem;
     cursor: pointer;
 }
+figure {
+    width: 100%;
+    margin: 0;
+    margin-block: 2rem;
+    }
 figure img {
     width: 100%;
     height: auto;
@@ -62,7 +67,7 @@ figure img {
 figcaption {
     margin-top: 1rem;
     text-align: center;
-    font-size: small;
+    font-size: medium;
     line-height: 1.3rem;
 }
 .flex {
@@ -330,10 +335,19 @@ footer p {
     background-color: var(--prime-green);
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:720px) {
     h3 {
         font-size: 1.6rem;
     }
+    figure {
+        width: 100%;
+    }
+    figure img {
+        width: 100%;
+}
+.wrap {
+    width: 85%;
+}
     .flex {
         flex-wrap: wrap;
     }
