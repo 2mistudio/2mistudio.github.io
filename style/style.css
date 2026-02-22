@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
 *,::before, ::after {box-sizing: border-box;}
 :root {
@@ -10,6 +10,7 @@
     --muted-gray:hsl(0, 0%, 64%);
     --light-gray:hsl(0, 0%, 88%);
     --pale-gray: hsl(0, 0%, 96%);
+    --alert: hsl(48, 80%, 90%);
     --theme-font: 'Poppins', sans-serif;
 }
 html {
@@ -37,13 +38,14 @@ img {
 h1, h2, h3, h4 {
     line-height: 150%;
 }
-h3 {
+
+/* h3 {
     font-size: 1.6rem;
     font-family: var(--theme-font);
     font-weight: 600;
     display: inline-block;
     background: linear-gradient(to top,var(--light-green) 13%, transparent 0% );
-}
+} */
 h4 {
     font-size: 1.1rem;
 }
@@ -109,7 +111,7 @@ dt {
 table {
     width: 100%;
     border-collapse: collapse;
-    line-height: 240%;
+    line-height: 170%;
 }
 table tr:first-child > th {
     color: black;
@@ -120,10 +122,35 @@ table tr:not(:last-child) {
 }
 table th,td {
     text-align: center;
-    white-space: nowrap
+    padding: 0.6rem 0.2rem;
+    /* white-space: nowrap; */
 }
 .table-wrap {
     overflow-x: auto;
+}
+
+/*Code View*/
+pre {
+    border-radius: 0.6rem;
+    overflow: hidden;
+}
+code {
+    overflow-x: auto;
+}
+code::before {
+    display: block; margin: 0;
+    color: var(--muted-gray);
+    font-size: 0.8rem;
+    font-family: sans-serif;
+}
+code.language-html::before {
+    content: "HTML";
+}
+code.language-css::before {
+    content: "CSS";
+}
+code.language-js::before {
+    content: "JavaScript";
 }
 
 /*Utility Class*/
@@ -139,6 +166,12 @@ table th,td {
 .smaller {
     font-size: smaller;
 }
+.hide {
+    visibility: hidden;
+}
+.nowrap {
+    white-space: nowrap;
+}
 .beacon {
     color: var(--pale-gray);
     background-color: var(--muted-gray);
@@ -148,10 +181,22 @@ table th,td {
     border-radius:0.4rem;
     padding-inline: 1rem;
 }
+.notice {
+    padding: 0.2rem 1.8rem;
+    border-radius:0.4rem;
+    background-color: var(--alert);
+}
 .wrap {
     width: 75%;
     margin-inline: auto;
 }
+.sub-title {
+    color: var(--muted-gray);
+    font-weight: 500;
+    font-family: "Space Grotesk", sans-serif;
+    transform: translateY(-1.4rem);
+}
+
 .button-top {
     display: block;
     border-radius: 5rem;
@@ -181,6 +226,8 @@ table th,td {
     background-color: var(--prime-green)!important;
 }
 
+
+
 ul.sub-nav {
     margin: 0;
     margin-bottom: 3rem; 
@@ -203,6 +250,42 @@ ul.sub-nav {
 .sub-nav li a:hover {
     color: white;
     background-color: var(--prime-green);
+}
+
+.footer-nav {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+    color: var(--dark-green);
+        display: flex;
+        align-items: center;
+        gap: 0.1rem;
+        border: 2px solid;
+        border-radius: 2rem;
+        padding:1rem 1.8rem;
+        padding-bottom: 0.9rem;
+        transition: background 0.3s;
+    }
+    a:first-child {
+        padding-left: 0.8rem;
+    }
+    a:last-child {
+        padding-right: 0.8rem;
+    }
+    svg {
+        fill: var(--dark-green);
+    }
+}
+
+.footer-nav a:hover {
+    color: white;
+    background-color: var(--dark-green);
+    svg {
+        fill: var(--pale-gray);
+    }
 }
 
 section.home {
@@ -351,7 +434,54 @@ footer p {
     color: white;
     background-color: var(--prime-green);
 }
-
+#page-js-day0 .sub-nav .link-day0 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-js-day1 .sub-nav .link-day1 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-js-day2 .sub-nav .link-day2 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-js-day3 .sub-nav .link-day3 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-js-day4 .sub-nav .link-day4 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-js-day5 .sub-nav .link-day5 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-js-day6 .sub-nav .link-day6 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-js-day7 .sub-nav .link-day7 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-js-day8 .sub-nav .link-day8 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-js-day9 .sub-nav .link-day9 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-js-day10 .sub-nav .link-day10 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-js-faq .sub-nav .link-faq a {
+    color: white;
+    background-color: var(--prime-green);
+}
 @media screen and (max-width:720px) {
     h3 {
         font-size: 1.6rem;
