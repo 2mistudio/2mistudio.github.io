@@ -28,3 +28,25 @@
     updateProgress();
     window.addEventListener('scroll', updateProgress);
 })();
+
+
+// Button focuse in Mobile view
+
+history.scrollRestoration = "manual";
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  // Reset full page scroll (horizontal + vertical)
+  window.scrollTo(0, 0);
+
+  // Scroll active nav button into view
+  const activeBtn = document.querySelector(".active");
+  if (activeBtn) {
+    activeBtn.scrollIntoView({
+      behavior: "auto",      // or "smooth"
+      inline: "start",
+      block: "nearest"
+    });
+  }
+
+});
