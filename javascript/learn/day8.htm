@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet">
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 8: 修改元素內容與樣式</title>
+</head>
+<body id="page-js-day8">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/javascript/">JavaScript</a></li>
+            <li><a href="/javascript/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-開發環境簡介</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-變數與資料型別</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-運算子與表達式</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-條件判斷</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-迴圈</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Switch三元運算子與函式</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-DOM與元素選取</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-修改內容與樣式</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-建立與刪除元素</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-事件處理</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+ 
+
+<!-- Main Content Starts -->
+<h1>Day 8: 修改元素內容與樣式</h1>
+    <h3 class="sub-title">Modify Element Content and Style</h3>
+<h2>一、學習目標</h2>
+<p>完成本日學習後，你應該能夠：</p>
+<ol>
+    <li>使用 JavaScript 修改元素的文字內容</li>
+    <li>動態改變元素的 CSS 樣式</li>
+    <li>新增、移除、切換 CSS class</li>
+    <li>修改元素的 HTML 結構</li>
+    <li>製作簡單的網頁互動效果</li>
+</ol>
+
+<h2>二、核心概念解釋</h2>
+
+<h3>為什麼要修改元素？</h3>
+<p>昨天我們學會了如何「選取」元素，今天要學習如何「修改」它們。這就是網頁從靜態變成動態的關鍵！</p>
+<p>想像你在 Figma 中：</p>
+<ul>
+    <li>選取一個文字圖層 → 修改內容</li>
+    <li>選取一個按鈕 → 改變顏色</li>
+    <li>選取一個元件 → 調整大小</li>
+</ul>
+<p>JavaScript 讓我們能在網頁上做同樣的事情，而且是「即時、動態」的！</p>
+<h3>三種主要的修改方式</h3>
+<ol>
+    <li><strong>修改內容：</strong>改變元素裡的文字或 HTML
+    <ul>
+        <li><span class="beacon">textContent</span> → 純文字內容</li>
+        <li><span class="beacon">innerHTML</span> → HTML 結構內容</li>
+    </ul>
+    </li>
+    <li><strong>修改樣式：</strong>改變元素的 CSS 屬性
+    <ul>
+        <li><span class="beacon">style</span> → 直接修改 inline style</li>
+        <li><span class="beacon">classList</span> → 新增/移除 CSS class（推薦）</li>
+    </ul>
+    </li>
+    <li><strong>修改屬性：</strong>改變元素的 HTML 屬性
+    <ul>
+        <li><span class="beacon">setAttribute()</span> → 設定屬性</li>
+        <li><span class="beacon">getAttribute()</span> → 取得屬性</li>
+    </ul>
+    </li>
+</ol>
+
+<h3>「 textContent 」 vs 「 innerHTML 」</h3>
+<p>這兩個都能改變元素內容，但有重要差異：</p>
+<p><strong>textContent</strong> 只處理純文字，任何 HTML 標籤都會被當成普通文字顯示。就像在文字編輯器中輸入內容。</p>
+<p><strong>innerHTML</strong> 可以插入 HTML 標籤，標籤會被解析並渲染。就像在 Figma 中貼上帶有樣式的內容。</p>
+
+<h3>直接修改 style vs 使用 class</h3>
+<h4>直接修改 style：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+element.style.color = "red";
+</code></pre>
+<!-- Code Block Ends-->
+<p>優點：簡單直接<br>
+缺點：樣式寫在 JavaScript 中，難以維護</p>
+
+<h4>使用 class（推薦）：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+element.classList.add("highlight");
+</code></pre>
+<!-- Code Block Ends-->
+
+<p>優點：樣式集中在 CSS，易於管理、符合關注點分離原則<br>
+缺點：需要預先定義 CSS class</p>
+<p>就像在設計系統中，使用「Component/ Variant 元件/變體」比每次手動調整屬性更好維護。</p>
+
+<h2>三、語法與使用方式</h2>
+
+<h3>準備工作：建立測試網頁</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-TW"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;修改元素練習&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        .success {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #1976d2;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1 id="title">原始標題&lt;/h1&gt;
+        &lt;p id="description">這是原始的描述文字。&lt;/p&gt;
+        &lt;div id="status">等待中...&lt;/div&gt;
+        &lt;button id="btn1">改變標題&lt;/button&gt;
+        &lt;button id="btn2">改變樣式&lt;/button&gt;
+        &lt;button id="btn3">切換 Class&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        console.log("準備開始練習！");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>範例一：修改文字內容（textContent）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 選取元素
+let title = document.querySelector("#title");
+
+// 修改文字內容
+title.textContent = "新的標題文字";
+
+console.log("標題已改變！");
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，網頁上的標題會立即從「原始標題」變成「新的標題文字」。</h4>
+<p><strong>說明：</strong>
+textContent 會替換元素內的所有文字。這是最安全的方式，因為它不會解析任何 HTML 標籤。</p>
+
+<h3>範例二：修改 HTML 內容（innerHTML）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let description = document.querySelector("#description");
+
+// 插入 HTML 標籤
+description.innerHTML = "這是<strong>加粗</strong>的文字，還有<em>斜體</em>！";
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>執行後，「加粗」會以粗體顯示，「斜體」會以斜體顯示。</h3>
+<p><strong>說明：</strong>
+innerHTML 可以插入 HTML 標籤，標籤會被瀏覽器解析並渲染。</p>
+
+<div class="notice">
+    <p><strong>⚠️ 安全提醒：</strong>
+不要將使用者輸入的內容直接放入 innerHTML，可能導致 <span title="跨網站指令碼攻擊（Cross-Site Scripting, XSS）">XSS 攻擊</span>。如果只是改變文字，使用 textContent 更安全。</p>
+</div>
+<h3>範例三：直接修改 CSS 樣式（style）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let title = document.querySelector("#title");
+
+// 修改多個樣式屬性
+title.style.color = "#e74c3c";           // 紅色文字
+title.style.fontSize = "36px";            // 字體大小
+title.style.backgroundColor = "#f1f1f1";  // 背景色
+title.style.padding = "15px";             // 內距
+title.style.borderRadius = "8px";         // 圓角
+title.style.textAlign = "center";         // 置中
+
+console.log("樣式已套用！");
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，標題會變成紅色、36px、有背景色、圓角、置中。</h4>
+<p><strong>說明：</strong>
+CSS 屬性名稱在 JavaScript 中使用駝峰式命名（camelCase）：</p>
+<ul>
+    <li>background-color → backgroundColor</li>
+    <li>font-size → fontSize</li>
+    <li>border-radius → borderRadius</li>
+</ul>
+
+<h3>範例四：使用 classList 新增/移除 class（推薦）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let description = document.querySelector("#description");
+
+// 新增 class
+description.classList.add("highlight");
+console.log("已新增 highlight class");
+
+// 等待 2 秒後移除 class
+setTimeout(function() {
+    description.classList.remove("highlight");
+    console.log("已移除 highlight class");
+}, 2000);
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，文字會立即變成黃色背景（highlight），2 秒後恢復原狀。</h4>
+<p><strong>說明：</strong>
+classList 是操作 CSS class 的推薦方式：</p>
+<ul>
+    <li>add() → 新增 class</li>
+    <li>remove() → 移除 class</li>
+    <li>toggle() → 切換 class（有就移除，沒有就新增）</li>
+    <li>contains() → 檢查是否有某個 class</li>
+</ul>
+
+<h3>範例五：切換 class（toggle）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let status = document.querySelector("#status");
+
+// 切換 success class
+status.classList.toggle("success");
+
+// 如果原本有 success class，會被移除
+// 如果原本沒有，會被新增
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>使用情境：</h4>
+<ul>
+    <li>點擊按鈕切換選單的顯示/隱藏</li>
+    <li>切換深色/淺色主題</li>
+    <li>切換按鈕的啟用/停用狀態</li>
+</ul>
+
+<h3>範例六：完整互動範例（按鈕點擊改變內容）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 選取元素
+let title = document.querySelector("#title");
+let btn1 = document.querySelector("#btn1");
+
+// 監聽按鈕點擊（下一節會詳細學習事件）
+btn1.addEventListener("click", function() {
+    title.textContent = "標題已被改變！";
+    title.classList.add("success");
+    console.log("按鈕被點擊，標題已更新");
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，點擊「改變標題」按鈕，標題會改變並變成綠色。</h4>
+
+<h3>範例七：動態產生內容（實用案例）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 產品資料
+let products = [
+    { name: "T恤", price: 590 },
+    { name: "牛仔褲", price: 1280 },
+    { name: "球鞋", price: 2200 }
+];
+
+let container = document.querySelector(".container");
+let productHTML = "<h2>商品列表</h2>";
+
+// 使用迴圈產生 HTML
+for (let i = 0; i < products.length; i++) {
+    productHTML += "<div class='product'>";
+    productHTML += "  <h3>" + products[i].name + "</h3>";
+    productHTML += "  <p class='price'>NT$ " + products[i].price + "</p>";
+    productHTML += "</div>";
+}
+
+container.innerHTML += productHTML;
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，網頁上會動態產生 3 個產品卡片。</h4>
+<p><strong>說明：</strong>
+這是非常實用的技巧！在實際開發中，資料通常來自 API，我們用 JavaScript 動態產生 HTML 結構。</p>
+
+<h3>範例八：修改元素屬性</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let button = document.querySelector("#btn1");
+
+// 修改按鈕文字
+button.textContent = "已點擊";
+
+// 停用按鈕
+button.disabled = true;
+
+// 修改按鈕樣式
+button.style.backgroundColor = "#cccccc";
+button.style.cursor = "not-allowed";
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，按鈕會變灰色且無法再點擊。</h4>
+
+<h2>四、常見錯誤與注意事項</h2>
+
+<h3>錯誤一：CSS 屬性名稱寫錯</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+element.style.background-color = "red";  // 錯誤！不能用連字號
+
+** 錯誤訊息：**
+Uncaught SyntaxError: Invalid left-hand side in assignment
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+element.style.backgroundColor = "red";  // 駝峰式命名
+</code></pre>
+<!-- Code Block Ends-->
+<h4>常見轉換：</h4>
+<ul>
+    <li>background-color → backgroundColor</li>
+    <li>font-size → fontSize</li>
+    <li>margin-top → marginTop</li>
+    <li>border-radius → borderRadius</li>
+</ul>
+
+<h3>錯誤二：忘記加引號或單位</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+element.style.color = red;      // 錯誤！紅色要加引號
+element.style.fontSize = 20;    // 錯誤！缺少單位
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+element.style.color = "red";       // 顏色要加引號
+element.style.fontSize = "20px";   // 數字要加單位
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤三：innerHTML 安全性問題</h3>
+<h4>危險範例 ⚠️ ：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let userInput = prompt("輸入你的名字：");
+element.innerHTML = "你好，" + userInput;  // ⚠️ 危險！⚠️
+</code></pre>
+<!-- Code Block Ends-->
+<p>問題：
+如果使用者輸入 &lt;script&gt; alert('攻擊') &lt;/script&gt;，這段程式碼會被執行。</p>
+<h4>安全寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let userInput = prompt("輸入你的名字：");
+element.textContent = "你好，" + userInput;  // 安全
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>原則：</strong> 使用者輸入的內容永遠用 textContent，不要用 innerHTML。</p>
+<h3>錯誤四：classList 方法名稱混淆</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+element.classList.add("class1 class2");  // 錯誤！一次只能加一個
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>正確寫法（方法一）：</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+element.classList.add("class1");
+element.classList.add("class2");
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>正確寫法（方法二）：</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+element.classList.add("class1", "class2");  // 可以用逗號分隔
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤五：修改不存在的元素</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let element = document.querySelector("#notExist");
+element.textContent = "新文字";  // 錯誤！element 是 null
+
+**錯誤訊息：**
+Uncaught TypeError: Cannot set property 'textContent' of null
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let element = document.querySelector("#notExist");
+
+if (element) {
+    element.textContent = "新文字";
+} else {
+    console.log("找不到元素！");
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h2>五、重點整理</h2>
+
+<ol>
+    <li><strong>修改文字內容：</strong>使用 textContent（安全，推薦）或 innerHTML（可插入 HTML，需注意安全）。</li>
+    <li><strong>修改樣式（兩種方式）：</strong>
+    <ul>
+        <li>直接修改：element.style.color = "red"</li>
+        <li>使用 class：element.classList.add("highlight")（推薦）</li>
+    </ul>
+    </li>
+    <li><strong>classList 方法：</strong>
+    <ul>
+        <li>add() 新增 class</li>
+        <li>remove() 移除 class</li>
+        <li>toggle() 切換 class</li>
+        <li>contains() 檢查是否有 class</li>
+    </ul>
+    </li>
+    <li><strong>CSS 屬性命名：</strong>在 JavaScript 中使用駝峰式命名（backgroundColor, fontSize）。</li>
+    <li><strong>安全原則：</strong>使用者輸入的內容用 textContent，不要用 innerHTML。</li>
+</ol>
+
+    <section class="footer-nav">
+        <a class="prev" href="day7.htm">
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+            DAY 7</a>
+        <a class="next" href="day9.htm">
+            DAY 9
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

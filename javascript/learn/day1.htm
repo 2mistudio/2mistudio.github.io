@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet">
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 1: JavaScript 簡介與開發環境</title>
+</head>
+<body id="page-js-day1">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/javascript/">JavaScript</a></li>
+            <li><a href="/javascript/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-開發環境簡介</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-變數與資料型別</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-運算子與表達式</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-條件判斷</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-迴圈</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Switch三元運算子與函式</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-DOM與元素選取</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-修改內容與樣式</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-建立與刪除元素</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-事件處理</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+    <h1>Day 1: JavaScript 開發環境簡介</h1>
+    <h3 class="sub-title">JavaScript Development Environment Introduction</h3>
+        <h2>一、學習目標</h2>
+        <p>完成本日學習後，你應該能夠：</p>
+        <ol>
+            <li>理解 JavaScript 的基本用途與在網頁開發中的角色</li>
+            <li>區分 HTML、CSS 與 JavaScript 三者的關係與分工</li>
+            <li>設置基本的 JavaScript 開發環境</li>
+            <li>在瀏覽器 Console 中執行簡單的 JavaScript 程式</li>
+            <li>在 HTML 文件中正確嵌入並執行 JavaScript 程式碼</li>
+        </ol>
+        <h2>二、核心概念解釋</h2>
+        <h3>JavaScript 是什麼？</h3>
+
+        <p>JavaScript 是一種高階、直譯式的程式語言，主要用於為網頁添加互動功能。它與 HTML 和 CSS 共同構成了現代網頁開發的三大核心技術。若將網頁比喻為一棟建築物，HTML 負責建築的結構（骨架），CSS 負責外觀裝飾（美化），而 JavaScript 則賦予建築物各種功能（如電梯、自動門、照明系統等）。</p>
+
+        <p>JavaScript 最初由  Netscape 公司的 <a href="https://brendaneich.com/"target="_blank" rel="noopener noreferrer">Brendan Eich</a> 於 1995 年開發，原本設計目的是為網頁增加簡單的互動效果。然而，經過數十年的發展，JavaScript 已經成為一種功能強大且應用廣泛的程式語言，不僅能在瀏覽器中執行（前端開發），也能透過 Node.js 在伺服器端執行（後端開發），甚至可以開發行動應用程式、桌面應用程式等。</p>
+        
+        <h3>為什麼要學習 JavaScript？</h3>
+
+        <p>在現代網頁開發中，JavaScript 幾乎是不可或缺的技術。任何需要使用者互動的網頁功能，例如表單驗證、動態內容更新、動畫效果、資料擷取等，都需要依賴 JavaScript 來實現。此外，JavaScript 生態系統龐大，擁有豐富的函式庫與框架（如 React、Vue、Angular），使開發者能夠更有效率地建構複雜的應用程式。</p>
+
+        <p>更重要的是，JavaScript 的學習門檻相對較低，不需要安裝複雜的開發環境，只要有瀏覽器就能開始學習與實作。這使得 JavaScript 成為程式設計初學者的理想入門語言之一。</p>
+
+        <h3>JavaScript 的執行環境</h3>
+
+        <p>JavaScript 程式碼主要在兩種環境中執行：瀏覽器與 Node.js。對於初學者而言，瀏覽器是最容易上手的執行環境。所有現代瀏覽器（如 Chrome、Firefox、Safari、Edge）都內建 <a href="/browser">JavaScript 引擎</a>，能夠直接執行 JavaScript 程式碼。</p>
+
+        <p>瀏覽器提供了一個稱為「Console」的開發者工具，這是一個互動式的 JavaScript 執行環境，讓開發者可以即時輸入程式碼並查看結果。這個工具不僅適合學習與測試程式碼片段，也是除錯（debugging）時的重要輔助工具。</p>
+
+        <h2>三、語法與使用方式</h2>
+
+       <h3>開啟瀏覽器 Console</h3>
+       <p>在大多數瀏覽器中，可以透過以下方式開啟 Console：</p>
+       <ul>
+        <li><strong> ⊞ Windows/Linux：</strong>按下 F12 或 Ctrl + Shift + J</li>
+        <li><strong> Mac：</strong>按下 Command + Option + J</li>
+       </ul>
+       <p>開啟後，你會看到一個類似命令列的介面，這就是 JavaScript 的執行環境。</p>
+       <h3>範例一：第一個 JavaScript 程式</h3>
+
+<pre><code class="language-js">
+console.log("Hello, JavaScript!");
+
+**執行結果：**
+
+Hello, JavaScript!
+</code></pre>
+
+<p> <strong>說明：</strong>
+console.log() 是 JavaScript 中最常用的指令之一，用於在 Console 中輸出訊息。括號內的內容會被顯示在 Console 中。這個指令主要用於除錯與檢視變數值。</p>
+
+<h3>範例二：簡單的數學運算</h3>
+
+<pre><code class="language-js">
+console.log(10 + 5);
+console.log(20 - 8);
+console.log(6 * 7);
+console.log(100 / 4);
+
+**執行結果：**
+
+15
+12
+42
+25
+</code></pre>
+
+<p> <strong>說明：</strong>
+JavaScript 可以直接進行數學運算。運算結果會立即顯示在 Console 中。這展示了 JavaScript 作為程式語言的基本運算能力。</p>
+
+       <h3>範例三：在 HTML 中嵌入 JavaScript</h3>
+
+    <p>建立一個 HTML 檔案（例如 index.html），內容如下：</p>
+
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-TW"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;我的第一個 JavaScript 程式&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;JavaScript 測試頁面&lt;/h1&gt;
+    
+    &lt;script&gt;
+        console.log("這段訊息來自 HTML 中的 JavaScript");
+        alert("歡迎來到 JavaScript 的世界！");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>執行結果：</strong>
+開啟此 HTML 檔案時，會出現一個彈出視窗顯示「歡迎來到 JavaScript 的世界！」，並且在 Console 中會看到「這段訊息來自 HTML 中的 JavaScript」。</p>
+
+<p><strong>說明：</strong>
+標籤用於在 HTML 中嵌入 JavaScript 程式碼。alert() 函式會彈出一個警告視窗。這是在網頁中執行 JavaScript 的基本方式。</p>
+
+    <h3>範例四：外部 JavaScript 檔案</h3>
+
+    <p>建立一個 JavaScript 檔案（例如 script.js）：</p>
+
+
+<pre><code class="language-js">
+console.log("這段程式碼來自外部 JS 檔案");
+</code></pre>
+
+<p>在 HTML 中引用：</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-TW"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;外部 JavaScript&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;使用外部 JavaScript 檔案&lt;/h1&gt;
+    
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+將 JavaScript 程式碼寫在獨立的 .js 檔案中，並透過 &lt;script src="..."&gt; 引用，這是實務上更常見的做法。這樣可以讓程式碼更易於管理與維護，特別是當專案規模變大時。</p>
+
+<h3>範例五：註解的使用</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 這是單行註解，不會被執行
+
+/*
+這是多行註解
+可以寫很多行
+都不會被執行
+*/
+
+console.log("只有這行會被執行");
+
+
+**執行結果：**
+
+只有這行會被執行
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+註解用於在程式碼中添加說明文字，不會被執行。單行註解使用 //，多行註解使用 /* ... */。良好的註解習慣有助於理解程式碼邏輯。</p>
+
+    <h2>四、常見錯誤與注意事項</h2>
+
+    <h3>錯誤一：使用未宣告的變數</h3>
+    <p><strong>錯誤範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+consol.log("Hello");  // console 少了一個 e
+
+**錯誤訊息：**
+Uncaught ReferenceError: consol is not defined
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>原因：</strong>
+JavaScript 對大小寫與拼字非常敏感。console 拼成 consol 會導致程式無法找到對應的指令。</p>
+
+<p><strong>正確寫法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+console.log("Hello");
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>除錯技巧：</strong>
+仔細檢查錯誤訊息，通常會指出問題所在的行數。養成仔細核對拼字的習慣。</p>
+
+    <h3>錯誤二：忘記引號</h3>
+    <p><strong>錯誤範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+console.log(Hello);  // Hello 缺少""引號
+
+**錯誤訊息：**
+Uncaught ReferenceError: Hello is not defined
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>原因：</strong>
+文字內容（字串）必須用引號包圍，可以使用單引號「'」或雙引號「"」。沒有引號的話，JavaScript 會認為 Hello 是一個變數名稱。</p>
+
+    <h3>錯誤三：&lt;script&gt; 標籤位置不當</h3>
+    <p><strong>錯誤範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;head&gt;
+    &lt;script&gt;
+        document.getElementById("myButton").click();
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;button id="myButton">按鈕&lt;/button&gt;
+&lt;/body&gt;
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>原因：</strong>
+當 JavaScript 在 <head> 中執行時，HTML 的 <body> 部分還沒有載入，因此找不到 myButton 元素。</p>
+
+<p><strong>正確寫法：</strong>將 &lt;script&gt; 標籤放在 &lt;/body&gt; 之前：</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;body&gt;
+    &lt;button id="myButton">按鈕&lt;/button&gt;
+    &lt;!--  必須先等到 myButton 被載入之後，才能執行 JavaScript  --&gt;
+    &lt;script&gt;
+        document.getElementById("myButton").click();
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+<!-- Code Block Ends-->
+
+    <p><strong>最佳實踐：</strong>
+通常會建議將 JavaScript 程式碼放在 HTML 文件的底部，確保所有 HTML 元素都已載入後再執行。</p>
+
+    <h3>錯誤四：混用單引號與雙引號</h3>
+    <p><strong>錯誤範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+console.log("Hello');  // 開頭用雙引號，結尾用單引號
+
+**錯誤訊息：**
+Uncaught SyntaxError: Invalid or unexpected token
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>原因：</strong>
+引號必須成對使用，開頭與結尾必須使用相同類型的引號。</p>
+
+<p><strong>正確寫法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+console.log("Hello");
+// 或
+console.log('Hello');
+</code></pre>
+<!-- Code Block Ends-->
+
+    <h3>錯誤四：混用單引號與雙引號</h3>
+    <p><strong>範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+console.log("第一行")
+console.log("第二行")
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong></p>
+在 JavaScript 中，分號（;）用於分隔陳述句。雖然現代 JavaScript 引擎具有「自動插入分號」機制，在某些情況下可以省略分號，但為了避免潛在的錯誤，建議初學者養成每行結尾加分號的習慣。
+<p><strong>建議寫法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+console.log("第一行");
+console.log("第二行");
+</code></pre>
+<!-- Code Block Ends-->
+
+        <h2>五、重點整理</h2>
+
+<ol>
+    <li><strong>JavaScript 的角色：</strong>JavaScript 是網頁開發的三大核心技術之一，負責為網頁添加互動功能與動態行為。</li>
+    <li><strong>執行環境：</strong>JavaScript 可以在瀏覽器的 Console 中直接執行，也可以嵌入 HTML 文件中或作為外部檔案引用。</li>
+    <li><strong>基本語法：</strong>使用 console.log() 輸出訊息，使用 alert() 顯示彈出視窗，使用 // 或 /* */ 添加註解。</li>
+    <li><strong>常見錯誤：</strong>注意拼字正確性、字串必須用引號包圍、引號必須成對、&lt;script&gt; 標籤位置要適當。</li>
+    <li><strong>最佳實踐：</strong>將 JavaScript 程式碼放在 HTML 文件底部或使用外部檔案，養成添加註解與每行結尾加分號的習慣。</li>
+</ol>
+
+    <section class="footer-nav">
+        <a class="hide prev" href=""></a>
+        <a class="next" href="day2.htm">DAY 2
+        <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

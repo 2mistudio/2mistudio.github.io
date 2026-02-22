@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet">
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 2: 變數與資料型別</title>
+</head>
+<body id="page-js-day2">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/javascript/">JavaScript</a></li>
+            <li><a href="/javascript/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-開發環境簡介</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-變數與資料型別</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-運算子與表達式</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-條件判斷</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-迴圈</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Switch三元運算子與函式</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-DOM與元素選取</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-修改內容與樣式</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-建立與刪除元素</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-事件處理</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+ <!-- Main Content Starts -->
+    <h1>Day 2: 變數與資料型別</h1>
+    <h3 class="sub-title">Knowing Variable and Data Types</h3>
+        <h2>一、學習目標</h2>
+        <p>完成本日學習後，你應該能夠：</p>
+        <ol>
+            <li>理解變數的概念與用途</li>
+            <li>正確使用 let、const、var 宣告變數</li>
+            <li>區分 let、const、var 三者的差異</li>
+            <li>認識 JavaScript 的基本資料型別</li>
+            <li>使用 typeof 運算子檢查資料型別</li>
+        </ol>
+        <h2>二、核心概念解釋</h2>
+        <h3>什麼是變數？</h3>
+        <p>變數是程式中用來儲存資料的容器。就像現實生活中的箱子，我們可以在箱子上貼上標籤（變數名稱），並在箱子裡放入物品（資料）。當需要使用這些資料時，只要透過箱子上的標籤就能找到正確的資料。</p>
+
+        <p>在 JavaScript 中，變數讓我們能夠暫時儲存並操作資料，例如使用者輸入的姓名、計算結果、網頁元素等。沒有變數，程式將無法記憶任何資訊，也就無法進行有意義的運算。</p>
+
+        <h3>變數宣告的三種方式</h3>
+
+        <p>JavaScript 提供三種宣告變數的關鍵字：<strong>let</strong>、<strong>const</strong> 和 <strong>var</strong>。</p>
+
+        <p><strong>let - (Let 就是讓的意思）</strong><br>用於宣告可以重新賦值的變數，具有區塊作用域（block scope），是現代 JavaScript <u>最常用的變數宣告方式</u>。</p>
+
+        <p><strong>const  - (Constant 就是經常，恆常的意思）</strong><br>用於宣告常數，一旦賦值後就不能再改變，同樣具有區塊作用域。適合用於宣告不會改變的值，如設定檔參數、固定配置等。</p>
+
+        <p><strong>var  - (Variable 就是變數的意思）</strong> <br><u>是較舊的變數宣告方式</u>，具有函式作用域（function scope），在現代開發中較少使用，但理解其存在仍有必要，因為許多舊專案仍使用 var。</p>
+
+        <h3>資料型別</h3>
+
+        <p>JavaScript 是動態型別語言，變數的型別會根據所賦予的值自動決定。JavaScript 的基本資料型別包括：</p>
+
+        <p><strong>Number</strong>（數字）：包含整數與浮點數，例如 42、3.14、-10。</p>
+        <p><strong>String</strong>（字串）：文字資料，必須用引號包圍，例如 "Hello"、'JavaScript'。</p>
+        <p><strong>Boolean</strong>（布林值）：邏輯值，只有 true（真）和 false（假）兩種。</p>
+        <p><strong>Undefined</strong>：變數已宣告但未賦值時的預設值。</p>
+        <p><strong>Null</strong>：表示「空值」或「無」的特殊值。</p>
+
+<h2>三、語法與使用方式</h2>
+
+<h3>範例一：使用 let 宣告變數</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let userName = "小明";
+console.log(userName);  // 小明
+
+userName = "小華";  // 重新賦值
+console.log(userName);  // 小華
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+let 宣告的變數可以重新賦值。第一次賦值後，後續可以改變變數的內容。</p>
+
+<h3>範例二：使用 const 宣告常數</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+const pi = 3.14159;
+console.log(pi);  // 3.14159
+
+pi = 3.14;  // 錯誤！const 不能重新賦值
+
+**執行結果：**
+Uncaught TypeError: Assignment to constant variable.
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+const 宣告的常數一旦賦值就不能改變，嘗試重新賦值會產生錯誤。</p>
+
+<h3>範例三：資料型別 - Number</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let age = 25;
+let price = 99.9;
+let temperature = -5;
+
+console.log(typeof age);         // number
+console.log(typeof price);       // number
+console.log(typeof temperature); // number
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+JavaScript 不區分整數與浮點數（近似小數點的意思），統一使用 number 型別。使用 typeof 運算子可以檢查變數的型別。</p>
+
+<h3>範例四：資料型別 - String</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let firstName = "張";
+let lastName = '三';
+let greeting = "Hello, World!";
+
+console.log(typeof firstName);  // string
+console.log(firstName + lastName);  // 張三
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+字串可以使用單引號或雙引號。使用 + 運算子可以連接字串。</p>
+
+<h3>範例五：資料型別 - Boolean</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let isStudent = true;
+let hasLicense = false;
+
+console.log(typeof isStudent);  // boolean
+console.log(isStudent);         // true
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+Boolean 又稱布林值，只有 true 和 false（開跟關），常用於條件判斷與邏輯運算。</p>
+
+<h3>範例六：Undefined 與 Null</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let x;
+console.log(x);         // undefined
+console.log(typeof x);  // undefined
+
+let y = null;
+console.log(y);         // null
+console.log(typeof y);  // object（這是 JavaScript 的歷史遺留問題）
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+undefined （未定義）表示變數未賦值，null (沒有)表示刻意設定的空值。
+</p>
+
+<h2>四、常見錯誤與注意事項</h2>
+
+<h3>錯誤一：使用未宣告的變數</h3>
+
+<p><strong>錯誤範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+console.log(myName);  // 變數未宣告就使用
+
+**錯誤訊息：**
+Uncaught ReferenceError: myName is not defined
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>正確寫法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let myName = "小明";
+console.log(myName);
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤二：嘗試改變 const 的值</h3>
+
+<p><strong>錯誤範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+const score = 100;
+score = 95;  // 錯誤
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>正確做法：</strong>如果值需要改變，應使用 let 而非 const。</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let score = 100;
+score = 95;  // 正確
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤三：變數命名不規範
+</h3>
+
+<p><strong>錯誤範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let 1name = "小明";      // 不能以數字開頭
+let my-name = "小華";    // 不能使用 - 連字號
+let my name = "小李";    // 不能有空格
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>正確寫法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let name1 = "小明";
+let myName = "小華";     // 駝峰式（camelCase）命名（推薦）
+let my_name = "小李";    // 蛇形（snake_case）命名（較少用）
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>命名規則：</strong></p>
+<ul>
+    <li>只能包含字母、數字、底線、錢字號</li>
+    <li>不能以數字開頭</li>
+    <li>區分大小寫</li>
+    <li>不能使用保留字（如 let、const、if 等）</li>
+</ul>
+
+<h3>錯誤四：型別混淆</h3>
+<p><strong>容易混淆的範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let num1 = "10";     // 字串
+let num2 = 10;       // 數字
+
+console.log(num1 + num2);  // "1010" 字串連接，而非 20
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+當字串與數字相加時，JavaScript 會將數字轉換為字串進行連接，而非數學運算。
+</p>
+<p><strong>正確做法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let num1 = 10;
+let num2 = 10;
+console.log(num1 + num2);  // 20
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤五：忘記宣告關鍵字</h3>
+<p><strong>不良範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+userName = "小明";  // 忘記使用 let 或 const
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+雖然程式可以執行，但會在全域作用域建立變數，可能導致意外的錯誤。</p>
+<p><strong>正確做法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let userName = "小明";
+</code></pre>
+<!-- Code Block Ends-->
+
+<h2>五、重點整理</h2>
+
+<ul>
+    <li><strong>變數宣告：</strong>使用 let 宣告可變動的變數，使用 const 宣告不可變的常數，避免使用舊式的 var。</li>
+    <li><strong>基本型別：</strong>JavaScript 有五種基本資料型別：Number、String、Boolean、Undefined、Null。</li>
+    <li><strong>typeof 運算子：</strong>使用 typeof 可以檢查變數的資料型別。</li>
+    <li><strong>命名規範：</strong>變數名稱必須有意義、遵循命名規則、使用駝峰式命名法（camelCase）。</li>
+    <li><strong>最佳實踐：</strong>優先使用 const，只有在需要重新賦值時才使用 let；避免型別混淆導致的運算錯誤。</li>
+</ul>
+
+    <section class="footer-nav">
+        <a class="prev" href="day1.htm">
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+            DAY 1</a>
+        <a class="next" href="day3.htm">
+            DAY 3
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

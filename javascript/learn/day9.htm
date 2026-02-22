@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet">
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 9: 建立與刪除元素</title>
+</head>
+<body id="page-js-day9">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../javascript/">JavaScript</a></li>
+            <li><a href="/javascript/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-開發環境簡介</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-變數與資料型別</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-運算子與表達式</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-條件判斷</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-迴圈</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Switch三元運算子與函式</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-DOM與元素選取</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-修改內容與樣式</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-建立與刪除元素</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-事件處理</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 9: 建立與刪除元素</h1>
+    <h3 class="sub-title">Create and Remove Element</h3>
+<h2>一、學習目標</h2>
+<p>完成本日學習後，你應該能夠：</p>
+<ol>
+    <li>使用 JavaScript 動態建立新的 HTML 元素</li>
+    <li>將新建立的元素插入到網頁中</li>
+    <li>從網頁中移除元素</li>
+    <li>理解父元素、子元素的關係</li>
+    <li>製作動態清單與互動式介面</li>
+</ol>
+
+<h2>二、核心概念解釋</h2>
+
+<h3>為什麼要動態建立元素？</h3>
+<p>前兩天我們學會了「選取」和「修改」現有的元素，但在實際開發中，我們經常需要「憑空創造」新元素，或是「移除」不需要的元素。</p>
+<h4>常見情境：</h4>
+<ul>
+    <li>待辦清單：使用者新增一筆待辦事項，需要建立新的清單項目</li>
+    <li>購物車：使用者加入商品，需要建立新的商品卡片</li>
+    <li>相簿：動態載入圖片，需要建立多個圖片元素</li>
+    <li>訊息通知：系統發送通知，需要建立通知元素</li>
+    <li>刪除功能：使用者點擊「刪除」按鈕，需要移除對應的元素</li>
+</ul>
+<p>想像在 Figma 中：</p>
+<ul>
+    <li><strong>建立元素</strong> = 在畫布上新增一個圖層</li>
+    <li><strong>插入元素</strong> = 將圖層放到特定的 Frame 裡</li>
+    <li><strong>刪除元素</strong> = 刪除一個圖層</li>
+</ul>
+
+<h3>DOM 操作的四個步驟</h3>
+<p>建立並插入一個新元素通常需要四個步驟：</p>
+<ul>
+    <li><strong>建立元素：</strong>document.createElement()</li>
+    <li><strong>設定內容/屬性：</strong>設定文字、class、樣式等</li>
+    <li><strong>選取父元素：</strong>找到要插入的位置</li>
+    <li><strong>插入元素：</strong>使用 appendChild() 或其他方法插入</li>
+</ul>
+<h4>父子關係的概念</h4>
+<p>在 DOM 樹中，元素之間有「父子關係」：</p>
+
+
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;div id="container"&gt;  &lt;!-- 父元素 --&gt;
+    &lt;p&gt;段落 1&lt;/p&gt;      &lt;!-- 子元素 --&gt;
+    &lt;p&gt;段落 2&lt;/p&gt;      &lt;!-- 子元素 --&gt;
+&lt;/div>
+
+就像 Figma 的圖層結構：
+Frame (container)
+├── Text (段落 1)
+└── Text (段落 2)
+</code></pre>
+<!-- Code Block Ends-->
+
+<p>要新增元素到網頁中，我們需要：</p>
+<ul>
+    <li>找到「父元素」（要放在哪裡）</li>
+    <li>建立「子元素」（要建立什麼）</li>
+    <li>把子元素「插入」到父元素中</li>
+</ul>
+<h4>插入元素的方法</h4>
+<ul>
+    <li>appendChild() → 插入到父元素的「最後面」</li>
+    <li>prepend() → 插入到父元素的「最前面」</li>
+    <li>insertBefore() → 插入到特定元素的「前面」</li>
+    <li>remove() → 移除元素本身</li>
+</ul>
+
+<h2>三、語法與使用方式</h2>
+
+<h3>準備工作：建立測試網頁</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-TW"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title>動態元素練習&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .item {
+            padding: 15px;
+            margin: 10px 0;
+            background: #e3f2fd;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .delete-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background: #d32f2f;
+        }
+        button {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #1976d2;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1>動態元素操作&lt;/h1&gt;
+        &lt;button id="addBtn"&gt;新增項目&lt;/button&gt;
+        &lt;div id="list"&gt;
+            &lt;!-- 動態建立的元素會出現在這裡 --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        console.log("準備開始練習！");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>範例一：建立基本元素</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 步驟 1: 建立一個新的 div 元素
+let newDiv = document.createElement("div");
+
+// 步驟 2: 設定內容
+newDiv.textContent = "這是一個新建立的 div";
+
+// 步驟 3: 設定樣式或 class
+newDiv.style.padding = "10px";
+newDiv.style.backgroundColor = "#e3f2fd";
+newDiv.style.borderRadius = "8px";
+newDiv.style.margin = "10px 0";
+
+// 步驟 4: 選取父元素
+let list = document.querySelector("#list");
+
+// 步驟 5: 插入到父元素中
+list.appendChild(newDiv);
+
+console.log("新元素已建立並插入！");
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，網頁上會出現一個新的藍色方塊，內容為「這是一個新建立的 div」。</h4>
+<p><strong>說明：</strong>
+createElement() 只是在記憶體中建立元素，必須用 appendChild() 插入到網頁中才會顯示。</p>
+
+<h3>範例二：建立完整的清單項目</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 建立外層容器
+let item = document.createElement("div");
+item.className = "item";  // 設定 class
+
+// 建立文字部分
+let text = document.createElement("span");
+text.textContent = "新的待辦事項";
+
+// 建立刪除按鈕
+let deleteBtn = document.createElement("button");
+deleteBtn.textContent = "刪除";
+deleteBtn.className = "delete-btn";
+
+// 組裝：將文字和按鈕放入 item
+item.appendChild(text);
+item.appendChild(deleteBtn);
+
+// 插入到清單中
+let list = document.querySelector("#list");
+list.appendChild(item);
+
+console.log("清單項目已建立！");
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，會出現一個包含文字和刪除按鈕的項目。</h4>
+<p><strong>說明：</strong>
+這展示了如何建立「巢狀結構」：先建立多個元素，再組裝起來，最後一起插入到網頁中。
+</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+console.log(paragraphs);
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>範例三：使用迴圈批次建立元素</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let tasks = ["設計首頁", "撰寫程式碼", "測試功能", "上線部署"];
+let list = document.querySelector("#list");
+
+for (let i = 0; i < tasks.length; i++) {
+    // 建立項目容器
+    let item = document.createElement("div");
+    item.className = "item";
+    
+    // 建立文字
+    let text = document.createElement("span");
+    text.textContent = (i + 1) + ". " + tasks[i];
+    
+    // 建立刪除按鈕
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "刪除";
+    deleteBtn.className = "delete-btn";
+    
+    // 組裝並插入
+    item.appendChild(text);
+    item.appendChild(deleteBtn);
+    list.appendChild(item);
+}
+
+console.log("已建立 " + tasks.length + " 個項目");
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，會一次建立 4 個待辦事項。</h4>
+<p><strong>說明：</strong>
+實務上，我們通常從資料陣列動態產生 UI 元素，這在處理 API 資料時特別有用。
+</p>
+
+<h3>範例四：移除元素（remove）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 先建立一個元素
+let item = document.createElement("div");
+item.className = "item";
+item.textContent = "我會在 3 秒後消失";
+
+let list = document.querySelector("#list");
+list.appendChild(item);
+
+// 3 秒後移除
+setTimeout(function() {
+    item.remove();  // 移除自己
+    console.log("元素已移除");
+}, 3000);
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，元素會出現 3 秒後自動消失。</h4>
+<p><strong>說明：</strong>
+remove() 方法會將元素從 DOM 中完全移除。</p>
+
+<h3>範例五：點擊刪除功能（完整範例）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let addBtn = document.querySelector("#addBtn");
+let list = document.querySelector("#list");
+let itemCount = 0;
+
+addBtn.addEventListener("click", function() {
+    itemCount++;
+    
+    // 建立新項目
+    let item = document.createElement("div");
+    item.className = "item";
+    
+    // 建立文字
+    let text = document.createElement("span");
+    text.textContent = "項目 " + itemCount;
+    
+    // 建立刪除按鈕
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "刪除";
+    deleteBtn.className = "delete-btn";
+    
+    // 點擊刪除按鈕時移除整個項目
+    deleteBtn.addEventListener("click", function() {
+        item.remove();
+        console.log("項目已刪除");
+    });
+    
+    // 組裝並插入
+    item.appendChild(text);
+    item.appendChild(deleteBtn);
+    list.appendChild(item);
+    
+    console.log("已新增項目 " + itemCount);
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，每次點擊「新增項目」會建立新項目，點擊項目的「刪除」按鈕會移除該項目。</h4>
+<p><strong>說明：</strong>
+這是待辦清單、購物車等功能的核心邏輯：建立元素並同時綁定刪除事件。
+</p>
+
+<h3>範例六：insertBefore（插入到特定位置）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let list = document.querySelector("#list");
+
+// 建立新元素
+let newItem = document.createElement("div");
+newItem.className = "item";
+newItem.textContent = "我會插入到最前面";
+
+// 取得第一個子元素
+let firstChild = list.firstElementChild;
+
+// 插入到第一個子元素之前
+if (firstChild) {
+    list.insertBefore(newItem, firstChild);
+} else {
+    // 如果列表是空的，直接 appendChild
+    list.appendChild(newItem);
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+insertBefore(新元素, 參考元素) 會將新元素插入到參考元素之前。</p>
+
+<h3>範例七：使用 innerHTML 快速建立（簡便但較不安全）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let list = document.querySelector("#list");
+let tasks = ["設計", "開發", "測試"];
+
+// 方法一：使用 createElement（推薦，但較繁瑣）
+// 如範例三所示
+
+// 方法二：使用 innerHTML（快速，但要注意安全）
+let html = "";
+for (let i = 0; i < tasks.length; i++) {
+    html += "&lt;div class='item'&gt;";
+    html += "  &lt;span&gt;" + tasks[i] + "&lt;/span&gt;";
+    html += "  &lt;button class='delete-btn'&gt;刪除&lt;/button&gt;";
+    html += "&lt;/div&gt;";
+}
+list.innerHTML = html;
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+使用 innerHTML 比較簡潔，但有兩個缺點：</p>
+<ul>
+    <li>如果內容來自使用者輸入，可能有安全問題（XSS）</li>
+    <li>會移除原有的事件監聽器</li>
+</ul>
+<p><strong>建議：</strong> 靜態內容可以用 innerHTML，需要綁定事件的動態內容建議用 createElement。
+</p>
+
+<h2>四、常見錯誤與注意事項</h2>
+
+<h3>錯誤一：忘記插入到 DOM</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let newDiv = document.createElement("div");
+newDiv.textContent = "新元素";
+// 忘記 appendChild，元素不會顯示在網頁上
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+元素只存在於記憶體中，沒有插入到 DOM，所以不會顯示。</p>
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let newDiv = document.createElement("div");
+newDiv.textContent = "新元素";
+
+let container = document.querySelector("#container");
+container.appendChild(newDiv);  // 必須插入
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤二：appendChild 會移動元素</h3>
+<h4>容易混淆的範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let element = document.querySelector("#myElement");
+let container1 = document.querySelector("#container1");
+let container2 = document.querySelector("#container2");
+
+container1.appendChild(element);  // 元素在 container1
+container2.appendChild(element);  // 元素移動到 container2（不是複製！）
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+appendChild() 會「移動」元素，不是「複製」。如果元素已經在 DOM 中，會先從原位置移除，再插入到新位置。</p>
+<h4>如果想複製元素：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let element = document.querySelector("#myElement");
+let clone = element.cloneNode(true);  // true 表示深度複製（包含子元素）
+
+let container2 = document.querySelector("#container2");
+container2.appendChild(clone);  // 插入複製品
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤三：事件監聽器綁定時機錯誤</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let deleteBtn = document.querySelector(".delete-btn");
+deleteBtn.addEventListener("click", function() {
+    // 錯誤：這時還沒有 .delete-btn 元素
+});
+
+// 之後才建立元素
+let btn = document.createElement("button");
+btn.className = "delete-btn";
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+元素必須先存在，才能綁定事件。如果元素是動態建立的，必須在建立後立即綁定事件。</p>
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 建立元素
+let btn = document.createElement("button");
+btn.className = "delete-btn";
+btn.textContent = "刪除";
+
+// 立即綁定事件
+btn.addEventListener("click", function() {
+    console.log("按鈕被點擊");
+});
+
+// 然後插入到 DOM
+container.appendChild(btn);
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤四：innerHTML 會移除事件監聽器</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let container = document.querySelector("#container");
+
+// 先綁定事件
+let btn = document.querySelector("#myBtn");
+btn.addEventListener("click", function() {
+    console.log("點擊");
+});
+
+// 使用 innerHTML 會移除所有子元素和事件
+container.innerHTML = "<button id='myBtn'>新按鈕</button>";
+
+// 原本的事件監聽器已經失效！
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>說明：</strong>
+innerHTML 會完全替換內容，原有的事件監聽器會消失。</p>
+<p><strong>解決方法：</strong>
+如果需要動態建立元素並綁定事件，使用 createElement() 而不是 innerHTML。</p>
+
+<h3>錯誤五：在迴圈中重複選取父元素</h3>
+<h4>效能不佳的寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+for (let i = 0; i < 100; i++) {
+    let item = document.createElement("div");
+    item.textContent = "項目 " + i;
+    
+    // 每次迴圈都選取一次（效能差）
+    let list = document.querySelector("#list");
+    list.appendChild(item);
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>比較好的寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 只選取一次
+let list = document.querySelector("#list");
+
+for (let i = 0; i < 100; i++) {
+    let item = document.createElement("div");
+    item.textContent = "項目 " + i;
+    list.appendChild(item);
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+DOM 查詢（querySelector）相對慢，應該在迴圈外執行，避免重複查詢。
+</p>
+
+<h2>五、重點整理</h2>
+<ul>
+    <li><strong>建立元素：</strong>document.createElement("標籤名稱") 建立元素，但還不會顯示在網頁上。</li>
+    <li><strong>插入元素：</strong>
+    <ul>
+        <li>appendChild() → 插入到最後</li>
+        <li>prepend() → 插入到最前</li>
+        <li>insertBefore() → 插入到特定位置之前</li>
+    </ul>
+    </li>
+    <li><strong>移除元素：</strong>element.remove() 從 DOM 中移除元素。</li>
+    <li><strong>設定內容與屬性：</strong>建立元素後，記得設定 textContent、className、style 等屬性。</li>
+    <li><strong>事件綁定時機：</strong>動態建立的元素，必須在建立後立即綁定事件，再插入到 DOM。</li>
+    <li><strong>效能考量：</strong>在迴圈外選取父元素，避免重複查詢 DOM。</li>
+</ul>
+
+<h3>下一節預告：</h3>
+<p>明天我們將學習「事件處理基礎」，包括點擊、滑鼠、鍵盤等各種互動事件，讓你的網頁更加生動！</p>
+
+    <section class="footer-nav">
+        <a class="prev" href="day8.htm">
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+            DAY 8</a>
+        <a class="next" href="day10.htm">
+            DAY 10
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

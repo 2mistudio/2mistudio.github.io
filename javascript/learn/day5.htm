@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet">
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 5: 迴圈 (for/while)</title>
+</head>
+<body id="page-js-day5">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/javascript/">JavaScript</a></li>
+            <li><a href="/javascript/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="day0.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-開發環境簡介</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-變數與資料型別</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-運算子與表達式</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-條件判斷</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-迴圈</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Switch三元運算子與函式</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-DOM與元素選取</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-修改內容與樣式</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-建立與刪除元素</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-事件處理</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 5: 迴圈 (for/while)</h1>
+    <h3 class="sub-title">Loops and iteration (for/while)</h3>
+<h2>一、學習目標</h2>
+<p>完成本日學習後，你應該能夠：</p>
+<ol>
+    <li>理解迴圈的概念與應用時機</li>
+    <li>正確使用 for 迴圈處理重複性任務</li>
+    <li>正確使用 while 迴圈進行條件式重複</li>
+    <li>區分 for 與 while 的使用場景</li>
+    <li>使用 break 和 continue 控制迴圈執行</li>
+</ol>
+
+<h2>二、核心概念解釋</h2>
+
+<h3>什麼是迴圈？</h3>
+<p>迴圈是讓程式重複執行特定程式碼區塊的控制結構。在網頁設計中，許多任務都具有重複性，例如「顯示 20 個產品卡片」、「產生導覽列的所有選單項目」、「將作品集的每張圖片都加上濾鏡」。如果沒有迴圈，我們就必須寫 20 行、30 行幾乎相同的程式碼，這不僅麻煩且難以維護。</p>
+<p>迴圈讓程式能夠「自動化」處理重複性工作。想像你在 Figma 中需要複製 50 個相同的元件並依序編號，手動操作會很累，但如果有自動化工具（迴圈），就能一次完成。</p>
+
+<h3>for 迴圈</h3>
+<p>for 迴圈是最常用的迴圈結構，特別適合「已知重複次數」的情境。例如：顯示 10 個最新文章、產生 5 顆評分星星、建立 3x4 的圖片網格。</p>
+<p>語法結構為：for (初始化; 條件; 更新) { 程式碼 }。這三個部分清楚地定義了迴圈的起點、終點與每次的變化，使程式邏輯一目了然。</p>
+
+<h3>while 迴圈</h3>
+<p>while 迴圈適合「重複次數未知」或「依賴動態條件」的情況。例如：持續載入更多內容直到沒有資料、不斷檢查使用者輸入直到格式正確、輪播圖片直到使用者點擊停止。</p>
+<p>相較於 for 迴圈的結構化，while 更具彈性，但也需要更小心處理，避免產生無窮迴圈（程式永遠停不下來）。</p>
+
+<h3>迴圈控制：break 與 continue</h3>
+<p>break 用於立即終止迴圈，跳出整個迴圈結構。例如：在商品列表中找到目標商品後就不需要繼續找了、使用者點擊「關閉」就停止輪播。</p>
+<p>continue 則是跳過當前迭代，直接進入下一次迭代。例如：顯示商品列表時跳過已售完的商品、只顯示已發布的文章而忽略草稿。</p>
+
+<h2>三、語法與使用方式</h2>
+<h3>範例一：基本 for 迴圈（產生選單項目）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let menuItems = ["首頁", "關於", "作品集", "部落格", "聯絡"];
+
+for (let i = 0; i < menuItems.length; i++) {
+  console.log("選單項目 " + (i + 1) + ": " + menuItems[i]);
+}
+
+** 執行結果：**
+選單項目 1: 首頁
+選單項目 2: 關於
+選單項目 3: 作品集
+選單項目 4: 部落格
+選單項目 5: 聯絡
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+let i = 0 從第一個項目開始；i < menuItems.length 確保不超過陣列長度；i++ 每次移動到下一個項目。這個迴圈會依序處理所有選單項目。</p>
+
+<h3>範例二：計算購物車總價</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let cartItems = [
+  { name: "T恤", price: 590 },
+  { name: "牛仔褲", price: 1280 },
+  { name: "帽子", price: 390 },
+  { name: "球鞋", price: 2200 }
+];
+
+let total = 0;
+
+for (let i = 0; i < cartItems.length; i++) {
+  total += cartItems[i].price;
+  console.log("已加入：" + cartItems[i].name + " NT$ " + cartItems[i].price);
+}
+
+console.log("購物車總金額：NT$ " + total);
+
+** 執行結果：**
+已加入：T恤 NT$ 590
+已加入：牛仔褲 NT$ 1280
+已加入：帽子 NT$ 390
+已加入：球鞋 NT$ 2200
+購物車總金額：NT$ 4460
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+迴圈遍歷購物車中的每個商品，累加價格到總金額。這是電商網站最常見的功能之一。</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+console.log(sample); 
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>範例三：產生產品網格（巢狀迴圈）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 產生 3 列 x 4 欄的產品網格
+for (let row = 1; row <= 3; row++) {
+  let rowText = "第 " + row + " 列：";
+  
+  for (let col = 1; col <= 4; col++) {
+    rowText += " [產品" + ((row-1)*4 + col) + "]";
+  }
+  
+  console.log(rowText);
+}
+
+** 執行結果：**
+第 1 列： [產品1] [產品2] [產品3] [產品4]
+第 2 列： [產品5] [產品6] [產品7] [產品8]
+第 3 列： [產品9] [產品10] [產品11] [產品12]
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+巢狀迴圈（迴圈內包含迴圈）用於建立二維結構。外層控制列數，內層控制每列的欄數。這在建立圖片網格、表格、棋盤等場景中非常實用。</p>
+
+<h3>範例四：while 迴圈（載入更多內容）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let loadedItems = 0;
+let totalItems = 5;
+
+console.log("開始載入內容...");
+
+while (loadedItems < totalItems) {
+  loadedItems++;
+  console.log("已載入項目 " + loadedItems + "/" + totalItems);
+}
+
+console.log("所有內容載入完成！");
+
+** 執行結果：**
+開始載入內容...
+已載入項目 1/5
+已載入項目 2/5
+已載入項目 3/5
+已載入項目 4/5
+已載入項目 5/5
+所有內容載入完成！
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+while 迴圈會先檢查條件，條件為 true 才執行。這個範例模擬「載入更多」的功能，持續載入直到達到總數量。</p>
+
+<h3>範例五：使用 break 提前結束（搜尋功能）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let products = ["筆電", "滑鼠", "鍵盤", "螢幕", "耳機"];
+let searchTarget = "鍵盤";
+let found = false;
+
+for (let i = 0; i < products.length; i++) {
+  console.log("正在檢查：" + products[i]);
+  
+  if (products[i] === searchTarget) {
+    console.log("✓ 找到了！" + searchTarget + " 在第 " + (i + 1) + " 個位置");
+    found = true;
+    break;  // 找到後就不需要繼續找了
+  }
+}
+
+if (!found) {
+  console.log("✗ 找不到 " + searchTarget);
+}
+
+** 執行結果：**
+正在檢查：筆電
+正在檢查：滑鼠
+正在檢查：鍵盤
+✓ 找到了！鍵盤在第 3 個位置
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+當 i 等於 5 時，執行 break，整個迴圈立即終止，後續的 6、7、8、9、10 都不會被執行。</p>
+
+<h3>範例六：使用 continue 跳過迭代</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+for (let i = 1; i <= 10; i++) {
+  if (i % 2 === 0) {
+    continue;  // 跳過偶數
+  }
+  console.log(i);
+}
+
+**執行結果：**
+1
+3
+5
+7
+9
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+當 i 是偶數時（i % 2 === 0），執行 continue，跳過當次迭代的剩餘程式碼，直接進入下一次迭代。因此只有奇數會被印出。</p>
+
+<h2>四、常見錯誤與注意事項</h2>
+
+<h3>錯誤一：無窮迴圈</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let i = 1;
+
+while (i <= 5) {
+  console.log(i);
+  // 忘記更新 i，i 永遠是 1，條件永遠成立
+}
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>問題：</strong>
+沒有更新迴圈變數，條件永遠為 true，迴圈無法停止，程式會當掉或瀏覽器失去回應。</p>
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let i = 1;
+
+while (i <= 5) {
+  console.log(i);
+  i++;  // 必須更新變數
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤二：off-by-one 錯誤</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 想要執行 10 次，但實際只執行 9 次
+for (let i = 1; i < 10; i++) {
+  console.log(i);
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+條件是 i < 10，當 i = 10 時就停止，所以只執行到 i = 9。如果想執行 10 次，應該用 i <= 10 或 i < 11。</p>
+
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+for (let i = 1; i <= 10; i++) {
+  console.log(i);
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤三：在迴圈內宣告重複變數</h3>
+<h4>不良範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+for (let i = 0; i < 3; i++) {
+  let sum = 0;  // 每次迴圈都重新宣告並初始化
+  sum += i;
+  console.log(sum);  // 永遠顯示當前的 i 值
+}
+
+** 執行結果：**
+0
+1
+2
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+如果希望 sum 累加所有的 i，應該將 sum 宣告在迴圈外。</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let sum = 0;
+
+for (let i = 0; i < 3; i++) {
+  sum += i;
+}
+
+console.log(sum);  // 3
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤四：巢狀迴圈變數重複</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 3; i++) {  // 內外層都用 i
+    console.log(i);
+  }
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+內外層迴圈使用相同的變數名稱會造成混亂，內層會覆蓋外層的值。</p>
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+for (let i = 1; i <= 3; i++) {
+  for (let j = 1; j <= 3; j++) {  // 使用不同變數名
+    console.log("i=" + i + ", j=" + j);
+  }
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤五：誤用 break 和 continue</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+for (let i = 1; i <= 5; i++) {
+  if (i === 3) {
+    break;  // 想跳過 3，但誤用 break
+  }
+  console.log(i);
+}
+
+** 執行結果：**
+1
+2
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+break 會終止整個迴圈，而非只跳過當次。如果只想跳過某個值，應該用 continue。</p>
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+for (let i = 1; i <= 5; i++) {
+  if (i === 3) {
+    continue;  // 跳過 3，繼續執行
+  }
+  console.log(i);
+}
+
+** 執行結果：**
+1
+2
+4
+5
+</code></pre>
+<!-- Code Block Ends-->
+
+<h2>五、重點整理</h2>
+
+<ul>
+    <li><strong>for 迴圈：</strong>適合已知次數的重複任務，結構清晰，包含初始化、條件、更新三部分。</li>
+    <li><strong>while 迴圈：</strong>適合未知次數或依賴動態條件的情境，更有彈性但需注意避免無窮迴圈。</li>
+    <li><strong>避免無窮迴圈：</strong>務必確保迴圈條件最終會變成 false，while 迴圈內必須更新影響條件的變數。</li>
+    <li><strong>break 與 continue：</strong>break 終止整個迴圈，continue 跳過當次迭代繼續下一次。</li>
+    <li><strong>巢狀迴圈：</strong>內外層使用不同的變數名稱，注意執行次數為外層次數 × 內層次數。</li>
+</ul>
+
+
+    <section class="footer-nav">
+        <a class="prev" href="day4.htm"><svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+        DAY 4</a>
+        <a class="next" href="day6.htm">
+        DAY 6
+        <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

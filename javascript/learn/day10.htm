@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet">
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 10: 事件處理基礎</title>
+</head>
+<body id="page-js-day10">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/javascript/">JavaScript</a></li>
+            <li><a href="/javascript/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-開發環境簡介</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-變數與資料型別</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-運算子與表達式</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-條件判斷</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-迴圈</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Switch三元運算子與函式</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-DOM與元素選取</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-修改內容與樣式</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-建立與刪除元素</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-事件處理</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 10: 事件處理基礎</h1>
+    <h3 class="sub-title">Event Handlers Basic</h3>
+<h2>一、學習目標</h2>
+<p>完成本日學習後，你應該能夠：</p>
+<ol>
+    <li>理解事件（Event）的概念</li>
+    <li>使用 addEventListener 監聽各種事件</li>
+    <li>處理點擊、滑鼠移入移出、鍵盤輸入等常見事件</li>
+    <li>理解事件物件（Event Object）的使用</li>
+    <li>製作豐富的互動效果</li>
+</ol>
+
+<h2>二、核心概念解釋</h2>
+
+<h3>什麼是事件？</h3>
+<p>事件（Event）是「使用者與網頁互動時發生的事情」。每當使用者做了某個動作（點擊、移動滑鼠、按鍵盤、滾動頁面...），瀏覽器就會產生一個對應的事件。</p>
+
+<p>JavaScript 透過「事件監聽器」（Event Listener）來「監聽」這些事件，當事件發生時，執行對應的程式碼。</p>
+
+<h3>事件監聽器的運作方式</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+element.addEventListener("事件類型", function() {
+    // 當事件發生時，要執行的程式碼
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<p>這就像在 Figma 中設定 Prototype：</p>
+<ul>
+    <li><strong>選取元素 →</strong> element</li>
+    <li><strong>設定觸發條件 →</strong> "事件類型"（如 click、hover）</li>
+    <li><strong>定義動作 →</strong> function() { ... }（執行什麼）</li>
+</ul>
+
+<h3>常見的事件類型</h3>
+<h4>滑鼠事件：</h4>
+<ul>
+    <li>click → 點擊</li>
+    <li>dblclick → 雙擊</li>
+    <li>mouseenter → 滑鼠移入</li>
+    <li>mouseleave → 滑鼠移出</li>
+    <li>mousemove → 滑鼠移動</li>
+</ul>
+<h4>鍵盤事件：</h4>
+<ul>
+    <li>keydown → 按下鍵盤按鍵</li>
+    <li>keyup → 放開鍵盤按鍵</li>
+    <li>keypress → 按下字元鍵（不推薦，已過時）</li>
+</ul>
+<h4>表單事件：</h4>
+<ul>
+    <li>input → 輸入框內容改變（即時）</li>
+    <li>change → 輸入框失去焦點且內容改變</li>
+    <li>focus → 輸入框獲得焦點</li>
+    <li>blur → 輸入框失去焦點</li>
+    <li>submit → 表單提交</li>
+</ul>
+<h4>其他事件：</h4>
+<ul>
+    <li>scroll → 滾動頁面</li>
+    <li>resize → 視窗大小改變</li>
+    <li>load → 頁面載入完成</li>
+</ul>
+
+<h3>事件物件（Event Object）</h3>
+<p>當事件發生時，瀏覽器會自動建立一個「事件物件」，包含了事件的詳細資訊：</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+element.addEventListener("click", function(event) {
+    console.log(event.target);      // 被點擊的元素
+    console.log(event.clientX);     // 滑鼠 X 座標
+    console.log(event.clientY);     // 滑鼠 Y 座標
+    console.log(event.key);         // 按下的按鍵（鍵盤事件）
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<p>就像在設計軟體中，你可以知道「使用者點擊了哪個圖層」、「滑鼠在哪個位置」。</p>
+
+<h2>三、語法與使用方式</h2>
+<h3>準備工作：建立測試網頁</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-TW"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title>事件處理練習&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        .section h3 {
+            color: #495057;
+            margin-bottom: 15px;
+        }
+        button {
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background: #667eea;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            margin: 20px auto;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .box:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        input {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 100%;
+            margin: 10px 0;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .output {
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            margin-top: 10px;
+            min-height: 50px;
+            border: 2px solid #e9ecef;
+        }
+        .counter {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+            margin: 20px 0;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1>🎯 事件處理練習&lt;/h1&gt;
+        
+        &lt;!-- 練習區域會在這裡動態插入 --&gt;
+        &lt;div id="practiceArea"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        console.log("準備開始練習事件處理！");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>範例一：基本點擊事件</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 建立按鈕
+let btn = document.createElement("button");
+btn.textContent = "點我！";
+document.querySelector(".container").appendChild(btn);
+
+// 監聽點擊事件
+btn.addEventListener("click", function() {
+    alert("按鈕被點擊了！");
+    console.log("Click 事件觸發");
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，點擊按鈕會跳出警告視窗。</h4>
+<p><strong>說明：</strong>
+addEventListener 的第一個參數是事件類型（"click"），第二個參數是事件處理函式（當事件發生時要執行的程式碼）。</p>
+
+<h3>範例二：改變元素樣式（點擊切換顏色）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let box = document.createElement("div");
+box.className = "box";
+box.textContent = "點我改變顏色";
+document.querySelector(".container").appendChild(box);
+
+let colors = ["#667eea", "#f093fb", "#4facfe", "#43e97b", "#fa709a"];
+let currentIndex = 0;
+
+box.addEventListener("click", function() {
+    currentIndex++;
+    if (currentIndex >= colors.length) {
+        currentIndex = 0;
+    }
+    box.style.backgroundColor = colors[currentIndex];
+    console.log("顏色已改變為：" + colors[currentIndex]);
+});
+</code></pre>
+<!-- Code Block Ends-->
+<h4>執行後，每次點擊方塊會循環切換顏色。</h4>
+<p><strong>說明：</strong>
+這展示了如何在事件處理函式中修改元素樣式，創造互動效果。</p>
+
+<h3>範例三：滑鼠移入/移出事件</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let hoverBox = document.createElement("div");
+hoverBox.className = "box";
+hoverBox.textContent = "滑鼠移到我身上";
+hoverBox.style.backgroundColor = "#6c757d";
+document.querySelector(".container").appendChild(hoverBox);
+
+// 滑鼠移入
+hoverBox.addEventListener("mouseenter", function() {
+    hoverBox.textContent = "😊 歡迎！";
+    hoverBox.style.backgroundColor = "#28a745";
+    hoverBox.style.transform = "scale(1.2)";
+});
+
+// 滑鼠移出
+hoverBox.addEventListener("mouseleave", function() {
+    hoverBox.textContent = "👋 再見！";
+    hoverBox.style.backgroundColor = "#dc3545";
+    hoverBox.style.transform = "scale(1)";
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，滑鼠移入移出方塊會有不同的視覺反饋。</h4>
+<p><strong>說明：</strong>
+mouseenter 和 mouseleave 常用於製作 hover 效果，比純 CSS 更靈活。</p>
+
+<h3>範例四：鍵盤事件（即時顯示按鍵）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let section = document.createElement("div");
+section.className = "section";
+section.innerHTML = `
+    <h3>⌨️ 鍵盤事件</h3>
+    <p>按下任意鍵盤按鍵...</p>
+    <div class="output" id="keyOutput">等待按鍵...</div>
+`;
+document.querySelector(".container").appendChild(section);
+
+let keyOutput = document.querySelector("#keyOutput");
+
+document.addEventListener("keydown", function(event) {
+    keyOutput.innerHTML = `
+        <strong>按鍵：</strong>${event.key}<br>
+        <strong>按鍵代碼：</strong>${event.code}<br>
+        <strong>是否按住 Shift：</strong>${event.shiftKey ? "是" : "否"}
+    `;
+    
+    // 特殊按鍵處理
+    if (event.key === "Enter") {
+        keyOutput.style.backgroundColor = "#d4edda";
+    } else if (event.key === "Escape") {
+        keyOutput.style.backgroundColor = "#f8d7da";
+    } else {
+        keyOutput.style.backgroundColor = "#d1ecf1";
+    }
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，按下鍵盤任意按鍵會即時顯示按鍵資訊。</h4>
+<p><strong>說明：</strong>
+事件物件的 event.key 可以取得按下的按鍵，event.code 是按鍵的物理位置代碼。
+</p>
+
+<h3>範例五：表單輸入事件（即時字數統計）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let formSection = document.createElement("div");
+formSection.className = "section";
+formSection.innerHTML = `
+    <h3>📝 即時字數統計</h3>
+    <input type="text" id="textInput" placeholder="輸入文字...">
+    <div class="output" id="charCount">字數：0</div>
+`;
+document.querySelector(".container").appendChild(formSection);
+
+let textInput = document.querySelector("#textInput");
+let charCount = document.querySelector("#charCount");
+
+textInput.addEventListener("input", function(event) {
+    let length = event.target.value.length;
+    charCount.textContent = `字數：${length}`;
+    
+    // 根據字數改變顏色
+    if (length === 0) {
+        charCount.style.color = "#6c757d";
+    } else if (length < 10) {
+        charCount.style.color = "#28a745";
+    } else if (length < 20) {
+        charCount.style.color = "#ffc107";
+    } else {
+        charCount.style.color = "#dc3545";
+    }
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，輸入文字時會即時顯示字數，並根據長度改變顏色。</h4>
+<p><strong>說明：</strong>
+input 事件會在輸入框內容改變時立即觸發，event.target.value 可以取得輸入框的值。</p>
+
+<h3>範例六：事件物件的使用（點擊顯示座標）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let coordSection = document.createElement("div");
+coordSection.className = "section";
+coordSection.innerHTML = `
+    <h3>🎯 點擊座標追蹤</h3>
+    <div class="box" id="clickBox" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        點擊我！
+    </div>
+    <div class="output" id="coordOutput">點擊方塊查看座標...</div>
+`;
+document.querySelector(".container").appendChild(coordSection);
+
+let clickBox = document.querySelector("#clickBox");
+let coordOutput = document.querySelector("#coordOutput");
+
+clickBox.addEventListener("click", function(event) {
+    coordOutput.innerHTML = `
+        <strong>滑鼠位置（相對於視窗）：</strong><br>
+        X: ${event.clientX}px, Y: ${event.clientY}px<br><br>
+        <strong>滑鼠位置（相對於元素）：</strong><br>
+        X: ${event.offsetX}px, Y: ${event.offsetY}px
+    `;
+    
+    // 在點擊位置產生一個小圓點
+    let dot = document.createElement("div");
+    dot.style.position = "absolute";
+    dot.style.left = event.clientX + "px";
+    dot.style.top = event.clientY + "px";
+    dot.style.width = "10px";
+    dot.style.height = "10px";
+    dot.style.background = "#ff6b6b";
+    dot.style.borderRadius = "50%";
+    dot.style.pointerEvents = "none";
+    document.body.appendChild(dot);
+    
+    // 1 秒後移除圓點
+    setTimeout(function() {
+        dot.remove();
+    }, 1000);
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，點擊方塊會顯示座標，並在點擊位置出現一個短暫的紅點。</h4>
+<p><strong>說明：</strong>
+事件物件包含豐富的資訊，clientX/clientY 是相對於視窗的座標，offsetX/offsetY 是相對於元素的座標。</p>
+
+<h3>範例七：完整範例（計數器）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let counterSection = document.createElement("div");
+counterSection.className = "section";
+counterSection.innerHTML = `
+    <h3>🔢 互動式計數器</h3>
+    <div class="counter" id="counter">0</div>
+    <div style="text-align: center;">
+        <button id="decreaseBtn" style="background: #dc3545;">- 減少</button>
+        <button id="resetBtn" style="background: #6c757d;">🔄 重置</button>
+        <button id="increaseBtn" style="background: #28a745;">+ 增加</button>
+    </div>
+`;
+document.querySelector(".container").appendChild(counterSection);
+
+let counter = document.querySelector("#counter");
+let decreaseBtn = document.querySelector("#decreaseBtn");
+let resetBtn = document.querySelector("#resetBtn");
+let increaseBtn = document.querySelector("#increaseBtn");
+
+let count = 0;
+
+// 更新顯示的函式
+function updateDisplay() {
+    counter.textContent = count;
+    
+    // 根據數值改變顏色
+    if (count > 0) {
+        counter.style.color = "#28a745";
+    } else if (count < 0) {
+        counter.style.color = "#dc3545";
+    } else {
+        counter.style.color = "#667eea";
+    }
+}
+
+// 增加
+increaseBtn.addEventListener("click", function() {
+    count++;
+    updateDisplay();
+    console.log("增加，目前：" + count);
+});
+
+// 減少
+decreaseBtn.addEventListener("click", function() {
+    count--;
+    updateDisplay();
+    console.log("減少，目前：" + count);
+});
+
+// 重置
+resetBtn.addEventListener("click", function() {
+    count = 0;
+    updateDisplay();
+    console.log("重置");
+});
+
+// 鍵盤快捷鍵
+document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowUp") {
+        count++;
+        updateDisplay();
+    } else if (event.key === "ArrowDown") {
+        count--;
+        updateDisplay();
+    } else if (event.key === "r" || event.key === "R") {
+        count = 0;
+        updateDisplay();
+    }
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>執行後，可以用按鈕或鍵盤方向鍵控制計數器。</h4>
+<p><strong>說明：</strong>
+這個完整範例展示了如何結合多個事件監聽器，創造豐富的互動體驗。
+</p>
+
+<h2>四、常見錯誤與注意事項</h2>
+<h3>錯誤一：忘記 function 關鍵字或括號</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 錯誤：缺少 function
+btn.addEventListener("click", {
+    console.log("點擊");
+});
+
+// 錯誤：多了括號（會立即執行）
+btn.addEventListener("click", myFunction());
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 方法一：匿名函式
+btn.addEventListener("click", function() {
+    console.log("點擊");
+});
+
+// 方法二：具名函式（不加括號）
+function handleClick() {
+    console.log("點擊");
+}
+btn.addEventListener("click", handleClick);
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+事件監聽器需要的是「函式本身」，不是「函式執行的結果」。加上括號 () 會立即執行函式。</p>
+
+<h3>錯誤二：事件類型拼錯字</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+btn.addEventListener("clik", function() {  // 拼錯：clik（應該是 click）
+    console.log("不會執行");
+});
+
+btn.addEventListener("Click", function() {  // click 大小寫錯誤
+    console.log("不會執行");
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+btn.addEventListener("click", function() {  // 正確：全小寫
+    console.log("會執行");
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>常見事件類型（記得全部都是小寫）：</h4>
+<ul>
+    <li>click、dblclick</li>
+    <li>mouseenter、mouseleave</li>
+    <li>keydown、keyup</li>
+    <li>input、change、submit</li>
+</ul>
+
+<h3>錯誤三：在不存在的元素上綁定事件</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 元素還不存在
+let btn = document.querySelector("#myBtn");
+btn.addEventListener("click", function() {  // 錯誤：btn 是 null
+    console.log("點擊");
+});
+
+// 之後才建立元素
+let button = document.createElement("button");
+button.id = "myBtn";
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確順序：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 先建立元素
+let button = document.createElement("button");
+button.id = "myBtn";
+button.textContent = "點我";
+
+// 再綁定事件
+button.addEventListener("click", function() {
+    console.log("點擊");
+});
+
+// 最後插入 DOM
+document.body.appendChild(button);
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤四：重複綁定相同事件</h3>
+<h4>問題範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let btn = document.querySelector("#btn");
+
+// 在迴圈中重複綁定（不好的做法）
+for (let i = 0; i < 5; i++) {
+    btn.addEventListener("click", function() {
+        console.log("點擊 " + i);
+    });
+}
+
+// 點一次按鈕會執行 5 次！
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+每次 addEventListener 都會新增一個監聽器，不會覆蓋原有的。如果不小心重複綁定，會導致事件被觸發多次。</p>
+<p><strong>解決方法：</strong>
+只綁定一次，或使用具名函式便於移除：</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+function handleClick() {
+    console.log("點擊");
+}
+
+btn.addEventListener("click", handleClick);
+
+// 需要時可以移除
+// btn.removeEventListener("click", handleClick);
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤五：this 的指向問題</h3>
+<h4>容易混淆的範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let btn = document.querySelector("#btn");
+
+btn.addEventListener("click", function() {
+    console.log(this);  // this 指向 btn 元素
+    this.style.backgroundColor = "red";  // 可以用
+});
+
+// 使用箭頭函式
+btn.addEventListener("click", () => {
+    console.log(this);  // this 指向 window（通常不是你要的）
+    this.style.backgroundColor = "red";  // 無法正常運作
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+在一般函式中，this 指向觸發事件的元素。但在箭頭函式中，this 繼承自外層作用域。</p>
+<p><strong>建議：</strong>
+如果需要使用 this 指向元素，使用一般函式。或使用 event.target：</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+btn.addEventListener("click", (event) => {
+    event.target.style.backgroundColor = "red";  // 推薦
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h2>五、重點整理</h2>
+<ul>
+    <li><strong>事件監聽器語法：</strong>element.addEventListener("事件類型", function() { ... })</li>
+    <li><strong>常用事件：</strong>
+    <ul>
+        <li>滑鼠：click、dblclick、mouseenter、mouseleave</li>
+        <li>鍵盤：keydown、keyup</li>
+        <li>表單：input、change、focus、blur、submit</li>
+    </ul>
+    </li>
+    <li><strong>事件物件：</strong>事件處理函式的第一個參數，包含事件的詳細資訊（座標、按鍵、目標元素等）。</li>
+    <li><strong>綁定時機：</strong>元素必須存在才能綁定事件，動態建立的元素需要在建立後立即綁定。</li>
+    <li><strong>避免重複綁定：</strong>同一個元素上不要重複綁定相同的事件監聽器。</li>
+</ul>
+
+<div class="notice">
+<h2>恭喜你！</h2>
+<p>你學會了各種事件處理，這是製作互動網頁的核心技能。結合前面介紹的 JavaScript DOM 操作，以及 CSS Animation 的技巧，應該已經可以看得懂，甚至做出非常豐富的互動效果了！🎉</p>
+</div>
+
+    <section class="footer-nav">
+        <a class="prev" href="day9.htm">
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+            DAY 9</a>
+        <a class="next" href="faq.htm">
+            FAQ
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

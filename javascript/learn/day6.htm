@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet">
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 6: Switch、三元運算子與函式入門</title>
+</head>
+<body id="page-js-day6">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/javascript/">JavaScript</a></li>
+            <li><a href="/javascript/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-開發環境簡介</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-變數與資料型別</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-運算子與表達式</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-條件判斷</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-迴圈</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Switch三元運算子與函式</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-DOM與元素選取</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-修改內容與樣式</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-建立與刪除元素</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-事件處理</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 6: Switch、三元運算子與函式入門</h1>
+    <h3 class="sub-title">Switch, Ternary  Operator and Function</h3>
+<h2>一、學習目標</h2>
+<p>完成本日學習後，你應該能夠：</p>
+<ol>
+    <li>理解 switch 語句的結構與使用時機</li>
+    <li>使用三元運算子簡化簡單的條件判斷</li>
+    <li>理解函式的概念與基本用途</li>
+    <li>能夠定義並呼叫簡單的函式</li>
+    <li>理解參數與回傳值的基本概念</li>
+</ol>
+
+<h2>二、核心概念解釋</h2>
+
+<h3>Switch 與三元運算子</h3>
+<p><strong>switch</strong> 是一種多分支選擇結構，就像設計軟體中的「圖層樣式選單」，根據你選擇的不同選項（陰影、描邊、漸層...），套用不同的效果。當需要根據某個變數的不同值執行不同的程式碼時，switch 比多個 if/else if 更簡潔易讀。</p>
+<p><strong>三元運算子（ternary operator）</strong>是一種簡化的條件表達式，語法為：條件 ? 值1 : 值2。就像 Photoshop 的圖層開關，如果「開」就顯示，如果「關」就隱藏，只有兩種狀態。</p>
+
+<h3>什麼是函式？</h3>
+<p><strong>函式（Function）</strong>是一段<u>可重複使用</u>的程式碼區塊。就像 Photoshop 的「Action / 動作」或 Figma 的（Component / 元件）。當你需要重複執行相同的操作時，與其每次都重新手動做一遍，不如把這些步驟「打包」存起來，需要時一鍵執行。</p>
+<p>其實，從一開始，我們就一直在使用函式，例如 console.log()、prompt()、Math.random() 等，這些都是 JavaScript 內建的函式。現在我們要學習如何建立自己的函式。</p>
+
+<h3>為什麼需要函式？</h3>
+
+<p><strong>程式碼重複使用：</strong>就像在 Figma 中建立 Component，修改一次就能更新所有實例。相同的邏輯只需寫一次，可以在不同地方重複呼叫。</p>
+
+<p><strong>提高可讀性：</strong>將複雜的邏輯封裝成有意義的函式名稱，程式碼更易理解。例如 changeButtonColor() 比一長串程式碼更清楚表達意圖。</p>
+
+<p><strong>易於維護：</strong>當需要調整某個功能時，只需改一個地方，就像修改設計系統中的主色票，所有使用該顏色的地方都會自動更新。</p>
+
+<p><strong>模組化思維：</strong>將大任務拆解成小任務，每個函式負責一件事。就像設計流程：先做線框圖、再做視覺稿、最後做原型，每個階段專注於一個目標。</p>
+
+<h3>函式的基本結構</h3>
+<p>函式由三個部分組成：</p>
+<ul>
+    <li><strong>函式名稱：</strong>有意義的名稱，描述函式的功能（如 showMessage、hideMenu）</li>
+    <li><strong>參數（可選）：</strong>函式需要的輸入資料（如要顯示的文字、要改變的顏色）</li>
+    <li><strong>回傳值（可選）：</strong>函式執行後輸出的結果</li>
+</ul>
+
+<p>定義函式不會立即執行，必須「呼叫」函式才會執行其中的程式碼，就像建立 Photoshop Action 後，還要手動播放才會執行。</p>
+
+<h2>三、語法與使用方式</h2>
+
+<h3>範例一：基本 switch 語句（UI 主題切換）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let theme = "dark";
+let backgroundColor;
+
+switch (theme) {
+  case "light":
+    backgroundColor = "#FFFFFF";
+    break;
+  case "dark":
+    backgroundColor = "#1A1A1A";
+    break;
+  case "blue":
+    backgroundColor = "#0066CC";
+    break;
+  default:
+    backgroundColor = "#FFFFFF";
+}
+
+console.log("背景色：" + backgroundColor);  // 背景色：#1A1A1A
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+就像設計軟體的主題切換器，根據使用者選擇的主題（淺色、深色、藍色），套用對應的背景顏色。</p>
+
+<h3>範例二：三元運算子（顯示/隱藏元素）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let isMenuOpen = true;
+let menuStatus = isMenuOpen ? "顯示" : "隱藏";
+
+console.log("選單狀態：" + menuStatus);  // 選單狀態：顯示
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+這就像設計軟體中的圖層可見性開關，開啟就顯示，關閉就隱藏，只有兩種狀態。</p>
+
+<h3>範例三：定義與呼叫函式（顯示訊息）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 定義函式
+function showWelcomeMessage() {
+  console.log("歡迎來到我的網站！");
+}
+
+// 呼叫函式
+showWelcomeMessage();  // 歡迎來到我的網站！
+showWelcomeMessage();  // 歡迎來到我的網站！
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+就像建立一個可重複使用的「歡迎訊息」元件，需要時隨時呼叫。可以多次使用同一個函式。</p>
+
+<h3>範例四：帶參數的函式（客製化訊息）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 定義帶參數的函式
+function greetUser(userName) {
+  console.log("嗨，" + userName + "！歡迎回來！");
+}
+
+// 呼叫函式並傳入不同的使用者名稱
+greetUser("小明");  // 嗨，小明！歡迎回來！
+greetUser("Amy");   // 嗨，Amy！歡迎回來！
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+參數讓函式更靈活，就像 Figma 的 Component Variants，可以根據不同的輸入產生不同的結果。userName 是參數，"小明"、"Amy" 是傳入的值。</p>
+
+<h3>範例五：多個參數的函式（按鈕樣式設定）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+function setButtonStyle(textColor, bgColor) {
+  console.log("按鈕文字顏色：" + textColor);
+  console.log("按鈕背景顏色：" + bgColor);
+}
+
+setButtonStyle("#FFFFFF", "#0066CC");  // 白色文字，藍色背景
+setButtonStyle("#000000", "#FFD700");  // 黑色文字，金色背景
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+函式可以接收多個參數，就像設定設計元件的多個屬性。參數的順序很重要，第一個參數對應文字顏色，第二個對應背景顏色。</p>
+
+<h3>範例六：有回傳值的函式（計算折扣價）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+function calculateDiscountPrice(originalPrice, discountPercent) {
+  let discount = originalPrice * (discountPercent / 100);
+  let finalPrice = originalPrice - discount;
+  return finalPrice;  // 回傳計算結果
+}
+
+let price1 = calculateDiscountPrice(1000, 20);  // 原價 1000，打 8 折
+let price2 = calculateDiscountPrice(500, 10);   // 原價 500，打 9 折
+
+console.log("折扣後價格：" + price1);  // 折扣後價格：800
+console.log("折扣後價格：" + price2);  // 折扣後價格：450
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+return 用於回傳函式的結果。回傳值可以存入變數中，或直接使用。這就像電商網站的價格計算器，輸入原價和折扣，回傳最終價格。</p>
+
+<h3>範例七：實用函式範例（檢查 Email 格式）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 判斷是否為有效的 Email 格式（簡化版）
+function isValidEmail(email) {
+  if (email.includes("@") && email.includes(".")) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(isValidEmail("user@example.com"));  // true
+console.log(isValidEmail("invalidemail"));      // false
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+檢查 Email 格式（表單驗證常用）。</p>
+
+<h2>四、常見錯誤與注意事項</h2>
+
+<h3>錯誤一：忘記呼叫函式</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+function showAlert() {
+  console.log("這是一個警告訊息！");
+}
+
+showAlert;  // 錯誤：忘記加小括號
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+只寫函式名稱不會執行函式，必須加上小括號 () 才是呼叫。就像在 Figma 中，你建立了 Component 但沒有實際拖曳使用。</p>
+
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+showAlert();  // 正確：加上小括號
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤二：參數數量不匹配</h3>
+<h4>容易混淆的範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+function displayNotification(title, message) {
+  console.log(title + ": " + message);
+}
+
+displayNotification("提醒");  // 提醒: undefined
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+如果傳入的值少於參數數量，缺少的參數會是 undefined。雖然不會報錯，但結果可能不完整。就像設計組件缺少某個必要的屬性。</p>
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+displayNotification("提醒", "您有新訊息");  // 提醒: 您有新訊息
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤三：忘記 return</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+function getButtonText(isLoggedIn) {
+  if (isLoggedIn) {
+    "登出";  // 忘記 return
+  } else {
+    "登入";  // 忘記 return
+  }
+}
+
+let buttonText = getButtonText(true);
+console.log(buttonText);  // undefined
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+沒有 return 的函式會回傳 undefined。如果需要使用函式的結果，必須加上 return。</p>
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+function getButtonText(isLoggedIn) {
+  if (isLoggedIn) {
+    return "登出";
+  } else {
+    return "登入";
+  }
+}
+
+let buttonText = getButtonText(true);
+console.log(buttonText);  // 登出
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤四：return 後的程式碼不會執行</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+function showMessage() {
+  return "訊息已顯示";
+  console.log("這行永遠不會執行");  // 死代碼
+}
+
+showMessage();
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+執行到 return 後，函式立即結束，後面的程式碼都不會執行。就像設計流程中，如果案子在「線框圖」階段就被客戶否決，後面的「視覺稿」和「原型」階段就不會進行。</p>
+
+<h3>錯誤五：switch 忘記 break（顏色設定穿透）</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let colorMode = "primary";
+
+switch (colorMode) {
+  case "primary":
+    console.log("主色：藍色");
+    // 忘記 break
+  case "secondary":
+    console.log("次要色：灰色");
+    // 忘記 break
+  case "accent":
+    console.log("強調色：橘色");
+    break;
+}
+
+**執行結果：**
+主色：藍色
+次要色：灰色
+強調色：橘色
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+匹配到 "primary" 後，因為沒有 break，會繼續執行下面所有的 case，直到遇到 break。</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+switch (colorMode) {
+  case "primary":
+    console.log("主色：藍色");
+    break;
+  case "secondary":
+    console.log("次要色：灰色");
+    break;
+  case "accent":
+    console.log("強調色：橘色");
+    break;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h2>五、重點整理</h2>
+
+<ul>
+    <li><strong>switch 語句：</strong>適合處理多個選項的情況（如主題切換、狀態選擇），每個 case 後記得加 break。</li>
+    <li><strong>三元運算子：</strong>語法為 條件 ? 值1 : 值2，適合簡單的開關狀態（顯示/隱藏、啟用/停用）。</li>
+    <li><strong>函式定義：</strong>使用 function 函式名稱() { 程式碼 } 定義函式，可以重複使用相同邏輯。</li>
+    <li><strong>參數與引數：</strong>參數是函式定義時的變數，引數是呼叫時傳入的實際值。就像設計組件的可變屬性。</li>
+    <li><strong>回傳值：</strong>使用 return 回傳函式結果，執行到 return 後函式立即結束。</li>
+</ul>
+
+
+    <section class="footer-nav">
+        <a class="prev" href="day5.htm"><svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+        DAY 5</a>
+        <a class="next" href="day7.htm">DAY 7
+        <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

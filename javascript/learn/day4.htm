@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet">
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 4: 條件判斷 (if/else)</title>
+</head>
+<body id="page-js-day4">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/javascript/">JavaScript</a></li>
+            <li><a href="/javascript/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-開發環境簡介</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-變數與資料型別</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-運算子與表達式</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-條件判斷</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-迴圈</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Switch三元運算子與函式</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-DOM與元素選取</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-修改內容與樣式</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-建立與刪除元素</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-事件處理</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 4: 條件判斷 ( if / else )</h1>
+    <h3 class="sub-title">Conditional Operator ( if/else )</h3>
+<h2>一、學習目標</h2>
+<p>完成本日學習後，你應該能夠：</p>
+<ol>
+    <li>理解條件判斷的概念與應用場景</li>
+    <li>正確使用 if、else if、else 語句</li>
+    <li>撰寫巢狀條件判斷結構</li>
+    <li>使用條件判斷解決實際問題</li>
+    <li>理解真值（truthy）與假值（falsy）的概念</li>
+</ol>
+
+<h2>二、核心概念解釋</h2>
+
+<h3>什麼是條件判斷？</h3>
+<p>條件判斷是程式設計中控制執行流程的基本工具。在現實生活中，我們經常需要根據不同情況做出不同決策，例如「如果下雨就帶傘，否則不帶」。程式中的條件判斷就是這個邏輯的實現，讓程式能夠根據特定條件執行不同的程式碼區塊。</p>
+<p>條件判斷的核心是「Boolean 布林邏輯」。條件表達式會被評估為 true（真）或 false（假），程式會根據這個結果決定要執行哪一段程式碼。這種能力讓程式從單純的線性執行變得更加智慧與靈活。</p>
+
+<h3>if 語句的基本結構</h3>
+<p>最基本的條件判斷是 if 語句。語法為：if (條件) { 程式碼 }。當條件為 true 時，大括號內的程式碼會被執行；條件為 false 時則會跳過。</p>
+<p>當需要處理「條件不成立」的情況時，可以加上 else 子句。if...else 結構確保兩個分支中必定會有一個被執行，就像岔路一樣，必須選擇其中一條路走。</p>
+
+<h3>多重條件判斷</h3>
+<p>當需要檢查多個條件時，可以使用 else if。這種結構會依序檢查每個條件，一旦有條件成立就執行對應的程式碼並跳出整個判斷結構。這在成績評等、會員等級判斷等場景中特別實用。</p>
+
+<h3>真值與假值</h3>
+<p>JavaScript 中，不只有 true 和 false 可以用於條件判斷。所有的值都可以被轉換為布林值。會被視為 false 的值（假值）包括：false、0、空字串（""）、null、undefined、NaN。除此之外的值都被視為 true（真值），包括非空字串、非零數字、物件、陣列等。</p>
+<p>這個特性讓條件判斷更簡潔，但也需要小心使用，避免非預期的判斷結果。</p>
+
+<h2>三、語法與使用方式</h2>
+
+<h3>範例一：基本 if 語句</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let temperature = 35;
+
+if (temperature > 30) {
+  console.log("天氣很熱，記得多喝水！");
+}
+
+** 執行結果：**
+天氣很熱，記得多喝水！
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+當條件 temperature > 30 為 true 時，執行大括號內的程式碼。如果 temperature 是 25，條件為 false，程式碼不會執行，也不會有任何輸出。</p>
+
+<h3>範例二：if...else 結構</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let age = 16;
+
+if (age >= 18) {
+  console.log("已成年，可以投票");
+} else {
+  console.log("未成年，不能投票");
+}
+
+** 執行結果：**
+未成年，不能投票
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+age 是 16，小於 18，條件為 false，所以執行 else 區塊。if 和 else 兩個區塊必定有一個會執行。</p>
+
+<h3>範例三：else if 多重條件</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let score = 75;
+
+if (score >= 90) {
+  console.log("成績：A");
+} else if (score >= 80) {
+  console.log("成績：B");
+} else if (score >= 70) {
+  console.log("成績：C");
+} else if (score >= 60) {
+  console.log("成績：D");
+} else {
+  console.log("成績：F（不及格）");
+}
+
+** 執行結果：**
+成績：C
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+程式從上到下依序檢查條件。score 是 75，第一、二個條件都不符合，第三個條件 score >= 70 成立，執行對應程式碼後，跳出整個判斷結構，後續條件不再檢查。</p>
+
+<h3>範例四：巢狀條件判斷</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let isLoggedIn = true;
+let isAdmin = false;
+
+if (isLoggedIn) {
+  if (isAdmin) {
+    console.log("歡迎，管理員！");
+  } else {
+    console.log("歡迎，一般使用者！");
+  }
+} else {
+  console.log("請先登入");
+}
+
+** 執行結果：**
+歡迎，一般使用者！
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+巢狀條件判斷是在 if 區塊內再包含 if 語句。外層條件成立後，才會檢查內層條件。這種結構適合處理「條件之間有依賴關係」的情況。</p>
+
+<h3>範例五：真值與假值判斷</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let userName = "";
+
+if (userName) {
+  console.log("歡迎，" + userName);
+} else {
+  console.log("請輸入使用者名稱");
+}
+
+** 執行結果：**
+請輸入使用者名稱
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+空字串是假值，所以 if (userName) 的條件為 false，執行 else 區塊。這種簡潔寫法常用於檢查變數是否有值。</p>
+
+<h3>範例六：邏輯運算子結合條件判斷</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let age = 25;
+let hasLicense = true;
+
+if (age >= 18 && hasLicense) {
+  console.log("可以開車");
+} else {
+  console.log("不能開車");
+}
+
+** 執行結果：**
+可以開車
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+使用 && 組合多個條件，兩個條件都必須為 true，整個條件才為 true。</p>
+
+<h2>四、常見錯誤與注意事項</h2>
+
+<h3>錯誤一：使用賦值而非比較</h3>
+<p><strong>錯誤範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let x = 5;
+
+if (x = 10) {  // 錯誤：這是賦值，不是比較
+  console.log("x 等於 10");
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+= 是賦值運算子，== 或 === 才是比較運算子。上面的程式碼會將 x 的值改為 10，並且因為 10 是真值，條件永遠成立。</p>
+<p><strong>正確寫法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let x = 5;
+
+if (x === 10) {  // 正確：使用比較運算子
+  console.log("x 等於 10");
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤二：忘記大括號</h3>
+<p><strong>不良範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let score = 50;
+
+if (score >= 60)
+  console.log("及格");
+  console.log("恭喜你！");  // 這行總是會執行
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+沒有大括號時，if 只控制緊接著的第一行。第二個 console.log 不受 if 控制，無論條件如何都會執行。</p>
+<p><strong>正確寫法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let score = 50;
+
+if (score >= 60) {
+  console.log("及格");
+  console.log("恭喜你！");
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>最佳實踐：</strong>
+即使只有一行程式碼，也建議加上大括號，提高可讀性並避免錯誤。</p>
+
+<h3>錯誤三：條件順序錯誤</h3>
+<p><strong>錯誤範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let score = 95;
+
+if (score >= 60) {
+  console.log("及格");
+} else if (score >= 90) {  // 這個條件永遠不會被檢查到
+  console.log("優秀");
+}
+
+** 執行結果：**
+及格
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+條件由上而下依序檢查，一旦某個條件成立就不再檢查後續條件。95 >= 60 成立，執行後就結束，永遠不會檢查到 >= 90。</p>
+<p><strong>正確寫法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let score = 95;
+
+if (score >= 90) {
+  console.log("優秀");
+} else if (score >= 60) {
+  console.log("及格");
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>原則：</strong>
+條件判斷應該從最嚴格（範圍最小）的條件開始寫。</p>
+
+<h3>錯誤四：誤用假值判斷</h3>
+<p><strong>容易出錯的範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let count = 0;  // 0 是假值
+
+if (count) {
+  console.log("有資料");
+} else {
+  console.log("沒有資料");  // 會執行這行，但 0 可能是有效的數量
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>正確寫法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let count = 0;
+
+if (count !== undefined && count !== null) {
+  console.log("有資料");
+} else {
+  console.log("沒有資料");
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h2>五、重點整理</h2>
+
+<ul>
+    <li><strong>基本語法：</strong>if 檢查條件，else 處理條件不成立的情況，else if 處理多個條件。</li>
+    <li><strong>條件表達式：</strong>必須使用 === 或其他比較運算子，不要誤用賦值運算子（=）。</li>
+    <li><strong>大括號習慣：</strong>即使只有一行程式碼，也建議使用大括號包圍，避免後續修改時出錯。</li>
+    <li><strong>條件順序：</strong>從最嚴格的條件開始寫，避免範圍較大的條件擋住範圍較小的條件。</li>
+    <li><strong>真值假值：</strong>空字串、0、null、undefined、NaN 都是假值，使用時需注意是否符合業務邏輯。</li>
+</ul>
+
+
+
+    <section class="footer-nav">
+        <a class="prev" href="day3.htm">
+          <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+          DAY 3</a>
+        <a class="next" href="day5.htm">
+          DAY 5
+          <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+          </a>
+    </section>
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

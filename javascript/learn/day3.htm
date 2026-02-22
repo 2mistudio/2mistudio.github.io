@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet">
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 3: 運算子與表達式</title>
+</head>
+<body id="page-js-day3">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/javascript/">JavaScript</a></li>
+            <li><a href="/javascript/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-開發環境簡介</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-變數與資料型別</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-運算子與表達式</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-條件判斷</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-迴圈</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Switch三元運算子與函式</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-DOM與元素選取</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-修改內容與樣式</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-建立與刪除元素</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-事件處理</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 3: 運算子與表達式</h1>
+    <h3 class="sub-title">Knowing Operator and Expression</h3>
+    <h2>一、學習目標</h2>
+    <p>完成本日學習後，你應該能夠：</p>
+    <ol>
+        <li>理解運算子的種類與用途</li>
+        <li>正確使用算術運算子進行數學計算</li>
+        <li>使用比較運算子比較數值與資料</li>
+        <li>使用邏輯運算子組合條件判斷</li>
+        <li>區分 == 與 === 的差異並正確使用</li>
+    </ol>
+
+    <h2>二、核心概念解釋</h2>
+
+<h3>什麼是運算子？</h3>
+<p>運算子（Operator）是程式語言中用來執行特定運算的符號。就像數學中的加減乘除符號，JavaScript 的運算子讓我們能夠對資料進行各種操作，包括計算數值、比較大小、組合條件等。</p>
+<p>運算子作用的對象稱為「運算元」（Operand）。例如在 5 + 3 中，+ 是運算子，5 和 3 是運算元，而整個式子稱為「表達式」（Expression），最終會產生一個結果值。</p>
+
+<h3>算術運算子</h3>
+<p>算術運算子用於執行數學計算，是程式開發中最基礎的運算工具。JavaScript 提供了加（+）、減（-）、乘（*）、除（/）、取餘數（%）、以及次方（**）等常用算術運算子。其中取餘數運算子（%）在判斷奇偶數、週期性邏輯等情境中特別實用。</p>
+
+<h3>比較運算子</h3>
+<p>比較運算子用於比較兩個值的大小或是否相等，運算結果必定為布林值（true 或 false）。在條件判斷與迴圈控制中，比較運算子扮演相當關鍵的角色。</p>
+<p>JavaScript 中有一個特別重要的概念：== 與 === 的差異。雙等號（==）在比較時會自動進行型別轉換，可能導致意外結果；三等號（===）則會同時比較值與型別，是更嚴謹的寫法，現代 JavaScript 開發中強烈建議優先使用 ===。</p>
+
+<h3>邏輯運算子</h3>
+<p>邏輯運算子用於組合多個條件，常見的有 AND（&&）、OR（||）、NOT（!）三種。當需要判斷「同時滿足多個條件」或「至少滿足一個條件」時，邏輯運算子就能派上用場。例如判斷一個使用者是否已登入且擁有管理員權限，就需要用 && 將兩個條件結合。</p>
+
+<h2>三、語法與使用方式</h2>
+
+<h3>範例一：算術運算子</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let a = 10;
+let b = 3;
+
+console.log(a + b);   // 13（加法）
+console.log(a - b);   // 7（減法）
+console.log(a * b);   // 30（乘法）
+console.log(a / b);   // 3.3333...（除法）
+console.log(a % b);   // 1（取餘數）
+console.log(a ** b);  // 1000（次方：10 的 3 次方）
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+取餘數（%）會回傳除法後的餘數。例如 10 % 3 = 1，因為 10 ÷ 3 商 3 餘 1。次方（**）是 ES7 新增的語法。</p>
+
+<h3>範例二：遞增與遞減運算子</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let count = 5;
+
+count++;             // 等同於 count = count + 1
+console.log(count);  // 6
+
+count--;             // 等同於 count = count - 1
+console.log(count);  // 5
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+++ (遞增)和 -- (遞減)是常用的簡寫，特別在迴圈計數時非常實用。</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let userName = "小明";
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>範例三：比較運算子</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let x = 10;
+let y = 20;
+
+console.log(x > y);    // false（大於）
+console.log(x < y);    // true（小於）
+console.log(x >= 10);  // true（大於等於）
+console.log(x <= 9);   // false（小於等於）
+console.log(x == "10"); // true（只比較值，不比較型別）
+console.log(x === "10"); // false（同時比較值與型別）
+console.log(x !== y);  // true（不等於）
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+== 會將字串 "10" 自動轉換成數字 10 再比較，所以結果為 true。而 === 發現左邊是 number、右邊是 string，型別不同，結果為 false。</p>
+
+<h3>範例四：邏輯運算子</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let isLoggedIn = true;
+let isAdmin = false;
+
+console.log(isLoggedIn && isAdmin);  // false（AND：兩者皆須為 true）
+console.log(isLoggedIn || isAdmin);  // true（OR：至少一個為 true）
+console.log(!isLoggedIn);            // false（NOT：反轉布林值）
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+&& 需要左右兩側都是 true 才回傳 true；|| 只要其中一側為 true 就回傳 true；! 則是將 true 變 false、false 變 true。</p>
+
+<h3>範例五：複合賦值運算子</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let score = 100;
+
+score += 20;   // 等同於 score = score + 20，結果 120
+score -= 10;   // 等同於 score = score - 10，結果 110
+score *= 2;    // 等同於 score = score * 2，結果 220
+score /= 4;    // 等同於 score = score / 4，結果 55
+
+console.log(score);  // 55
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+複合賦值運算子是簡化寫法，讓程式碼更簡潔易讀，在實務開發中非常普遍。
+</p>
+
+<h2>四、常見錯誤與注意事項</h2>
+
+<h3>錯誤一：混用 == 與 ===</h3>
+<p><strong>錯誤範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let age = "18";
+
+if (age == 18) {
+  console.log("成年");  // 會執行，但這是危險的判斷方式
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+== 會自動轉換型別，容易造成邏輯漏洞。如果 age 來自使用者輸入，可能導致非預期的判斷結果。</p>
+<p><strong>正確寫法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let age = "18"; //這邊的 "18" 是 String 字串，不是 Number 數字
+
+if (age === 18) {
+  console.log("成年");  // 不會執行，因為型別不同
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>最佳實踐：</strong>
+永遠使用 === 和 !== 進行比較，避免隱性型別轉換帶來的意外問題。</p>
+
+<h3>錯誤二：除以零</h3>
+<p><strong>錯誤範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let result = 10 / 0;
+console.log(result);  // Infinity（無限大）
+
+let result2 = 0 / 0;
+console.log(result2);  // NaN（Not a Number）
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+JavaScript 不會直接報錯，而是回傳特殊值。Infinity 和 NaN 都可能導致後續計算出現錯誤，需要事先做除數的驗證。</p>
+
+<p><strong>正確做法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let divisor = 0;
+
+if (divisor !== 0) {
+  console.log(10 / divisor);
+} else {
+  console.log("除數不能為零");
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤三：字串與數字的加法混淆</h3>
+<p><strong>錯誤範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let input = "5";  // 來自使用者輸入的字串
+let bonus = 10;
+
+console.log(input + bonus);   // "510"（字串連接，非數學運算）
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>正確寫法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let input = "5";
+let bonus = 10;
+
+console.log(Number(input) + bonus);  // 15（先轉換型別再運算）
+// 或
+console.log(parseInt(input) + bonus);  // 15
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤四：運算子優先順序</h3>
+<p><strong>容易混淆的範例：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+console.log(2 + 3 * 4);   // 14，不是 20
+console.log((2 + 3) * 4); // 20
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+JavaScript 遵循數學的運算優先順序，乘除優先於加減。不確定優先順序時，使用括號明確指定計算順序是最安全的做法。</p>
+
+<h2>五、重點整理</h2>
+
+<ul>
+    <li><strong>算術運算子：</strong>加（+）、減（-）、乘（*）、除（/）、取餘數（%）、次方（**），複合賦值（+=、-= 等）可簡化程式碼。</li>
+    <li><strong>永遠使用 ===：</strong>比較時使用三等號，避免 == 的隱性型別轉換帶來的邏輯錯誤。</li>
+    <li><strong>邏輯運算子：</strong>&&（AND）需兩側皆為 true；||（OR）至少一側為 true 即可；!（NOT）反轉布林值。</li>
+    <li><strong>注意特殊值：</strong>除以零會產生 Infinity 或 NaN，使用前需驗證除數。</li>
+    <li><strong>型別轉換陷阱：</strong>字串與數字相加會變成字串連接，需使用 Number() 或 parseInt() 明確轉換型別。</li>
+</ul>
+
+    <section class="footer-nav">
+        <a class="prev" href="day2.htm">
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+            DAY 2</a>
+        <a class="next" href="day4.htm">
+        DAY 4
+        <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

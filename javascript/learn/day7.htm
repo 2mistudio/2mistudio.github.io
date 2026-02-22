@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet">
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 7: DOM 介紹與選取元素</title>
+</head>
+<body id="page-js-day7">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/javascript/">JavaScript</a></li>
+            <li><a href="/javascript/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="day0.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-開發環境簡介</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-變數與資料型別</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-運算子與表達式</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-條件判斷</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-迴圈</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Switch三元運算子與函式</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-DOM與元素選取</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-修改內容與樣式</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-建立與刪除元素</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-事件處理</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 7: DOM 介紹與選取元素</h1>
+    <h3 class="sub-title">Document Object Model and Element Selection </h3>
+<h2>一、學習目標</h2>
+<p>完成本日學習後，你應該能夠：</p>
+<ol>
+    <li>理解 DOM（文件物件模型）的概念</li>
+    <li>認識 HTML、CSS 與 JavaScript 的關係</li>
+    <li>使用 JavaScript 選取網頁上的元素</li>
+    <li>理解不同選取方法的差異與使用時機</li>
+    <li>完成第一個真正的網頁互動效果</li>
+</ol>
+
+<h2>二、核心概念解釋</h2>
+
+<h3>什麼是 DOM？</h3>
+<p><strong>DOM（Document Object Model  文件物件模型）</strong>是瀏覽器提供給 JavaScript 操作網頁的介面。簡單來說，DOM 就是「網頁的程式化表示」，它讓 JavaScript 能夠讀取、修改、新增或刪除網頁上的任何元素。</p>
+<p>想像一下：</p>
+<ul>
+    <li><strong>HTML </strong>是建築的結構（牆壁、房間、門窗）</li>
+    <li><strong>CSS </strong>是室內設計（顏色、家具、裝飾）</li>
+    <li><strong>JavaScript + DOM </strong>是智慧家居系統（可以開關燈、調整溫度、控制窗簾）</li>
+</ul>
+
+<p>在 Figma 或 Sketch 中，你可以點選任何元素來編輯它。DOM 就是讓 JavaScript 能夠「選取並操作」網頁元素的機制。</p>
+
+<h3>DOM 樹狀結構</h3>
+
+<p>網頁的 HTML 結構會被瀏覽器轉換成樹狀結構，稱為「DOM 樹 / DOM Tree」。每個 HTML 標籤都是樹上的一個節點（node）。</p>
+
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;我的網站&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;歡迎來到我的網站&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;p&gt;這是內容區域&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;p&gt;這是頁尾區域&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+這段 HTML 會形成這樣的樹狀結構：
+
+html
+├── head
+│   └── title
+└── body
+    ├── header
+    │   └── h1
+    ├── main
+    │   └── p
+    └── main
+        └── p
+</code></pre>
+<!-- Code Block Ends-->
+
+<p>就像 Figma 的圖層面板，每個元素都有父元素、子元素、兄弟元素的關係。</p>
+
+<h3>為什麼要選取元素？</h3>
+<p>在開始操作網頁元素之前，我們必須先「選取」它，就像在設計軟體中，你必須先點選一個圖層才能編輯它。</p>
+
+<h3>常見的需求：</h3>
+
+<ul>
+    <li>點擊按鈕後改變文字內容</li>
+    <li>滑鼠移入時改變背景顏色</li>
+    <li>表單送出前驗證輸入內容</li>
+    <li>顯示或隱藏某個區塊</li>
+    <li>動態新增或刪除元素</li>
+</ul>
+
+<h3>JavaScript 與網頁的連結</h3>
+
+<p>JavaScript 透過 document 物件來存取整個網頁。document 代表整個 HTML 文件，我們可以透過它來選取任何元素。</p>
+
+<p>想像 document 就是 Figma 的畫布（Canvas），所有的設計元素都在這個畫布上，我們透過 document 來找到並操作它們。</p>
+
+<h2>三、語法與使用方式</h2>
+
+<h3>準備工作：建立測試網頁</h3>
+<p>首先，建立一個簡單的 HTML 檔案（index.html）：</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-TW"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title>DOM 練習&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto; padding: 30px;
+            background: white;
+            border-radius: 8px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .highlight {
+            padding: 5px;
+            background-color: #ffe066;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1 id="main-title"&gt;這是主標題&lt;/h1&gt;
+        &lt;p class="intro"&gt;這是第一段文字&lt;/p&gt;
+        &lt;p class="intro"&gt;這是第二段文字&lt;/p&gt;
+        &lt;button id="myButton"&gt;點我！&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // 我們的 JavaScript 程式碼會寫在這裡
+        console.log("網頁載入完成！");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- Code Block Ends-->
+
+<p>在瀏覽器中開啟這個檔案，按 F12 開啟開發者工具，準備開始練習！</p>
+
+<h3>範例一：getElementById（透過 ID 選取）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 選取 ID 為 "main-title" 的元素
+let title = document.getElementById("main-title");
+
+console.log(title);  // 顯示選取到的元素
+console.log(title.textContent);  // 顯示元素內的文字
+
+** 執行結果（Console）：**
+&lt;h1 id="main-title"&gt;這是主標題&lt;/h1&gt;
+這是主標題
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+getElementById() 用於選取具有特定 ID 的元素。ID 在網頁中應該是唯一的，就像 Figma 中每個圖層都有唯一的名稱。這是最快速、最精確的選取方法。</p>
+<p><strong>使用時機：</strong>當你需要選取特定的單一元素時（如主標題、特定按鈕、特定區塊）。</p>
+
+<h3>範例二：getElementsByClassName（透過 Class 選取）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 選取所有 class 為 "intro" 的元素
+let paragraphs = document.getElementsByClassName("intro");
+
+console.log(paragraphs);  // HTMLCollection（類似陣列）
+console.log(paragraphs.length);  // 顯示找到幾個元素
+console.log(paragraphs[0].textContent);  // 第一個元素的文字
+console.log(paragraphs[1].textContent);  // 第二個元素的文字
+
+** 執行結果：**
+HTMLCollection(2) [p.intro, p.intro]
+2
+這是第一段文字
+這是第二段文字
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+getElementsByClassName() 回傳一個「集合」（HTMLCollection），包含所有符合的元素。就像在 Figma 中選取所有使用相同元件的實例。</p>
+<p><strong>注意：</strong> 回傳的是集合，不是陣列，但可以用索引存取（paragraphs[0]、paragraphs[1]）。</p>
+<p><strong>使用時機：</strong> 當你需要選取一組相同類型的元素時（如所有商品卡片、所有導覽連結）。</p>
+
+<h3>範例三：querySelector（CSS 選擇器，最靈活）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 選取第一個符合條件的元素
+let firstParagraph = document.querySelector(".intro");
+let button = document.querySelector("#myButton");
+let h1 = document.querySelector("h1");
+
+console.log(firstParagraph.textContent);  // 這是第一段文字
+console.log(button.textContent);  // 點我！
+console.log(h1.textContent);  // 這是主標題
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+querySelector() 使用 CSS 選擇器語法，非常靈活。它只回傳「第一個」符合條件的元素。</p>
+<h4>CSS 選擇器語法：</h4>
+<ul>
+    <li><span class="beacon">#id</span> → 選取特定 ID（如 #myButton）</li>
+    <li><span class="beacon">.class</span> → 選取特定 class（如 .intro）</li>
+    <li><span class="beacon">標籤</span> → 選取特定標籤（如 h1、p、button）</li>
+</ul>
+<p><strong>使用時機：</strong> 最常用的方法，語法與 CSS 相同，容易記憶。</p>
+
+<h3>範例四：querySelectorAll（選取所有符合的元素）</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 選取所有 class 為 "intro" 的元素
+let allParagraphs = document.querySelectorAll(".intro");
+
+console.log(allParagraphs);  // NodeList（類似陣列）
+console.log(allParagraphs.length);  // 2
+
+// 使用迴圈處理每個元素
+for (let i = 0; i < allParagraphs.length; i++) {
+  console.log("段落 " + (i + 1) + ": " + allParagraphs[i].textContent);
+}
+
+** 執行結果：**
+NodeList(2) [p.intro, p.intro]
+2
+段落 1: 這是第一段文字
+段落 2: 這是第二段文字
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+querySelectorAll() 回傳所有符合條件的元素（NodeList），可以搭配迴圈處理每個元素。</p>
+<p><strong>使用時機：</strong> 當你需要對一組元素執行相同操作時（如改變所有按鈕的顏色、隱藏所有圖片）。</p>
+
+<h3>範例五：進階 CSS 選擇器</h3>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 選取 container 內的第一個 p
+let firstP = document.querySelector(".container p");
+
+// 選取所有 container 內的 p
+let allPs = document.querySelectorAll(".container p");
+
+// 選取 ID 為 myButton 的按鈕
+let btn = document.querySelector("button#myButton");
+
+console.log(firstP.textContent);
+console.log(allPs.length);
+console.log(btn.textContent);
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>說明：</strong>
+querySelector 支援複雜的 CSS 選擇器，可以精確定位元素。就像在 Figma 中使用圖層搜尋功能，可以找到特定結構下的元素。</p>
+
+<h3>範例六：完整互動範例（點擊按鈕改變標題）</h3>
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 選取元素
+let title = document.getElementById("main-title");
+let button = document.getElementById("myButton");
+
+console.log("已選取標題：" + title.textContent);
+console.log("已選取按鈕：" + button.textContent);
+
+// 下一節課我們會學習如何新增點擊事件
+// 現在先確認我們能成功選取元素
+
+
+** 執行結果：**
+已選取標題：這是主標題
+已選取按鈕：點我！
+</code></pre>
+<!-- Code Block Ends-->
+
+<h2>四、常見錯誤與注意事項</h2>
+
+<h3>錯誤一：在元素載入前選取</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;script&gt;
+        // 錯誤：這時候 body 還沒載入，JS 找不到 main-title 在哪裡
+        let title = document.getElementById("main-title");
+        console.log(title);  // null
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="main-title"&gt;標題&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+JavaScript 在 &lt;head&gt; 中執行時，&lt;body&gt; 的元素還沒載入，所以選取不到，回傳 null。</p>
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;範例&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="main-title"&gt;標題&lt;/h1&gt;
+    
+    &lt;!-- 將 script 放在 body 結束之前 --&gt;
+    &lt;script&gt;
+        let title = document.getElementById("main-title");
+        console.log(title);  // 成功選取
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>最佳實踐：</strong> 將 &lt;script&gt; 標籤放在 &lt;/body&gt; 之前，確保所有 HTML 元素都已載入。</p>
+
+<h3>錯誤二：ID 或 Class 名稱拼錯</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// HTML 中是 id="myButton"
+let button = document.getElementById("mybutton");  // 小寫 b，錯誤！
+
+console.log(button);  // null
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>問題：</strong>
+JavaScript 對大小寫敏感，myButton 和 mybutton 是不同的。</p>
+
+<h4>除錯技巧：</h4>
+<ul>
+    <li>檢查拼字是否正確</li>
+    <li>檢查大小寫</li>
+    <li>確認 HTML 中確實有這個 ID/Class</li>
+    <li>在 Console 中輸入 console.log(button) 檢查是否為 null</li>
+</ul>
+
+<h3>錯誤三：忘記加 # 或 . 符號（querySelector）</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 錯誤：忘記加 # 符號
+let title = document.querySelector("main-title");  // 找不到
+
+// 正確：ID 前面要加 #
+let title = document.querySelector("#main-title");  // 正確
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+// 錯誤：忘記加 . 符號
+let paragraphs = document.querySelectorAll("intro");  // 找不到
+
+// 正確：class 前面要加 .
+let paragraphs = document.querySelectorAll(".intro");  // 正確
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>記憶技巧：</strong> querySelector 使用的是 CSS 選擇器語法，就像寫 CSS 一樣。</p>
+<h3>錯誤四：把 HTMLCollection 當成陣列</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let paragraphs = document.getElementsByClassName("intro");
+
+// 錯誤：HTMLCollection 沒有 forEach 方法
+paragraphs.forEach(function(p) {  // 報錯！
+  console.log(p.textContent);
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確寫法一：使用 for 迴圈</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let paragraphs = document.getElementsByClassName("intro");
+
+for (let i = 0; i < paragraphs.length; i++) {
+  console.log(paragraphs[i].textContent);
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確寫法二：改用 querySelectorAll（推薦）</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let paragraphs = document.querySelectorAll(".intro");
+
+// querySelectorAll 回傳的 NodeList 可以使用 forEach
+paragraphs.forEach(function(p) {
+  console.log(p.textContent);
+});
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤五：選取不存在的元素卻沒有檢查</h3>
+<h4>錯誤範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let element = document.getElementById("notExist");
+element.textContent = "新文字";  // 錯誤！element 是 null
+
+**錯誤訊息：**
+Uncaught TypeError: Cannot set property 'textContent' of null
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確寫法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-js">
+let element = document.getElementById("notExist");
+
+if (element) {
+  element.textContent = "新文字";
+} else {
+  console.log("找不到元素！");
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h2>五、選取方法比較表</h2>
+
+<div class="table-wrap">
+    <table>
+        <tr>
+            <th>方法</th>
+            <th>語法</th>
+            <th>回傳類型</th>
+            <th>數量</th>
+            <th>使用時機</th>
+        </tr>
+        <tr>
+            <th>getElementById</th>
+            <td>#id</td>
+            <td>單一元素</td>
+            <td>1</td>
+            <td>選取特定 ID 的元素</td>
+        </tr>
+        <tr>
+            <th>getElementsByClassName</th>
+            <td>.class</td>
+            <td>HTMLCollection</td>
+            <td>多個</td>
+            <td>選取相同 class 的元素（舊方法）</td>
+        </tr>
+        <tr>
+            <th>querySelector</th>
+            <td>CSS 選擇器</td>
+            <td>單一元素</td>
+            <td>1（第一個）</td>
+            <td>最靈活，推薦使用</td>
+        </tr>
+        <tr>
+            <th>querySelectorAll</th>
+            <td>CSS 選擇器</td>
+            <td>NodeList</td>
+            <td>多個</td>
+            <td>選取多個元素，推薦使用</td>
+        </tr>
+    </table>
+</div>
+
+<h4>推薦使用：</h4>
+<ul>
+    <li>單一元素 → querySelector()</li>
+    <li>多個元素 → querySelectorAll()</li>
+</ul>
+<p>這兩個方法語法統一（都用 CSS 選擇器），最容易記憶和使用。</p>
+
+<h2>六、重點整理</h2>
+
+<ul>
+    <li><strong>DOM 是什麼：</strong>DOM 是瀏覽器提供的介面，讓 JavaScript 能夠操作網頁元素，就像設計軟體的圖層系統。</li>
+    <li><strong>選取元素的重要性：</strong>在操作元素之前，必須先選取它，就像在 Figma 中必須先點選圖層才能編輯。</li>
+    <li><strong>推薦方法：</strong>使用 querySelector() 選取單一元素，使用 querySelectorAll() 選取多個元素。</li>
+    <li><strong>Script 位置：</strong>將 &lt;script&gt; 放在 &lt;/body&gt; 之前，確保 HTML 元素已載入。</li>
+    <li><strong>檢查元素存在：</strong>選取元素後，檢查是否為 null，避免操作不存在的元素導致錯誤。</li>
+</ul>
+
+    <section class="footer-nav">
+        <a class="prev" href="day6.htm">
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+            DAY 6</a>
+        <a class="next" href="day8.htm">
+            DAY 8
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>
