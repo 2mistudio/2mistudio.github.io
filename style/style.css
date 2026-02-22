@@ -185,6 +185,9 @@ code.language-js::before {
     padding: 0.2rem 1.8rem;
     border-radius:0.4rem;
     background-color: var(--alert);
+    a {
+        color: var(--dark-green);
+    }
 }
 .wrap {
     width: 75%;
@@ -227,15 +230,15 @@ code.language-js::before {
 }
 
 
-
+/*Sub Navigation*/
 ul.sub-nav {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
     margin: 0;
     margin-bottom: 3rem; 
     padding: 0;
     list-style: none;
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
 }
 .sub-nav li {
     flex-shrink: 0;
@@ -483,9 +486,7 @@ footer p {
     background-color: var(--prime-green);
 }
 @media screen and (max-width:720px) {
-    h3 {
-        font-size: 1.6rem;
-    }
+
     figure {
         width: 100%;
         margin-block: 3rem;
@@ -499,4 +500,13 @@ footer p {
     .flex {
         flex-wrap: wrap;
     }
+
+/*Sub Navigation*/
+ul.sub-nav {
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+    overflow-x: auto;
+}
+
 }
