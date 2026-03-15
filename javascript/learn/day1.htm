@@ -65,7 +65,7 @@
 
         <p>瀏覽器提供了一個稱為「Console」的開發者工具，這是一個互動式的 JavaScript 執行環境，讓開發者可以即時輸入程式碼並查看結果。這個工具不僅適合學習與測試程式碼片段，也是除錯（debugging）時的重要輔助工具。</p>
 
-        <h2>三、語法與使用方式</h2>
+        <h2>三、JavaScript 初體驗</h2>
 
        <h3>開啟瀏覽器 Console</h3>
        <p>在大多數瀏覽器中，可以透過以下方式開啟 Console：</p>
@@ -74,6 +74,10 @@
         <li><strong> Mac：</strong>按下 Command + Option + J</li>
        </ul>
        <p>開啟後，你會看到一個類似命令列的介面，這就是 JavaScript 的執行環境。</p>
+               <figure>
+            <img src="image/img-console.webp" alt="Browser Console">
+            <figcaption>Browser Console in DevTools</figcaption>
+        </figure>
        <h3>範例一：第一個 JavaScript 程式</h3>
 
 <pre><code class="language-js">
@@ -86,6 +90,8 @@ Hello, JavaScript!
 
 <p> <strong>說明：</strong>
 console.log() 是 JavaScript 中最常用的指令之一，用於在 Console 中輸出訊息。括號內的內容會被顯示在 Console 中。這個指令主要用於除錯與檢視變數值。</p>
+
+    <hr>
 
 <h3>範例二：簡單的數學運算</h3>
 
@@ -106,7 +112,69 @@ console.log(100 / 4);
 <p> <strong>說明：</strong>
 JavaScript 可以直接進行數學運算。運算結果會立即顯示在 Console 中。這展示了 JavaScript 作為程式語言的基本運算能力。</p>
 
-       <h3>範例三：在 HTML 中嵌入 JavaScript</h3>
+        <h2>四、語法與使用方式</h2>
+
+<p>在網頁中使用 JavaScript 有三種主要方式，就像 CSS 也有三種引入方式（inline、internal、external）：</p>
+<ul>
+    <li><strong>Inline JavaScript</strong>（行內 JavaScript）- 直接寫在 HTML 標籤內</li>
+    <li><strong>Internal JavaScript</strong>（內部 JavaScript）- 寫在 &lt;script&gt; 標籤內</li>
+    <li><strong>External JavaScript</strong>（外部 JavaScript）- 獨立的 .js 檔案</li>
+</ul>
+
+       <h3>範例一：Inline JavaScript（行內寫法）</h3>
+
+       <p>顧名思義，行內的意思就是將 JavaScript 直接寫在 HTML 標籤當中。請參考以下範例：</p>
+
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-TW"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Internal JavaScript 範例&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Inline JavaScript 範例測試&lt;/h1&gt;
+
+    &lt;!--（方法一）直接在 HTML 標籤的事件屬性中寫 JavaScript，結果觸發彈跳視窗 --&gt;
+    &lt;button onclick="alert('按鈕被點擊了！')"&gt;點我&lt;/button&gt;
+
+    &lt;!--（方法二）直接在 HTML 標籤的事件屬性中寫 JavaScript，結果出現在 Console --&gt;
+    &lt;button onclick="console.log('Hello from button')"&gt;點我&lt;/button&gt;
+    
+    &lt;!--（方法三）也可以呼叫函式 --&gt;
+    &lt;button onclick="showMessage()"&gt;點我&lt;/button&gt;
+    
+    &lt;script&gt;
+        function showMessage() {
+            alert('這是從函式呼叫的訊息');
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+    <p><strong>執行結果：</strong>
+    點擊任一按鈕都會有對應的互動反應。</p>
+
+    <p><strong>說明：</strong></p>
+    <ul>
+        <li>onclick 是 HTML 的事件屬性，可以直接寫 JavaScript 程式碼</li>
+        <li>其他常見事件屬性：onmouseover（滑鼠移入）、onmouseout（滑鼠移出）</li>
+        <li>這種寫法簡單快速，通常用在練習的時候，但<strong> ⚠️不建議在正式專案中使用</strong></li>
+    </ul>
+
+    <p><strong>Inline JavaScript 的缺點：</strong></p>
+    <ol>
+        <li><strong>難以維護 </strong>- 程式碼分散在各個 HTML 標籤中</li>
+        <li><strong>不易重複使用</strong>- 相同的功能要寫很多次</li>
+        <li><strong>違反關注點分離</strong>- HTML（結構）和 JavaScript（行為）混在一起</li>
+        <li><strong>安全性問題</strong>- 容易產生安全漏洞</li>
+    </ol>
+
+
+    <hr>
+
+       <h3>範例二：Internal JavaScript（在 HTML 中嵌入 JavaScript）</h3>
 
     <p>建立一個 HTML 檔案（例如 index.html），內容如下：</p>
 
@@ -115,10 +183,10 @@ JavaScript 可以直接進行數學運算。運算結果會立即顯示在 Conso
 &lt;html lang="zh-TW"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;我的第一個 JavaScript 程式&lt;/title&gt;
+    &lt;title&gt;Internal JavaScript 範例&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;h1&gt;JavaScript 測試頁面&lt;/h1&gt;
+    &lt;h1&gt;Internal JavaScript 範例測試&lt;/h1&gt;
     
     &lt;script&gt;
         console.log("這段訊息來自 HTML 中的 JavaScript");
@@ -132,9 +200,13 @@ JavaScript 可以直接進行數學運算。運算結果會立即顯示在 Conso
 開啟此 HTML 檔案時，會出現一個彈出視窗顯示「歡迎來到 JavaScript 的世界！」，並且在 Console 中會看到「這段訊息來自 HTML 中的 JavaScript」。</p>
 
 <p><strong>說明：</strong>
-標籤用於在 HTML 中嵌入 JavaScript 程式碼。alert() 函式會彈出一個警告視窗。這是在網頁中執行 JavaScript 的基本方式。</p>
+標籤用於在 HTML 中嵌入 JavaScript 程式碼。alert() 函式會彈出一個警告視窗。這是在網頁中執行 JavaScript 的基本方式。比起 inline 是更好的做法，程式碼集中管理。</p>
 
-    <h3>範例四：外部 JavaScript 檔案</h3>
+
+
+    <hr>
+
+    <h3>範例三：External JavaScript （外部 JavaScript 檔案）</h3>
 
     <p>建立一個 JavaScript 檔案（例如 script.js）：</p>
 
@@ -165,7 +237,9 @@ console.log("這段程式碼來自外部 JS 檔案");
 <p><strong>說明：</strong>
 將 JavaScript 程式碼寫在獨立的 .js 檔案中，並透過 &lt;script src="..."&gt; 引用，這是實務上更常見的做法。這樣可以讓程式碼更易於管理與維護，特別是當專案規模變大時。</p>
 
-<h3>範例五：註解的使用</h3>
+    <hr>
+
+<h3>範例四：註解的使用</h3>
 
 <!-- Code Block Begin-->
 <pre><code class="language-js">
