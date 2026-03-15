@@ -100,6 +100,45 @@
       color: #1a1a18;
     }
 
+    .principal-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .principal-input-wrap input[type=number] {
+      flex: 1;
+      height: 34px;
+      border-radius: 8px;
+      border: 0.5px solid rgba(0,0,0,0.2);
+      background: #ffffff;
+      color: #1a1a18;
+      padding: 0 10px;
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      -moz-appearance: textfield;
+    }
+    .principal-input-wrap input[type=number]::-webkit-outer-spin-button,
+    .principal-input-wrap input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .principal-input-wrap input[type=number]:focus { border-color: rgba(0,0,0,0.4); }
+    .principal-input-wrap .input-unit {
+      font-size: 12px;
+      color: #888780;
+      white-space: nowrap;
+    }
+    .input-hint {
+      font-size: 11px;
+      color: #B4B2A9;
+      margin-top: 4px;
+    }
+    .input-error {
+      font-size: 11px;
+      color: #A32D2D;
+      margin-top: 4px;
+      min-height: 16px;
+    }
+
     select {
       flex: 1;
       height: 36px;
@@ -200,11 +239,16 @@
         <input type="range" id="principal" min="10" max="10000" step="5" value="100">
         <span class="control-val" id="principalOut">100,000 元</span>
       </div>
+      <div class="principal-input-wrap">
+        <input type="number" id="principalText" min="5000" max="10000000" step="5000" value="100000" placeholder="輸入金額">
+        <span class="input-unit">元</span>
+      </div>
+      <div class="input-error" id="principalError"></div>
     </div>
     <div>
       <div class="control-label">每月新增投資金額</div>
       <div class="control-row">
-        <input type="range" id="monthly" min="0" max="100" step="1" value="10">
+        <input type="range" id="monthly" min="0" max="20" step="1" value="2">
         <span class="control-val" id="monthlyOut">10,000 元</span>
       </div>
     </div>
@@ -277,18 +321,56 @@
     if (n >= 10000) return (n / 10000).toFixed(0) + '萬';
     return (n / 1000).toFixed(0) + 'k';
   }
-  function fmtDisplay(val1000) {
-    const v = val1000 * 1000;
-    if (v === 0) return '0 元';
-    if (v >= 1000000) return (v / 10000).toFixed(1) + ' 萬元';
-    return v.toLocaleString() + ' 元';
+  function fmtDisplay(yen) {
+    if (yen === 0) return '0 元';
+    if (yen >= 1000000) return (yen / 10000).toFixed(1) + ' 萬元';
+    return yen.toLocaleString() + ' 元';
   }
 
   let chart;
 
+  /* ── principal: slider unit = 1000 元, range 10~10000 (= 10k~10M) ── */
+  const sliderP = document.getElementById('principal');
+  const textP   = document.getElementById('principalText');
+  const errP    = document.getElementById('principalError');
+
+  sliderP.addEventListener('input', () => {
+    const yen = +sliderP.value * 1000;
+    textP.value = yen;
+    errP.textContent = '';
+    update();
+  });
+
+  textP.addEventListener('input', () => {
+    errP.textContent = '';
+    const raw = Math.round(+textP.value);
+    if (isNaN(raw) || raw < 5000) {
+      errP.textContent = '最低金額為 5,000 元';
+      return;
+    }
+    if (raw > 10000000) {
+      errP.textContent = '最高金額為 10,000,000 元';
+      return;
+    }
+    const clamped = Math.round(raw / 5000) * 5000;
+    sliderP.value = Math.round(clamped / 1000);
+    update();
+  });
+
+  textP.addEventListener('blur', () => {
+    const raw = +textP.value;
+    if (!isNaN(raw) && raw >= 5000 && raw <= 10000000) {
+      const snapped = Math.round(raw / 5000) * 5000;
+      textP.value = snapped;
+      sliderP.value = Math.round(snapped / 1000);
+      errP.textContent = '';
+      update();
+    }
+  });
+
   function calcData() {
-    const P = +document.getElementById('principal').value * 1000;
-    const M = +document.getElementById('monthly').value * 1000;
+    const P = +sliderP.value * 1000;
+    const M = +document.getElementById('monthly').value * 5000;
     const r = +document.getElementById('rate').value / 100;
     const Y = +document.getElementById('years').value;
     const monthlyRate = r / 12;
@@ -309,26 +391,25 @@
   }
 
   function update() {
-    const Pk = +document.getElementById('principal').value;
-    const Mk = +document.getElementById('monthly').value;
-    const r  = +document.getElementById('rate').value;
-    const Y  = +document.getElementById('years').value;
+    const Pyen = +sliderP.value * 1000;
+    const Myen = +document.getElementById('monthly').value * 5000;
+    const r    = +document.getElementById('rate').value;
+    const Y    = +document.getElementById('years').value;
 
-    document.getElementById('principalOut').textContent = fmtDisplay(Pk);
-    document.getElementById('monthlyOut').textContent   = fmtDisplay(Mk);
+    document.getElementById('principalOut').textContent = fmtDisplay(Pyen);
+    document.getElementById('monthlyOut').textContent   = fmtDisplay(Myen);
     document.getElementById('rateOut').textContent      = r + '%';
     document.getElementById('yearsOut').textContent     = Y + ' 年';
 
     const d = calcData();
-    const P = Pk * 1000, M = Mk * 1000;
-    const totalDeposited = P + M * Y * 12;
+    const totalDeposited = Pyen + Myen * Y * 12;
     const totalFV = d.initialArr[Y] + d.monthlyArr[Y] + d.interestArr[Y];
 
-    document.getElementById('statPrincipal').textContent  = fmtTWD(totalDeposited);
-    document.getElementById('statPrincipalSub').textContent = M > 0 ? '初始 + 每月累計 ' + Y + ' 年' : '僅初始投資';
-    document.getElementById('statInterest').textContent   = fmtTWD(d.interestArr[Y]);
-    document.getElementById('statFinal').textContent      = fmtTWD(totalFV);
-    document.getElementById('statMulti').textContent      = totalDeposited > 0
+    document.getElementById('statPrincipal').textContent    = fmtTWD(totalDeposited);
+    document.getElementById('statPrincipalSub').textContent = Myen > 0 ? '初始 + 每月累計 ' + Y + ' 年' : '僅初始投資';
+    document.getElementById('statInterest').textContent     = fmtTWD(d.interestArr[Y]);
+    document.getElementById('statFinal').textContent        = fmtTWD(totalFV);
+    document.getElementById('statMulti').textContent        = totalDeposited > 0
       ? (totalFV / totalDeposited).toFixed(2) + ' 倍總投入' : '—';
 
     if (chart) {
@@ -372,7 +453,7 @@
     });
   }
 
-  ['principal','monthly','rate','years','freq'].forEach(id =>
+  ['monthly','rate','years','freq'].forEach(id =>
     document.getElementById(id).addEventListener('input', update)
   );
 
