@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>複利計算機（新台幣）</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      background: #f5f4f0;
+      color: #1a1a18;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 0.5px solid rgba(0,0,0,0.1);
+      padding: 2rem 2.5rem;
+      width: 100%;
+      max-width: 760px;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 500;
+      color: #1a1a18;
+      margin-bottom: 0.25rem;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #888780;
+      margin-bottom: 2rem;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 520px) {
+      .controls { grid-template-columns: 1fr; }
+      .container { padding: 1.5rem; }
+    }
+
+    .control-label {
+      font-size: 12px;
+      color: #888780;
+      margin-bottom: 6px;
+    }
+
+    .control-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    input[type=range] {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      background: #D3D1C7;
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #1a1a18;
+      cursor: pointer;
+      border: none;
+    }
+    input[type=range]::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #1a1a18;
+      cursor: pointer;
+      border: none;
+    }
+
+    .control-val {
+      font-size: 13px;
+      font-weight: 500;
+      min-width: 82px;
+      text-align: right;
+      color: #1a1a18;
+    }
+
+    select {
+      flex: 1;
+      height: 36px;
+      border-radius: 8px;
+      border: 0.5px solid rgba(0,0,0,0.2);
+      background: #ffffff;
+      color: #1a1a18;
+      padding: 0 10px;
+      font-size: 14px;
+      cursor: pointer;
+      outline: none;
+      font-family: inherit;
+    }
+    select:focus { border-color: rgba(0,0,0,0.4); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      .stats { grid-template-columns: 1fr; }
+    }
+
+    .stat-card {
+      background: #f5f4f0;
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .stat-card-label {
+      font-size: 11px;
+      color: #888780;
+      margin-bottom: 5px;
+    }
+    .stat-card-val {
+      font-size: 19px;
+      font-weight: 500;
+      color: #1a1a18;
+      line-height: 1.2;
+    }
+    .stat-card-sub {
+      font-size: 11px;
+      color: #888780;
+      margin-top: 4px;
+    }
+    .val-interest { color: #0F6E56; }
+
+    .legend {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: #888780;
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .chart-wrap {
+      position: relative;
+      width: 100%;
+      height: 300px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 0.5px solid rgba(0,0,0,0.08);
+      margin: 2rem 0 1.5rem;
+    }
+
+    footer {
+      font-size: 11px;
+      color: #B4B2A9;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>複利計算機</h1>
+  <p class="subtitle">新台幣（TWD）· 調整下方參數即時查看試算結果</p>
+
+  <div class="controls">
+    <div>
+      <div class="control-label">初始投資金額</div>
+      <div class="control-row">
+        <input type="range" id="principal" min="10" max="10000" step="5" value="100">
+        <span class="control-val" id="principalOut">100,000 元</span>
+      </div>
+    </div>
+    <div>
+      <div class="control-label">每月新增投資金額</div>
+      <div class="control-row">
+        <input type="range" id="monthly" min="0" max="100" step="1" value="10">
+        <span class="control-val" id="monthlyOut">10,000 元</span>
+      </div>
+    </div>
+    <div>
+      <div class="control-label">年利率</div>
+      <div class="control-row">
+        <input type="range" id="rate" min="1" max="20" step="0.5" value="7">
+        <span class="control-val" id="rateOut">7%</span>
+      </div>
+    </div>
+    <div>
+      <div class="control-label">投資期間</div>
+      <div class="control-row">
+        <input type="range" id="years" min="1" max="40" step="1" value="20">
+        <span class="control-val" id="yearsOut">20 年</span>
+      </div>
+    </div>
+    <div>
+      <div class="control-label">複利計算頻率</div>
+      <div class="control-row">
+        <select id="freq">
+          <option value="1">每年</option>
+          <option value="4">每季</option>
+          <option value="12" selected>每月</option>
+          <option value="365">每日</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-card-label">總投入金額</div>
+      <div class="stat-card-val" id="statPrincipal">—</div>
+      <div class="stat-card-sub" id="statPrincipalSub">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">利息收益</div>
+      <div class="stat-card-val val-interest" id="statInterest">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">最終金額</div>
+      <div class="stat-card-val" id="statFinal">—</div>
+      <div class="stat-card-sub" id="statMulti">—</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span class="legend-item"><span class="legend-dot" style="background:#378ADD;"></span>初始本金</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#185FA5;"></span>每月投入累計</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#1D9E75;"></span>利息收益</span>
+  </div>
+
+  <div class="chart-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+
+  <hr class="divider">
+  <footer>本計算機僅供試算參考，不構成任何投資建議。</footer>
+</div>
+
+<script>
+  function fmtTWD(n) {
+    if (n >= 100000000) return 'NT$' + (n / 100000000).toFixed(2) + ' 億';
+    if (n >= 10000) return 'NT$' + (n / 10000).toFixed(1) + ' 萬';
+    return 'NT$' + Math.round(n).toLocaleString();
+  }
+  function fmtAxis(n) {
+    if (n >= 100000000) return (n / 100000000).toFixed(1) + '億';
+    if (n >= 10000) return (n / 10000).toFixed(0) + '萬';
+    return (n / 1000).toFixed(0) + 'k';
+  }
+  function fmtDisplay(val1000) {
+    const v = val1000 * 1000;
+    if (v === 0) return '0 元';
+    if (v >= 1000000) return (v / 10000).toFixed(1) + ' 萬元';
+    return v.toLocaleString() + ' 元';
+  }
+
+  let chart;
+
+  function calcData() {
+    const P = +document.getElementById('principal').value * 1000;
+    const M = +document.getElementById('monthly').value * 1000;
+    const r = +document.getElementById('rate').value / 100;
+    const Y = +document.getElementById('years').value;
+    const monthlyRate = r / 12;
+    const labels = [], initialArr = [], monthlyArr = [], interestArr = [];
+    for (let y = 0; y <= Y; y++) {
+      const months = y * 12;
+      const fvInitial = P * Math.pow(1 + monthlyRate, months);
+      const fvMonthly = (M > 0 && months > 0)
+        ? M * (Math.pow(1 + monthlyRate, months) - 1) / monthlyRate : 0;
+      const totalDeposited = P + M * months;
+      const totalFV = fvInitial + fvMonthly;
+      labels.push('第' + y + '年');
+      initialArr.push(Math.round(P));
+      monthlyArr.push(Math.round(M * months));
+      interestArr.push(Math.max(0, Math.round(totalFV - totalDeposited)));
+    }
+    return { labels, initialArr, monthlyArr, interestArr };
+  }
+
+  function update() {
+    const Pk = +document.getElementById('principal').value;
+    const Mk = +document.getElementById('monthly').value;
+    const r  = +document.getElementById('rate').value;
+    const Y  = +document.getElementById('years').value;
+
+    document.getElementById('principalOut').textContent = fmtDisplay(Pk);
+    document.getElementById('monthlyOut').textContent   = fmtDisplay(Mk);
+    document.getElementById('rateOut').textContent      = r + '%';
+    document.getElementById('yearsOut').textContent     = Y + ' 年';
+
+    const d = calcData();
+    const P = Pk * 1000, M = Mk * 1000;
+    const totalDeposited = P + M * Y * 12;
+    const totalFV = d.initialArr[Y] + d.monthlyArr[Y] + d.interestArr[Y];
+
+    document.getElementById('statPrincipal').textContent  = fmtTWD(totalDeposited);
+    document.getElementById('statPrincipalSub').textContent = M > 0 ? '初始 + 每月累計 ' + Y + ' 年' : '僅初始投資';
+    document.getElementById('statInterest').textContent   = fmtTWD(d.interestArr[Y]);
+    document.getElementById('statFinal').textContent      = fmtTWD(totalFV);
+    document.getElementById('statMulti').textContent      = totalDeposited > 0
+      ? (totalFV / totalDeposited).toFixed(2) + ' 倍總投入' : '—';
+
+    if (chart) {
+      chart.data.labels = d.labels;
+      chart.data.datasets[0].data = d.initialArr;
+      chart.data.datasets[1].data = d.monthlyArr;
+      chart.data.datasets[2].data = d.interestArr;
+      chart.update();
+    }
+  }
+
+  function initChart() {
+    const d = calcData();
+    chart = new Chart(document.getElementById('chart'), {
+      type: 'bar',
+      data: {
+        labels: d.labels,
+        datasets: [
+          { label: '初始本金',     data: d.initialArr,  backgroundColor: '#378ADD', stack: 'a' },
+          { label: '每月投入累計', data: d.monthlyArr,  backgroundColor: '#185FA5', stack: 'a' },
+          { label: '利息收益',     data: d.interestArr, backgroundColor: '#1D9E75', stack: 'a' }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => ' ' + ctx.dataset.label + '：' + fmtTWD(ctx.parsed.y),
+              footer: items => ' 合計：' + fmtTWD(items.reduce((s, i) => s + i.parsed.y, 0))
+            }
+          }
+        },
+        scales: {
+          x: { stacked: true, ticks: { autoSkip: true, maxTicksLimit: 11, color: '#888780' }, grid: { display: false } },
+          y: { stacked: true, ticks: { color: '#888780', callback: v => fmtAxis(v) }, grid: { color: 'rgba(136,135,128,0.15)' } }
+        }
+      }
+    });
+  }
+
+  ['principal','monthly','rate','years','freq'].forEach(id =>
+    document.getElementById(id).addEventListener('input', update)
+  );
+
+  initChart();
+  update();
+</script>
+</body>
+</html>
