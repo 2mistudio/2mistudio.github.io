@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/style/style.css" rel="stylesheet" >
         <link href="/style/prism.css" rel="stylesheet">
-    <title>Day 5: Display 與 Position 定位</title>
+    <title>Day 6: Flexbox 彈性佈局 </title>
 </head>
-<body id="page-css-day5">
+<body id="page-css-day6">
     <a href="#" class="button-top">TOP</a>
     <nav>
     <div class="wrap">
@@ -26,8 +26,8 @@
             <li class="link-day2"><a href="day2.htm">D2-色彩介紹</a></li>
             <li class="link-day3"><a href="day3.htm">D3-文字應用</a></li>
             <li class="link-day4"><a href="day4.htm">D4-區塊與間距</a></li>
-            <li class="link-day5 active"><a href="day5.htm">D5-顯示與定位</a></li>
-            <li class="link-day6"><a href="day6.htm">D6-Flexbox 彈性佈局</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-顯示與定位</a></li>
+            <li class="link-day6 active"><a href="day6.htm">D6-Flexbox 彈性佈局</a></li>
             <li class="link-day7"><a href="day7.htm">D7-實作 UI 元件</a></li>
             <li class="link-day8"><a href="day8.htm">D8-Grid 網格系統</a></li>
             <li class="link-day9"><a href="day9.htm">D9-響應式網頁設計</a></li>
@@ -36,7 +36,7 @@
         </ul>
 
 <!-- Main Content Starts -->
-<h1>Day 5: Display 與 Position 定位</h1>
+<h1>Day 6: Flexbox 彈性佈局 </h1>
 <h3 class="sub-title">CSS Display and Position</h3>
 
 <p>本單元算是 「CSS 網頁排版」相關的第一個章節，尤其是 CSS Position 部分，雖然是相當早期的 CSS 技術，但是因為在排版上相當實用，至今還是非常重要常見的排版技術。</p>
@@ -63,48 +63,20 @@
     <hr>
 
 <h3>1. block 區塊元素</h3>
-<p>HTML 元素有許多預設的屬性，block 區塊元素就是其中之一。block 元素通常用來作為網頁內容的「分類」與「骨架結構」，是<strong>排版專用的 HTML 元素</strong>。</p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* Block - 區塊元素 */
-.block {
-  display: block;
-  width: 200px;
-  height: 100px;
-  background-color: #3498db;
-  margin: 10px 0;
-}
-
-</code></pre>
-<!-- Code Block Ends-->
+<p>HTML 元素有許多預設的屬性，區塊元素就是其中之一。</p>
 <p><strong>特性：</strong></p>
 <ul>
     <li>獨佔一行空間，後面的元素會自動換行</li>
     <li>可以設定寬度和高度</li>
-    <li>可以設定 Margin 和 Padding</li>
     <li>預設寬度為父元素的 100%</li>
 </ul>
 
 <p><strong>預設為 block 的元素：</strong>
 &lt;div>, &lt;p>, &lt;h1>-&lt;h6>, &lt;ul>, &lt;ol>, &lt;li>, &lt;section>, &lt;header>, &lt;footer>⋯等。</p>
-<div class="notice">
-    <p><strong>注意：</strong>網頁中的圖片 &lt;img> 雖然方方正正的，看起來像是個 Block ，但其實不是 block 元素，而是屬於 inline 元素。</p>
-</div>
 <hr>
 
 <h3>2. inline 行內元素</h3>
 <p>行內元素元素也是 HTML 元素許多預設的屬性之一。</p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* Inline - 行內元素 */
-.inline {
-  display: inline;
-  background-color: #e74c3c;
-  /* width 和 height 無效 */
-}
-
-</code></pre>
-<!-- Code Block Ends-->
 <p><strong>特性：</strong></p>
 <ul>
     <li>不會換行，與其他元素在同一行</li>
@@ -117,19 +89,6 @@
 <hr>
 
 <h3>3. inline-block 行內區塊</h3>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* Inline-block - 行內區塊 */
-.inline-block {
-  display: inline-block;
-  width: 100px;
-  height: 50px;
-  background-color: #2ecc71;
-  margin: 0 10px;
-}
-
-</code></pre>
-<!-- Code Block Ends-->
 <p><strong>特性：</strong></p>
 <ul>
     <li>不會換行，與其他元素在同一行</li>
@@ -146,15 +105,6 @@
 
 <h3>4. none 隱藏元素</h3>
 <p>用來讓指定 HTML 元素從網頁中完全消失。</p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* None - 隱藏 */
-.hidden {
-  display: none;
-}
-
-</code></pre>
-<!-- Code Block Ends-->
 <p><strong>特性：</strong></p>
 <ul>
     <li>元素完全不顯示</li>
@@ -221,25 +171,8 @@
     <li>元素按照正常文檔流（從上到下、由左而右）排列</li>
     <li>top、right、bottom、left、z-index 無效</li>
 </ul>
-<p><strong>使用場景：</strong></p>
-<ul>
-    <li>當作橡皮擦，用來清除先前設定的定位屬性</li>
-</ul>
 <hr>
-
 <h3>2. relative（相對定位）</h3>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* Relative - 相對定位 */
-.relative {
-  position: relative;
-  top: 20px;    /* 向下移動 20px */
-  left: 30px;   /* 向右移動 30px */
-  /* 原本的空間仍然保留 */
-}
-
-</code></pre>
-<!-- Code Block Ends-->
 <p><strong>特性：</strong></p>
 <ul>
     <li>相對於元素原本的位置進行偏移</li>
@@ -252,29 +185,7 @@
     <li>作為 absolute 定位的參考點（父元素）</li>
 </ul>
 <hr>
-
 <h3>3. absolute（絕對定位）</h3>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* Absolute - 絕對定位 */
-.parent {
-  position: relative;  /* 作為參考點 */
-  width: 300px;
-  height: 200px;
-  background-color: #ecf0f1;
-}
-
-.child {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 100px;
-  height: 50px;
-  background-color: #e74c3c;
-}
-
-</code></pre>
-<!-- Code Block Ends-->
 <p><strong>特性：</strong></p>
 <ul>
     <li>相對於最近的 <strong>已定位父元素</strong>（非 static）進行定位</li>
@@ -292,32 +203,6 @@
 <hr>
 
 <h3>4. fixed（固定定位）</h3>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* Fixed - 固定定位 */
-.fixed-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #2c3e50;
-  color: white;
-  padding: 20px;
-  z-index: 1000;
-}
-
-.back-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background-color: #3498db;
-  border-radius: 50%;
-}
-
-</code></pre>
-<!-- Code Block Ends-->
 <p><strong>特性：</strong></p>
 <ul>
     <li>相對於瀏覽器視窗進行定位</li>
@@ -332,19 +217,6 @@
 </ul>
 <hr>
 <h3>5. sticky（黏著定位）</h3>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* Sticky - 黏性定位 */
-.sticky-nav {
-  position: sticky;
-  top: 0;  /* 捲動到頂部時固定 */
-  background-color: white;
-  border-bottom: 2px solid #ddd;
-  padding: 10px;
-}
-
-</code></pre>
-<!-- Code Block Ends-->
 <p><strong>特性：</strong></p>
 <ul>
     <li>結合 relative 和</li>
@@ -359,9 +231,6 @@
     <li>側邊欄</li>
     <li>區塊標題</li>
 </ul>
-<div class="notice">
-    <p><strong>注意：</strong>在 CSS Position 屬性當中， Sticky 屬性算是最新的一個。<a href="https://caniuse.com/css-sticky" target="_blank" rel="noopener noreferrer" title="查詢 Can I Use 網站">主流瀏覽器從 2021 年之後才開始完整支援</a>，IE 完全不支援。</p>
-</div>
 <hr>
 
 <h2>四、定位偏移屬性</h2>
@@ -380,230 +249,142 @@ left: 值;     /* 距離左側 */
 
 <h2>五、z-index（層疊順序）</h2>
 <p>可以想像成 Photoshop 的圖層概念，用來控制被定位的 HTML 元素的堆疊順序（只對已設定定位的元素有效）。</p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-.layer-1 {
-  position: absolute;
-  z-index: 1;
-  background-color: red;
-}
-
-.layer-2 {
-  position: absolute;
-  z-index: 2;
-  background-color: blue;
-  /* 會在 layer-1 上方 */
-}
-
-.layer-3 {
-  position: absolute;
-  z-index: 3;
-  background-color: green;
-  /* 會在 layer-2 上方 */
-}
-
-</code></pre>
-<!-- Code Block Ends-->
 <p><strong>特性：</strong></p>
 <ul>
     <li>數值越大，越在上層</li>
     <li>預設值為 auto（等於 0）</li>
     <li>可以使用負值</li>
 </ul>
-<hr>
+
 
 
 <h2>六、常見錯誤與注意事項</h2>
-<h3>錯誤 1: inline 元素設定寬高</h3>
-<p><strong>錯誤示範：</strong></p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* ❌ inline 元素無法設定寬高 */
-span {
-  display: inline;
-  width: 200px;   /* 無效 */
-  height: 100px;  /* 無效 */
-}
-</code></pre>
-<!-- Code Block Ends-->
-<p><strong>正確做法：</strong></p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* ✅ 改用 inline-block */
-span {
-  display: inline-block;
-  width: 200px;
-  height: 100px;
-}
-
-</code></pre>
-<!-- Code Block Ends-->
-<hr>
-
-<h3>錯誤 2: absolute 定位沒有參考點</h3>
-<p><strong>錯誤示範：</strong></p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* ❌ 父元素沒有設定 position */
-.parent {
-  /* 沒有 position 屬性 */
-}
-
-.child {
-  position: absolute;
-  top: 20px;
-  /* 會相對於 body 定位，而非 parent */
-}
-
-</code></pre>
-<!-- Code Block Ends-->
-<p><strong>正確做法：</strong></p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* ✅ 父元素設定 position: relative */
-.parent {
-  position: relative;  /* 作為參考點 */
-}
-
-.child {
-  position: absolute;
-  top: 20px;
-  /* 相對於 parent 定位 */
-}
-
-</code></pre>
-<!-- Code Block Ends-->
-<hr>
-
-<h3>錯誤 3: z-index 對非定位元素無效</h3>
-<p><strong>錯誤示範：</strong></p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* ❌ static 元素無法使用 z-index */
-.box {
-  position: static;  /* 或未設定 position */
-  z-index: 999;      /* 無效 */
-}
-
-</code></pre>
-<!-- Code Block Ends-->
-<p><strong>正確做法：</strong></p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-/* ✅ 必須是定位元素 */
-.box {
-  position: relative;  /* 或 absolute, fixed, sticky */
-  z-index: 999;
-}
-
-</code></pre>
-<!-- Code Block Ends-->
-<hr>
-
-<h3>錯誤 4: fixed 元素導致內容被遮蓋</h3>
+<h3>錯誤 1: 忘記設定 box-sizing</h3>
 <p><strong>問題示範：</strong></p>
 <!-- Code Block Begin-->
 <pre><code class="language-css">
-/* ❌ 固定導覽列遮住頁面內容 */
-.header {
-  position: fixed;
-  top: 0;
-  height: 60px;
-}
-
-/* 內容被遮住 */
 
 </code></pre>
 <!-- Code Block Ends-->
-<p><strong>正確做法：</strong></p>
+<p><strong>建議做法：</strong></p>
 <!-- Code Block Begin-->
 <pre><code class="language-css">
-/* ✅ 為內容留出空間 */
-.header {
-  position: fixed;
-  top: 0;
-  height: 60px;
-}
 
-body {
-  padding-top: 60px;  /* 與 header 高度相同 */
-}
 
 </code></pre>
 <!-- Code Block Ends-->
-<hr>
 
-<h3>錯誤 5: sticky 定位沒有設定 top / bottom / left / right</h3>
+<h3>錯誤 2: Margin 疊加問題</h3>
+<p><strong>垂直 Margin 會疊加（兩組設定會取較大值）：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+
+
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>解決方式：</strong></p>
+<ul>
+    <li>了解這是正常行為</li>
+
+</ul>
+<h3>錯誤 3: Padding 使用負值</h3>
 <p><strong>錯誤示範：</strong></p>
 <!-- Code Block Begin-->
 <pre><code class="language-css">
-/* ❌ sticky 必須設定 top/bottom 等閾值 */
-.sticky {
-  position: sticky;
-  /* 缺少 top, bottom, left, 或 right */
-}
+
+</code></pre>
+<p>只有 margin 可以使用負值，Padding 不行。</p>
+
+<h3>錯誤 4: 百分比高度問題</h3>
+<p><strong>問題示範：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
 
 </code></pre>
 <!-- Code Block Ends-->
 <p><strong>正確做法：</strong></p>
 <!-- Code Block Begin-->
 <pre><code class="language-css">
-/* ✅ 設定觸發閾值 */
-.sticky {
-  position: sticky;
-  top: 0;  /* 捲動到頂部時固定 */
-}
+
+
+</code></pre>
+<!-- Code Block Ends-->
+<p>高度設定在網頁中是一個特別的存在。</p>
+<ul>
+    <li>網頁中 HTML 區塊元素預設的寬度是 100%</li>
+
+</ul>
+
+<h3>錯誤 5: Border 語法順序錯誤</h3>
+<p><strong>錯誤示範：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+
+
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>正確做法：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+
 
 </code></pre>
 <!-- Code Block Ends-->
 
 <h2>七、重點整理</h2>
-<h3>Display 的選擇：</h3>
+<h3>Box Model 盒模型組成：</h3>
 <ul>
-    <li>需要獨佔一行 → block</li>
-    <li>需要在同一行且設定尺寸 → inline-block</li>
-    <li>純文字或不需折行的小元素 → inline</li>
+    <li>Content（內容）→ Padding（內邊距）→ Border（邊框）→ Margin（外邊距）</li>
 </ul>
-<h3>Position 的選擇：</h3>
+<h3>Margin & Padding 間距屬性：</h3>
 <ul>
-    <li>微調位置 → relative</li>
-    <li>相對於父元素定位 → absolute（父元素要設定 position）</li>
-    <li>固定在視窗 → fixed</li>
-    <li>捲動時有變化 → sticky</li>
+    <li>margin - 外邊距，可用負值，margin: 0 auto 可水平置中
+padding - 內</li>
+    <li>font-size - 字體大小（建議用 px 或 rem）</li>
+    <li>padding - 內邊距，不可用負值</li>
+    <li>設定方式：四個值 / 兩個值 / 一個值 / 單獨設定</li>
 </ul>
-<h3>Absolute 定位的參考點：</h3>
+<h3>Border 邊框：</h3>
 <ul>
-    <li>向上尋找第一個非 static 的父元素</li>
-    <li>找不到就相對於 body</li>
-    <li>通常在父元素設定 position: relative</li>
+    <li>border: 寬度 樣式 顏色</li>
+    <li>樣式：solid、dashed、dotted、double、none</li>
+    <li>border-radius - 圓角，50% 可製作圓形</li>
 </ul>
-<h3>z-index 的使用：</h3>
+<h3>Width & Height 寬高尺寸：</h3>
 <ul>
-    <li>只對定位元素有效</li>
-    <li>同一層級才會比較</li>
-    <li>會相對於視窗，不受捲動影響</li>
+    <li>width、height - 寬度和高度</li>
+    <li>max-width、min-width - 最大/最小寬度</li>
+    <li>max-height、min-height - 最大/最小高度</li>
 </ul>
-<h3>Fixed 定位的影響：</h3>
+<h3>Box-sizing：</h3>
 <ul>
-    <li>脫離文檔流，不佔空間</li>
-    <li>記得為其他內容留出空間</li>
+    <li>content-box - 預設，寬度不包含 padding 和 border</li>
+    <li>border-box - 推薦，寬度包含 padding 和 border</li>
     <li>建議全域設定為 border-box</li>
 </ul>
-<h3>Sticky 的瀏覽器支援：</h3>
+<h3>Background 背景：</h3>
 <ul>
-    <li>現代瀏覽器普遍支援</li>
-    <li>IE 不支援</li>
-    <li>需要設定（top / bottom / left / right）</li>
+    <li>background-color - 背景顏色</li>
+    <li>background-image - 背景圖片</li>
+    <li>background-size - 圖片尺寸（cover / contain）</li>
+    <li>background-position - 圖片位置</li>
+    <li>background-repeat - 是否重複</li>
+</ul>
+<h3>重要觀念：</h3>
+<ul>
+    <li>垂直 margin 會疊加（取較大值）</li>
+    <li>Padding 不能用負值，Margin 可以</li>
+    <li>百分比高度需要父元素有明確高度</li>
+    <li>推薦使用 box-sizing: border-box</li>
 </ul>
 
-
     <section class="footer-nav">
-        <a class="prev" href="day4.htm">
+        <a class="prev" href="day5.htm">
             <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
-            DAY 4
+            DAY 5
             </a>
-        <a class="next" href="day6.htm">
-            DAY 6
+        <a class="next" href="day7.htm">
+            DAY 7
             <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
         </a>
     </section>
