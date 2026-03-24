@@ -169,6 +169,9 @@ code.language-js::before {
 .red {
     color: hsl(0, 100%, 40%);
 }
+.text-left {
+    text-align: left;
+}
 .smaller {
     font-size: smaller;
 }
@@ -420,6 +423,54 @@ footer p {
     background-color: var(--prime-green);
 }
 #page-css3 .sub-nav .css-css3 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css-day0 .sub-nav .link-day0 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css-day1 .sub-nav .link-day1 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css-day2 .sub-nav .link-day2 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css-day3 .sub-nav .link-day3 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css-day4 .sub-nav .link-day4 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css-day5 .sub-nav .link-day5 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css-day6 .sub-nav .link-day6 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css-day7 .sub-nav .link-day7 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css-day8 .sub-nav .link-day8 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css-day9 .sub-nav .link-day9 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css-day10 .sub-nav .link-day10 a {
+    color: white;
+    background-color: var(--prime-green);
+}
+#page-css-faq .sub-nav .link-faq a {
     color: white;
     background-color: var(--prime-green);
 }
