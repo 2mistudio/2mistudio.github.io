@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet" >
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 1: CSS 基礎與選擇器</title>
+</head>
+<body id="page-css-day1">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/css/">CSS</a></li>
+            <li><a href="/css/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-CSS基礎與選擇器</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-色彩介紹</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-文字應用</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-區塊與間距</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-顯示與定位</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Flexbox 彈性佈局</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-實作 UI 元件</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-Grid 網格系統</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-響應式網頁設計</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-漸變與基礎動畫</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 1: CSS 基礎與選擇器</h1>
+<h3 class="sub-title">CSS Basic and Selectors</h3>
+
+<h2>一、學習目標</h2>
+<p>完成本日課程後，你將能夠：</p>
+<ul>
+    <li>理解 CSS 的作用與基本概念</li>
+    <li>掌握 CSS 的引入方式並選擇適合的方法</li>
+    <li>使用元素選擇器、Class 選擇器、ID 選擇器</li>
+    <li>為連結套用不同狀態的樣式（ :link, :visited, :hover, :active ）</li>
+    <li>建立第一個包含外部 CSS 的網頁</li>
+</ul>
+<h2>二、什麼是 CSS？</h2>
+<p><a href="/css/">CSS</a> (Cascading Style Sheets) 是層疊樣式表，用來控制網頁元素的外觀與排版。如果說 HTML 是網頁的骨架，那 CSS 就是皮膚和衣服，負責讓網頁變得美觀。</p>
+<h3>網頁的三大核心：</h3>
+<ul>
+    <li><strong>HTML</strong> = 網頁的結構與內容（骨架）</li>
+    <li><strong>CSS</strong> = 網頁的外觀與樣式（皮膚和衣服）</li>
+    <li><strong>JavaScript</strong> = 網頁的互動與行為（大腦和肌肉）</li>
+</ul>
+<p><strong> Cascading 層疊的意義：</strong>
+當多個 CSS 規則應用在同一個元素上時，會依照「優先級」和「順序」來決定最終樣式。後面的規則會覆蓋前面的規則。</p>
+
+<h2>三、CSS 基本語法結構</h2>
+
+<p>CSS 由「選擇器」和「宣告區塊」組成：</p>
+
+<ul>
+    <li><strong>選擇器 (Selector)：</strong>指定要套用樣式的 HTML 元素</li>
+    <li><strong>屬性 (Property)：</strong>要改變的樣式特性</li>
+    <li><strong>值 (Value)：</strong>屬性的具體設定</li>
+</ul>
+
+<h3>CSS 的三種引入方式</h3>
+<ul>
+    <li>Inline Style 內聯樣式</li>
+    <li>Internal Style 內部樣式</li>
+    <li>External Style 外部樣式</li>
+</ul>
+
+<h3>1. Inline Style 內聯樣式</h3>
+<p>直接寫在 HTML 標籤的 style 屬性中。</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;p style="color: red;"&gt;紅色文字&lt;/p&gt;
+    
+</code></pre>
+<!-- Code Block Ends-->
+
+    <ul>
+        <li><strong>優點：</strong>優先級最高，可快速測試單一元素樣式</li>
+        <li><strong>缺點：</strong>難以維護、無法重複使用、違反關注點分離原則 <sup>註</sup></li>
+        <li><strong>使用時機：</strong>僅在特殊情況、緊急修正，或 JavaScript 動態生成樣式時使用</li>
+    </ul>
+<div class="remark">
+<p>備注：關注點分離原則（Separation of Concerns, SoC）旨在將網頁結構、樣式與行為拆分（HTML 負責結構，CSS 負責樣式），以提升程式碼的可讀性、可維護性與重用性，並利於團隊分工。</p>
+</div>
+<hr>
+
+<h3>2. Internal Style 內部樣式</h3>
+<p>寫在 HTML 的 &lt;head&gt; 區塊內的 &lt;style&gt; 標籤中。</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-TW"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Internal Style 內部樣式&lt;/title&gt;
+    &lt;style&gt;
+        p {color: red;}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;這是一段紅色的文字&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<!-- Code Block Ends-->
+
+    <ul>
+        <li><strong>優點：</strong>適合單頁面的樣式、無需加載額外檔案</li>
+        <li><strong>缺點：</strong>無法跨頁面共用、增加 HTML 檔案複雜性、不利於快取</li>
+        <li><strong>使用時機：</strong>小型專案、單頁應用，或特定頁面專屬樣式</li>
+    </ul>
+
+    <hr>
+
+<h3>3. External Style 外部樣式</h3>
+<p>建立獨立的 .css 檔案並引入，有兩種引入方法：</p>
+
+<h4>方法 A: 使用 HTML 的 &lt;link&gt; 標籤（推薦）</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-TW"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;External Style 外部樣式&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    ...
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<!-- Code Block Ends-->
+
+    <ul>
+        <li><strong>優點：</strong>可重複使用、易於維護、瀏覽器可平行下載、支援媒體查詢、可被瀏覽器快取，提升效能</li>
+        <li><strong>缺點：</strong>需要額外的 HTTP 請求</li>
+        <li><strong>使用時機：這是最推薦的方式，適用於所有專案</strong></li>
+    </ul>
+
+    <hr>
+
+<h4>方法 B: 使用 CSS 的 @import 規則</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-TW"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;External Style 外部樣式&lt;/title&gt;
+    &lt;style&gt;
+        @import url('style.css');
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    ...
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<!-- Code Block Ends-->
+
+    <ul>
+        <li><strong>優點：</strong>可以在 CSS 內部管理多個樣式表、適合模組化組織</li>
+        <li><strong>缺點：</strong>效能較差（會阻塞渲染）、無法平行下載</li>
+        <li><strong>使用時機：</strong>適合開發階段模組化管理，生產環境建議打包成單一檔案</li>
+    </ul>
+<p><strong>特別注意事項：</strong>在 CSS 檔中使用 @import 規則時，@import 必須置於 CSS 內容的最上方。</p>
+
+<h4>&lt;link&gt; 跟  @import 比較表</h4>
+<table>
+    <tr>
+        <th>特性</th>
+        <th>&lt;link&gt;</th>
+        <th>@import</th>
+    </tr>
+    <tr>
+        <th>位置</th>
+        <td>HTML &lt;head&gt;</td>
+        <td>CSS 檔案內或 &lt;style&gt; 標籤</td>
+    </tr>
+    <tr>
+        <th>載入方式</th>
+        <td>平行下載 ⚡</td>
+        <td>依序下載 🐌</td>
+    </tr>
+    <tr>
+        <th>效能</th>
+        <td>較好</td>
+        <td>較差</td>
+    </tr>
+    <tr>
+        <th>推薦程度</th>
+        <td>⭐⭐⭐⭐⭐</td>
+        <td>⭐⭐</td>
+    </tr>
+</table>
+
+
+<div class="notice">
+<p> &lt;link&gt; 跟  @import 雖然同為 External Style ，但實際使用上還有許多細微的差異。若想要進一步瞭解這些差別，請詳見 <a href="/css/link-import.htm">&lt;link&gt; 跟  @import 比較說明</a>。</p>
+</div>
+
+    <hr>
+
+<h2>四、CSS 的選擇器</h2>
+
+<p>「CSS 選擇器」—— 顧名思義，就是用來選擇要設定 CSS 的工具。比較常見的 CSS 選擇器有四種：</p>
+<ul>
+    <li>Element Selector 元素選擇器</li>
+    <li>Class Selector 類別選擇器</li>
+    <li>ID Selector ID 選擇器</li>
+    <li>Pseudo-classes 偽類選擇器</li>
+</ul>
+
+<h3>1. Element Selector 元素選擇器</h3>
+<p>直接使用 HTML 標籤名稱作為選擇器。</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* 選取頁面中所有的 &lt;p&gt; 元素 */
+p {
+  color: #333;
+}
+/* 選取頁面中所有的 &lt;h1&gt; 元素 */
+h1 {
+  font-size: 32px;
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>特性：</h4>
+<ul>
+    <li>會影響頁面上所有該類型的元素</li>
+    <li>最基本、最簡單的選擇器</li>
+</ul>
+<h4>使用時機：</h4>
+<ul>
+    <li>設定整體網頁的基礎樣式</li>
+    <li>重置或標準化元素的預設樣式</li>
+</ul>
+<hr>
+
+<h3>2. Class Selector 類別選擇器</h3>
+<p>使用 . 開頭，搭配 HTML 的 class 屬性作為選擇器。</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* 類別選擇器 */
+.highlight {
+  background-color: yellow;
+}
+
+.text-center {
+  text-align: center;
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;p>這是普通文字&lt;/p>
+&lt;p class="highlight">這是重點文字&lt;/p>
+&lt;p class="hilight text-center">這是重點又居中的文字&lt;/p>
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>特性：</h4>
+<ul>
+    <li>可重複使用在多個元素上</li>
+    <li>一個元素可以有多個 class（用空格分隔）</li>
+    <li>優先級比元素選擇器高</li>
+</ul>
+<h4>命名建議：</h4>
+<ul>
+    <li>使用小寫英文字母</li>
+    <li>多個單字用 - 連接（kebab-case）</li>
+    <li>語意化命名（描述用途而非外觀）
+        <ul>
+            <li>✅ .btn-primary, .card-header</li>
+            <li>❌ .red-button, .big-text</li>
+        </ul>
+    </li>
+</ul>
+<h4>使用時機：</h4>
+<ul>
+    <li>需要重複使用的樣式</li>
+    <li>建立元件或模組</li>
+    <li><strong>最常用的選擇器</strong></li>
+</ul>
+
+<hr>
+
+<h3>3. ID Selector ID 選擇器</h3>
+<p>使用 # 開頭，搭配 HTML 的 id 屬性。</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ID 選擇器 */
+#main-header {
+  background-color: navy;
+  color: white;
+}
+
+#main-footer {
+  margin-top: 50px;
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;header id="main-header">
+  &lt;h1>網站標題&lt;/h1>
+&lt;/header>
+
+&lt;footer id="main-footer">
+  &lt;p>版權資訊&lt;/p>
+&lt;/footer>
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>特性：</h4>
+<ul>
+    <li>在一個頁面中應該是唯一的（只能出現一次）</li>
+    <li>優先級比 class 高</li>
+    <li>也用於 JavaScript 選取元素和頁面錨點</li>
+</ul>
+<h4>使用時機：</h4>
+<ul>
+    <li>選取頁面上唯一的元素（如 header、footer）</li>
+    <li>JavaScript 操作特定元素</li>
+    <li>頁面內錨點連結</li>
+</ul>
+<h4>注意：</h4>
+<ul>
+    <li>現代開發中，CSS 樣式通常優先使用 class 而非 ID</li>
+    <li>ID 的高優先級可能造成樣式難以被覆蓋</li>
+</ul>
+<hr>
+
+<h3>4. Pseudo-classes 偽類選擇器</h3>
+<p>Pseudo （唸起來像速度）偽類選擇器，通常用在選取 HTML 元素的特定「狀態」。偽類選擇器相當多，為了降低學習複雜度，這邊先介紹 &lt;a&gt; 連結的四個重要狀態偽類。</p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* 必須按照 LVHA 順序 */
+
+/* :link - 未訪問的連結 */
+a:link {
+  color: #3498db;
+  text-decoration: none;
+}
+
+/* :visited - 已訪問的連結 */
+a:visited {
+  color: #9b59b6;
+}
+
+/* :hover - 滑鼠懸停 */
+a:hover {
+  color: #e74c3c;
+  text-decoration: underline;
+}
+
+/* :active - 點擊當下 */
+a:active {
+  color: #c0392b;
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<!-- <h4>四個連結狀態：</h4>
+<ul>
+    <li>:link - 未訪問過的連結</li>
+    <li>:visited - 已訪問過的連結</li>
+    <li>:hover - 滑鼠懸停時</li>
+    <li>:active - 點擊當下（滑鼠按下但未放開）</li>
+</ul> -->
+<h4>LVHA 順序規則：</h4>
+<p>超連結的偽類的順序非常重要，必須按照 L-V-H-A 的順序撰寫：</p>
+<ul>
+    <li>:link → :visited → :hover → :active</li>
+</ul>
+<p><strong>為什麼順序重要？</strong>
+因為 CSS 的「層疊」特性，後面的規則會覆蓋前面的規則。如果順序錯誤，某些狀態可能無法正常顯示。</p>
+<h4>使用時機：</h4>
+<ul>
+    <li>為連結提供視覺回饋</li>
+    <li>改善使用者體驗</li>
+    <li>區分已訪問和未訪問的連結</li>
+</ul>
+<hr>
+
+<h3>選擇器優先級基礎</h3>
+<p>當多個選擇器選取同一個元素時，優先級決定哪個樣式會生效。</p>
+<h4>優先級順序（從高到低）：</h4>
+<ul>
+    <li>Internal Style 內部樣式 (HTML 元素的 style 屬性)</li>
+    <li>ID 選擇器 (#id)</li>
+    <li>Class 選擇器 (.class)</li>
+    <li>元素選擇器 (HTML 元素)</li>
+</ul>
+<h4>當優先級相同時：</h4>
+<ul>
+    <li>讀取順序排在後面的規則會覆蓋掉前面的規則</li>
+</ul>
+
+<h4>測試範例：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+p {
+  color: black;
+}
+
+.highlight {
+  color: blue;
+}
+
+#intro {
+  color: red;
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!-- 這段語法同時符合了三種選擇器的設定  -->
+&lt;p id="intro" class="highlight">這是一段測試文字&lt;/p>
+
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>結果：</strong> 文字顯示為紅色，因為 ID 選擇器優先級最高。</p>
+<hr>
+
+<div class="notice">
+<p>以上為最常見的幾組基本 CSS 選擇器，初學者只要先學會上述幾種就可以開始實作。若想要進一步瞭解選擇器的功能，請詳見<a href="/css/selector.htm">更完整的 CSS 選擇器介紹</a>。</p>
+</div>
+    <hr>
+
+<h2>五、常見錯誤與注意事項</h2>
+
+<h3>錯誤 1: CSS 語法錯誤</h3>
+<h4>錯誤示範：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ❌ 忘記分號：等於 color 這一行設定沒有結束 */
+p {
+  color: red /* 應該要加上 ; 收尾 */
+  font-size: 16px;
+}
+
+/* ❌ 忘記冒號：直接是無效的 CSS 設定 */
+p {
+  color red;
+}
+
+/* ❌ 忘記大括號：直接是無效的 CSS 設定 */
+p
+  color: red;
+  font-size: 16px;
+
+/* ❌ 屬性英文名稱拼錯：直接是無效的 CSS 設定 */
+p {
+  collor: red;  /* 應該是 color */
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確做法：</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ✅ 正確語法 */
+p {
+  color: red;
+  font-size: 16px;
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+ 
+<h4>注意事項：</h4>
+<h4>1. CSS 不區分大小寫（屬性和值），但建議全部用小寫</h4>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* 技術上都有效，但不推薦混用 */
+   p { COLOR: RED; }
+   p { Color: Red; }
+   /* ✅ 推薦：全部小寫 */
+   p { color: red; }
+
+</code></pre>
+<!-- Code Block Ends-->
+ 
+<h4>2. Class 和 ID 名稱區分大小寫</h4>
+
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;div class="Card">&lt;/div>
+
+</code></pre>
+<!-- Code Block Ends-->
+ 
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+.card { }   /* ❌ 第一個字小寫，無法選取 */
+.Card { }   /* ✅ 大小寫完全符合，可以選取 */
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>3. 可以使用開發者工具來檢查樣式</h4>
+<ul>
+    <li>按 F12 開啟瀏覽器開發者工具</li>
+    <li>可以即時查看和修改 CSS</li>
+    <li>可以看到哪些樣式被套用、哪些被覆蓋</li>
+</ul>
+
+<hr>
+
+<h3>錯誤 2: 忘記在 class 和 ID 前加符號</h3>
+<p><strong>錯誤示範：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ❌ 錯誤：這會選取叫做 &lt;highlight> 的自訂 HTML 元素，而不是 class */
+highlight {
+  background-color: yellow;
+}
+
+/* ❌ 錯誤：這會選取 &lt;header> HTML 元素，而不是 ID */
+header {
+  background-color: navy;
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>正確做法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ✅ 正確：class 選擇器要加 . */
+.highlight {
+  background-color: yellow;
+}
+
+/* ✅ 正確：ID 選擇器要加 # */
+#header {
+  background-color: navy;
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+ 
+<hr>
+
+<h3>錯誤 3: CSS 檔案路徑錯誤</h3>
+<p><strong>錯誤示範：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+**檔案結構：**
+
+project/
+├── index.html
+├── css/
+│   └── style.css
+└── images/
+
+&lt;!-- ❌ 錯誤：檔案不在正確位置 -->
+&lt;link rel="stylesheet" href="style.css">
+&lt;!-- 實際檔案在 css/style.css -->
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>正確做法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-html">
+&lt;!-- ✅ 正確：路徑要對應實際檔案位置 -->
+&lt;link rel="stylesheet" href="css/style.css">
+
+</code></pre>
+<!-- Code Block Ends-->
+ 
+<hr>
+
+<h2>六、重點整理</h2>
+<ul>
+    <li><strong>CSS 的作用：</strong>控制網頁元素的外觀與樣式/li>
+    <li><strong>引入方式：</strong>外部樣式（使用 &lt;link>）是最推薦的方式</li>
+    <li><strong>元素選擇器：</strong>直接使用標籤名稱，影響所有該類型元素</li>
+    <li><strong>Class 選擇器：</strong>使用 . 開頭，可重複使用，最常用</li>
+    <li><strong>ID 選擇器：</strong>使用 # 開頭，應該是唯一的</li>
+    <li><strong>連結偽類：</strong>必須按照 LVHA 順序（:link → :visited → :hover → :active）</li>
+    <li><strong>優先級：</strong>內聯 > ID > Class > 元素</li>
+    <li><strong>語法結構：</strong>選擇器 { 屬性: 值; }</li>
+</ul>
+
+
+
+
+
+    <section class="footer-nav">
+        <a class="prev" href="/css/learn/">
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+            DAY 0
+            </a>
+        <a class="next" href="day2.htm">
+            DAY 2
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

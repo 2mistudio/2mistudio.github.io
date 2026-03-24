@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet" >
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 2: CSS 色彩空間介紹</title>
+</head>
+<body id="page-css-day2">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/css/">CSS</a></li>
+            <li><a href="/css/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-CSS基礎與選擇器</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-色彩介紹</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-文字應用</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-區塊與間距</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-顯示與定位</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Flexbox 彈性佈局</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-實作 UI 元件</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-Grid 網格系統</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-響應式網頁設計</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-漸變與基礎動畫</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 2: CSS 色彩空間介紹</h1>
+<h3 class="sub-title">CSS Color Space</h3>
+
+<h2>一、學習目標</h2>
+<p>完成本日課程後，你將能夠：</p>
+<ul>
+    <li>理解網頁設計中的色彩基礎概念</li>
+    <li>掌握 CSS 的各種顏色表示法（顏色名稱、HEX、RGB、RGBA、HSL）</li>
+    <li>了解色彩的透明度與應用場景</li>
+    <li>設定文字與背景顏色</li>
+    <li>建立基本的配色方案</li>
+    <li>運用色彩對比提升可讀性</li>
+</ul>
+<h2>二、色彩基礎概念</h2>
+<p>色彩是網頁設計中最具影響力的元素之一，能夠：</p>
+<ul>
+    <li>傳達情感和氛圍</li>
+    <li>建立視覺層級</li>
+    <li>引導使用者注意力</li>
+    <li>強化品牌識別</li>
+</ul>
+<h3>色彩的三個基本屬性：</h3>
+<ul>
+    <li><strong>色相 (Hue)：</strong>顏色的種類（紅、藍、綠等）</li>
+    <li><strong>彩度 (Saturation)：</strong>又稱作飽和度，是顏色的純度或鮮豔程度</li>
+    <li><strong>明度 (Lightness/Brightness)：</strong>又稱作亮度，顏色的明暗程度</li>
+</ul>
+<hr>
+<h2>三、CSS 顏色表示法</h2>
+
+<h3>1. 顏色名稱 (Color Names)</h3>
+<p>CSS 支援 140+ 個預定義的顏色名稱。</p>
+<p><strong>常用顏色：</strong></p>
+<ul>
+    <li>基本色：red, blue, green, yellow, orange, purple, pink</li>
+    <li>黑白灰：black, white, gray, lightgray, darkgray</li>
+    <li>特殊色：transparent（完全透明）</li>
+</ul>
+<p><strong>優點：</strong> 容易記憶、語意清楚、可以快速使用<br>
+<strong>缺點：</strong> 選擇有限、不夠精確、沒有設計感</p>
+
+<hr>
+
+<h3>2. HEX 十六進位 (Hexadecimal)</h3>
+<p>使用 # 開頭，後接 6 位十六進位數字。</p>
+<p><strong>格式：</strong> #RRGGBB</p>
+<ul>
+    <li>RR = 紅色 (00-FF)</li>
+    <li>GG = 綠色 (00-FF)</li>
+    <li>BB = 藍色 (00-FF)</li>
+</ul>
+
+<p><strong>簡寫規則：</strong>當六位數字兩兩相同時，可簡寫為三位：</p>
+<ul>
+    <li>#ff0000 → #f00（紅色）</li>
+    <li>#00ff00 → #0f0（綠色）</li>
+    <li>#0000ff → #00f（藍色）</li>
+    <li>#ffffff → #fff（白色）</li>
+    <li>#000000 → #000（黑色）</li>
+</ul>
+<p><strong>優點：</strong> 最常用、簡潔、標準化、設計工具普遍支援<br>
+<strong>缺點：</strong> 不直觀、難以理解色值含義、調整顏色麻煩</p>
+
+<p><strong>備註：</strong></p>
+<ul>
+<li>電腦上的十六進位制（Hexadecimal）指的是由 0 到 F 共計十六位。平時數數是用「十進位」（0 到 9），但十六進位需要 16 個符號。因為數字只有 0 到 9，所以剩下的 6 個數值就用英文字母 A 到 F 來代替。</li>
+<li>RR 有兩個空格，每一個空格可以有十六種變化，兩個空格（16 x 16）就可以衍生出 256 種變化。</li>
+</ul>
+<hr>
+
+<h3>3. RGB (Red, Green, Blue)</h3>
+<p>使用紅、綠、藍光線三原色的數值組合。</p>
+<p><strong>語法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+rgb(紅, 綠, 藍);
+
+/*範例*/
+rgb(255, 0, 0);
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>三原色混合原理：</strong></p>
+<ul>
+    <li>rgb(255, 0, 0) = 紅色</li>
+    <li>rgb(0, 255, 0) = 綠色</li>
+    <li>rgb(0, 0, 255) = 藍色</li>
+    <li>rgb(255, 255, 255) = 白色（全開）</li>
+    <li>rgb(0, 0, 0) = 黑色（全關）</li>
+</ul>
+<p><strong>優點：</strong> 直觀易懂、容易調整單、與設計軟體的色彩選擇器對應<br>
+<strong>缺點：</strong> 語法較長、顏色細部調較不容易</p>
+<hr>
+
+<h3>4. RGBA (RGB + Alpha)</h3>
+<p>在 RGB 基礎上增加透明度通道（Alpha Channel）。</p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+rgb(紅, 綠, 藍, 透明度)
+
+/*範例*/
+rgb(255, 0, 0, 0.5);
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>透明度範圍： 0-1 之間</strong>（也可以用百分比設定）</p>
+<ul>
+    <li>0 = 完全透明</li>
+    <li>0.5 = 50% 透明</li>
+    <li>1 = 完全不透明</li>
+</ul>
+<p><strong>使用場景：</strong></p>
+<ul>
+    <li>半透明背景</li>
+    <li>層疊效果</li>
+    <li>遮罩效果</li>
+    <li>漸層設計（從不透明漸層到透明）</li>
+</ul>
+<p><strong>重要觀念：</strong>
+RGBA 的透明度不會影響子元素，只影響背景本身。</p>
+<hr>
+
+<h3>5. HSL (Hue, Saturation, Lightness)</h3>
+<p>基於色相、飽和度、亮度的色彩模型，更符合人類對顏色的認知。</p>
+
+<p><strong>語法：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+hsl(色相, 飽和度%, 亮度%);
+
+/*範例*/
+hsl(150, 50%, 90%);
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>優點：</strong> 調整顏色更直觀、容易創建色彩細微變化（同色系深淺）、適合建立配色系統方案<br>
+<strong>缺點：</strong> 語法相對較新，部分開發者可能不熟悉</p>
+<hr>
+
+<h3>6. HSLA (HSL + Alpha)</h3>
+<p>在 HSL 基礎上增加透明度通道。</p>
+
+<p><strong>語法：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+hsl(色相, 飽和度%, 亮度%, 透明度);
+
+/*範例*/
+hsl(150, 50%, 90%, 50%);
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<p>透明度範圍同 RGBA（0-1 或 %）。</p>
+<hr>
+
+<h2>四、常見錯誤與注意事項</h2>
+
+<h3>錯誤 1: HEX 格式錯誤</h3>
+<p><strong>錯誤示範：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ❌ 缺少 # 符號 */
+.bad {
+  color: 333333;
+}
+
+/* ❌ 位數不對（HEX 只能是 3 位或 6 位） */
+.bad {
+  color: #3333;
+}
+
+/* ❌ 使用了非十六進位字元（G-Z 不是有效字元） */
+.bad {
+  color: #gghhii;
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>正確做法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ✅ 正確格式 */
+.good {
+  color: #333333;
+}
+
+/* ✅ 簡寫格式 */
+.good {
+  color: #333;
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 2: RGB/RGBA 數值超出範圍</h3>
+<p><strong>錯誤示範：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ❌ RGB 數值超過 255 */
+.bad {
+  color: rgb(300, 400, 500);
+}
+
+/* ❌ Alpha 透明度超過 1 */
+.bad {
+  background-color: rgba(100, 100, 100, 1.5);
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>正確做法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ✅ RGB 範圍 0-255 */
+.good {
+  color: rgb(255, 255, 255);
+}
+
+/* ✅ Alpha 範圍 0-1 */
+.good {
+  background-color: rgba(100, 100, 100, 0.5);
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 3: HSL 格式錯誤</h3>
+<p><strong>錯誤示範：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ❌ 飽和度和亮度缺少 % 符號 */
+.wrong {
+  color: hsl(210, 100, 50);
+}
+
+/* ❌ 色相超過 360 度（雖然技術上可以，但不規範） */
+.wrong {
+  color: hsl(400, 100%, 50%);
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>正確做法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ✅ 飽和度和亮度必須加 % */
+.correct {
+  color: hsl(210, 100%, 50%);
+}
+
+/* ✅ 色相建議保持在 0-360 範圍 */
+.correct {
+  color: hsl(40, 100%, 50%);  /* 400 - 360 = 40 */
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>注意事項</h3>
+<h4>1. 選擇適合的顏色表示法</h4>
+<ul>
+    <li>設計階段：HSL（容易調整）</li>
+    <li>生產環境：HEX（簡短乾淨）</li>
+    <li>需要透明度：RGBA 或 HSLA</li>
+</ul>
+<h4>2. 保持一致性</h4>
+<ul>
+    <li>整個專案使用相同的顏色表示法</li>
+    <li>建立色彩系統並記錄</li>
+</ul>
+<h4>3. 測試不同場景</h4>
+<ul>
+    <li>白天模式 / 夜間模式</li>
+    <li>不同螢幕亮度</li>
+    <li>色盲模擬工具測試</li>
+</ul>
+
+<h2>五、重點整理</h2>
+<h3>CSS 顏色表示法：</h3>
+<ul>
+    <li><strong>顏色名稱</strong> - 簡單但選擇有限（red, blue, green 等）</li>
+    <li><strong>HEX</strong> - 最常用，格式 #RRGGBB 或簡寫 #RGB</li>
+    <li><strong>RGB</strong> - 直觀，rgb(r, g, b)，範圍 0-255</li>
+    <li><strong>RGBA</strong> - RGB + 透明度，rgba(r, g, b, a)，透明度 0-1</li>
+    <li><strong>HSL</strong> - 色相/飽和度/亮度，hsl(h, s%, l%)</li>
+    <li><strong>HSLA</strong> - HSL + 透明度，hsla(h, s%, l%, a)</li>
+</ul>
+<h3>格式要點：</h3>
+<ul>
+    <li>HEX 必須以 # 開頭</li>
+    <li>RGB/RGBA 數值範圍 0-255</li>
+    <li>HSL/HSLA 的飽和度和亮度要加 %</li>
+    <li>透明度範圍 0-1</li>
+</ul>
+<h3>常用屬性：</h3>
+<ul>
+    <li>color - 設定文字顏色</li>
+    <li>background-color - 設定背景顏色</li>
+</ul>
+<h3>選擇建議：</h3>
+<ul>
+    <li>日常使用：HEX（簡潔、通用）</li>
+    <li>需要透明：RGBA 或 HSLA</li>
+    <li>調整色調：HSL（直觀）</li>
+</ul>
+<h3>延伸閱讀：</h3>
+<ul>
+    <li>現代 CSS 還支援 OKLCH、LCH、Lab 等進階色彩空間</li>
+    <li>了解色彩對比度與無障礙設計（WCAG 標準）</li>
+    <li>學習配色理論（互補色、類似色、三角配色等）</li>
+</ul>
+
+    <section class="footer-nav">
+        <a class="prev" href="day1.htm">
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+            DAY 1
+            </a>
+        <a class="next" href="day3.htm">
+            DAY 3
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

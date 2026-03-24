@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet" >
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 4: Box Model 與間距控制</title>
+</head>
+<body id="page-css-day4">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/css/">CSS</a></li>
+            <li><a href="/css/learn/">10天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-CSS基礎與選擇器</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-色彩介紹</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-文字應用</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-區塊與間距</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-顯示與定位</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Flexbox 彈性佈局</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-實作 UI 元件</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-Grid 網格系統</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-響應式網頁設計</a></li>
+            <li class="link-day10"><a href="day10.htm">D10-漸變與基礎動畫</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 4: Box Model 與間距控制</h1>
+<h3 class="sub-title">Box Model, Margin and Padding</h3>
+<p>這個單元可以說是 「CSS 最重要的概念」之一。初學者通常很難將 CSS 的 Box Model 一次弄清楚。只要能夠弄清楚區塊與間距的邏輯，後續遇到的問題會少非常多。所以本單元雖然段落章節比較多，但是內容不算長，非常值得多花點時間理解跟練習。</p>
+
+<h2>一、學習目標</h2>
+<p>完成本日課程後，你將能夠：</p>
+<ul>
+    <li>理解 CSS 盒子模型（區塊）的組成與運作原理</li>
+    <li>掌握 margin、padding、border 的使用</li>
+    <li>了解 box-sizing 屬性的作用</li>
+    <li>控制元素的寬度和高度</li>
+    <li>設定元素的背景樣式</li>
+</ul>
+<h2>二、CSS Box Model 盒子模型</h2>
+<p>每個 HTML 元素都可被看作是一個「方塊盒子」，由內到外包含四個部分：</p>
+<p>Content（內容）→ Padding（內邊距）→ Border（邊框）→ Margin（外邊距）</p>
+<h3>視覺示意：</h3>
+
+    <hr>
+
+<h2>三、Margin 外邊距</h2>
+<p>HTML 元素與外圍其他元素之間的距離。</p>
+<p><strong>基本語法：</strong></p>
+
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+margin: 值;
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>四個方向的設定：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* 四個值（上 右 下 左，順時針） */
+margin: 10px 20px 30px 40px;
+
+/* 兩個值（上下 左右） */
+margin: 10px 20px;
+
+/* 一個值（四邊相同） */
+margin: 10px;
+
+/* 單獨設定 */
+margin-top: 10px;
+margin-right: 20px;
+margin-bottom: 30px;
+margin-left: 40px;
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>水平置中技巧：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+.center {
+  width: 300px;
+  margin: 0 auto;  /* 上下 0，左右自動 */
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>負值應用：</strong>
+Margin 可以使用負值，讓元素重疊或突破容器。</p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+.overlap {
+  margin-top: -20px;  /* 向上移動 20px */
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+    <hr>
+
+<h2>四、Padding 內邊距</h2>
+<p>內容與邊框之間的距離。</p>
+<p><strong>語法：</strong>與 margin 相同。</p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* 四個值 */
+padding: 10px 20px 30px 40px;
+
+/* 兩個值 */
+padding: 10px 20px;
+
+/* 一個值 */
+padding: 10px;
+
+/* 單獨設定 */
+padding-top: 10px;
+padding-right: 20px;
+padding-bottom: 30px;
+padding-left: 40px;
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>注意：</strong> Padding 不能使用負值。</p>
+    <hr>
+
+<h2>五、Border 邊框</h2>
+<p>HTML 元素的邊框樣式。</p>
+<p><strong>基本語法：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+border: 寬度 樣式 顏色;
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>基本語法：</strong></p>
+<ul>
+    <li><strong>solid</strong> - 實線</li>
+    <li><strong>dashed</strong> - 虛線</li>
+    <li><strong>dotted</strong> - 點線</li>
+    <li><strong>double</strong> - 雙線</li>
+    <li><strong>none</strong> - 無邊框</li>
+</ul>
+<p><strong>完整設定：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* 簡寫 */
+border: 2px solid #333;
+
+/* 分開設定 */
+border-width: 2px;
+border-style: solid;
+border-color: #333;
+
+/* 單邊設定 */
+border-top: 3px dashed blue;
+border-bottom: 1px solid gray;
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>圓角邊框：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+border-radius: 10px;  /* 四角相同 */
+border-radius: 10px 20px 30px 40px;  /* 左上 右上 右下 左下 */
+
+/* 圓形 */
+border-radius: 50%;
+</code></pre>
+<!-- Code Block Ends-->
+    <hr>
+
+<h2>六、Width ／ Height 寬度與高度</h2>
+
+<p><strong>基本語法：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+width: 值;
+height: 值;
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>常用單位：</strong></p>
+<ul>
+    <li><strong>px</strong> - 像素</li>
+    <li><strong>%</strong> - 百分比（相對於上一層 HTML 父元素）</li>
+    <li><strong>auto</strong> - 自動（預設值）</li>
+</ul>
+<p><strong>最大/最小值：</strong>用在響應式設計，防止網頁內容元件過大或過小</p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+max-width: 1200px;   /* 最大寬度 */
+min-width: 300px;    /* 最小寬度 */
+max-height: 500px;   /* 最大高度 */
+min-height: 200px;   /* 最小高度 */
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>⚠️ 重要：寬度與高度的 Box-sizing 屬性</h3>
+<p>決定寬度和高度的計算方式。</p>
+
+<p><strong>1. content-box（預設值）</strong></p>
+<ul>
+    <li>總寬度 = width + padding + border</li>
+</ul>
+<p><strong>2. border-box（推薦用法）</strong></p>
+<ul>
+    <li>總寬度 = width（padding 和 border 包含在內）</li>
+</ul>
+
+<p><strong>範例對比：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* content-box（預設） */
+.box1 {
+  width: 300px;
+  padding: 20px;
+  border: 5px solid black;
+  /* 實際寬度 = 300 + 40 + 10 = 350px */
+}
+
+/* border-box（推薦用法） */
+.box2 {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 20px;
+  border: 5px solid black;
+  /* 實際寬度 = 300px */
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>全域設定（推薦）：</strong>通常會寫在 CSS 一開始的地方，讓它影響整個頁面</p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+* {
+  box-sizing: border-box;
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+ <h3>注意事項：</h3>
+<div class="notice">
+
+<p>除非是明確需要高度設定的內容，一般實作上會<strong>盡量不去設定高度限制</strong>，讓內容多寡自動決定區塊的高度，以維持版面的彈性。</p>
+</div>
+    <hr>
+
+<h2>七、Background 背景</h2>
+
+<p><strong>背景語法：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+background-color: #f0f0f0;         /*背景顏色*/
+background-image: url('image.jpg');/*背景圖片*/
+background-size: cover;            /* cover 或 contain */
+background-position: center;       /* 位置 */
+background-repeat: no-repeat;      /* 是否重複(預設背景會重複) */
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>背景語法簡寫：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* 排列順序：color image repeat position/size */
+background: #f0f0f0 url('image.jpg') no-repeat center/cover;
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>背景尺寸完整使用說明：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* 關鍵字 */
+background-size: cover;    /* 填滿容器，可能裁切圖片 */
+background-size: contain;  /* 完整顯示圖片，可能留白 */
+
+/* 固定尺寸 */
+background-size: 200px 100px;  /* 寬 200px，高 100px */
+background-size: 100px;        /* 寬 100px，高度自動等比例 */
+
+/* 百分比 */
+background-size: 100% 50%;  /* 寬度 100%，高度 50% */
+background-size: 50%;       /* 寬度 50%，高度自動 */
+
+/* 自動 */
+background-size: auto;  /* 圖片原始尺寸 */
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>背景位置完整使用說明：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* 關鍵字 */
+background-position: center;        /* 置中 */
+background-position: top;           /* 頂部 */
+background-position: bottom;        /* 底部 */
+background-position: left;          /* 左側 */
+background-position: right;         /* 右側 */
+
+/* 組合關鍵字 */
+background-position: top left;      /* 左上角 */
+background-position: top right;     /* 右上角 */
+background-position: bottom left;   /* 左下角 */
+background-position: bottom right;  /* 右下角 */
+background-position: center top;    /* 水平置中，垂直靠上 */
+
+/* 精確數值（X軸 Y軸） */
+background-position: 20px 30px;     /* 距左 20px，距上 30px */
+background-position: 50px 0;        /* 距左 50px，頂部 */
+
+/* 百分比（X% Y%） */
+background-position: 50% 50%;       /* 置中（同 center） */
+background-position: 0% 0%;         /* 左上角（同 top left） */
+background-position: 100% 100%;     /* 右下角（同 bottom right） */
+
+/* 混合使用 */
+background-position: center 20px;   /* 水平置中，距上 20px */
+background-position: 80% bottom;    /* 水平 80%，底部 */
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>背景重複完整使用說明：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+background-repeat: no-repeat;  /* 不重複 */
+background-repeat: repeat;     /* 重複（預設） */
+background-repeat: repeat-x;   /* 只水平重複 */
+background-repeat: repeat-y;   /* 只垂直重複 */
+
+</code></pre>
+<!-- Code Block Ends-->
+
+
+
+<h2>八、常見錯誤與注意事項</h2>
+<h3>錯誤 1: 忘記設定 box-sizing</h3>
+<p><strong>問題示範：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ❌ 沒有設定 box-sizing */
+.box {
+  width: 300px;
+  padding: 20px; /*上下左右的內邊距*/
+  border: 5px solid black; /*上下左右的邊框*/
+  /* 實際寬度變成 300 + 20 + 20 + 5 + 5 = 350px */
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>建議做法：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ✅ 全域設定 border-box */
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  width: 300px;
+  padding: 20px;
+  border: 5px solid black;
+  /* 實際寬度就是 300px */
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 2: Margin 疊加問題</h3>
+<p><strong>垂直 Margin 會疊加（兩組設定會取較大值）：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+.box1 {
+  margin-bottom: 20px;
+}
+
+.box2 {
+  margin-top: 30px;
+}
+/* 結果兩個元素之間的距離是 30px，不是 50px */
+
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>解決方式：</strong></p>
+<ul>
+    <li>了解這是正常行為</li>
+    <li>只設定單方向的 margin（如只設定 margin-bottom）</li>
+    <li>如想要一步理解這個現象，可延伸閱讀關於 margin collapse 問題。</li>
+</ul>
+<h3>錯誤 3: Padding 使用負值</h3>
+<p><strong>錯誤示範：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ❌ Padding 不能使用負值 */
+.box {
+  padding: -10px;  /* 無效 */
+}
+
+</code></pre>
+<p>只有 margin 可以使用負值，Padding 不行。</p>
+
+<h3>錯誤 4: 百分比高度問題</h3>
+<p><strong>問題示範：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ❌ 父元素沒有明確高度時，百分比高度無效 */
+.parent {
+  /* 沒有設定 height */
+}
+
+.child {
+  height: 50%;  /* 無效 */
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>正確做法：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ✅ 父元素要有明確高度 */
+.parent {
+  height: 500px;
+}
+
+.child {
+  height: 50%;  /* 有效，250px */
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+<p>高度設定在網頁中是一個特別的存在。</p>
+<ul>
+    <li>網頁中 HTML 區塊元素預設的寬度是 100%</li>
+    <li>網頁中 HTML 區塊元素預設的高度卻是 0</li>
+    <li>高度設定為百分比時，父元素上必須要有高度設定才有作用</li>
+    <li>網頁中最高層的父元素為 &lt;html>，其次為 &lt;body>，因此常見的做法是在這些標籤上擇一設定 height: 100%，就可以解決這個問題</li>
+</ul>
+
+<h3>錯誤 5: Border 語法順序錯誤</h3>
+<p><strong>錯誤示範：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ❌ 順序不對 */
+.box {
+  border: blue 2px solid;
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>正確做法：</strong></p>
+<!-- Code Block Begin-->
+<pre><code class="language-css">
+/* ✅ 正確順序：寬度 樣式 顏色 */
+.box {
+  border: 2px solid blue;
+}
+
+/* 順序可以省略，但建議按慣例 */
+.box {
+  border: solid 2px blue;  /* 也可以，但不推薦 */
+}
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h2>九、重點整理</h2>
+<h3>Box Model 盒模型組成：</h3>
+<ul>
+    <li>Content（內容）→ Padding（內邊距）→ Border（邊框）→ Margin（外邊距）</li>
+</ul>
+<h3>Margin & Padding 間距屬性：</h3>
+<ul>
+    <li>margin - 外邊距，可用負值，margin: 0 auto 可水平置中
+padding - 內</li>
+    <li>font-size - 字體大小（建議用 px 或 rem）</li>
+    <li>padding - 內邊距，不可用負值</li>
+    <li>設定方式：四個值 / 兩個值 / 一個值 / 單獨設定</li>
+</ul>
+<h3>Border 邊框：</h3>
+<ul>
+    <li>border: 寬度 樣式 顏色</li>
+    <li>樣式：solid、dashed、dotted、double、none</li>
+    <li>border-radius - 圓角，50% 可製作圓形</li>
+</ul>
+<h3>Width & Height 寬高尺寸：</h3>
+<ul>
+    <li>width、height - 寬度和高度</li>
+    <li>max-width、min-width - 最大/最小寬度</li>
+    <li>max-height、min-height - 最大/最小高度</li>
+</ul>
+<h3>Box-sizing：</h3>
+<ul>
+    <li>content-box - 預設，寬度不包含 padding 和 border</li>
+    <li>border-box - 推薦，寬度包含 padding 和 border</li>
+    <li>建議全域設定為 border-box</li>
+</ul>
+<h3>Background 背景：</h3>
+<ul>
+    <li>background-color - 背景顏色</li>
+    <li>background-image - 背景圖片</li>
+    <li>background-size - 圖片尺寸（cover / contain）</li>
+    <li>background-position - 圖片位置</li>
+    <li>background-repeat - 是否重複</li>
+</ul>
+<h3>重要觀念：</h3>
+<ul>
+    <li>垂直 margin 會疊加（取較大值）</li>
+    <li>Padding 不能用負值，Margin 可以</li>
+    <li>百分比高度需要父元素有明確高度</li>
+    <li>推薦使用 box-sizing: border-box</li>
+</ul>
+
+    <section class="footer-nav">
+        <a class="prev" href="day3.htm">
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+            DAY 3
+            </a>
+        <a class="next" href="day5.htm">
+            DAY 5
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>
