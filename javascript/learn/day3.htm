@@ -69,7 +69,7 @@
 <h3>範例一：算術運算子</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let a = 10;
 let b = 3;
 
@@ -88,7 +88,7 @@ console.log(a ** b);  // 1000（次方：10 的 3 次方）
 <h3>範例二：遞增與遞減運算子</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let count = 5;
 
 count++;             // 等同於 count = count + 1
@@ -103,7 +103,7 @@ console.log(count);  // 5
 ++ (遞增)和 -- (遞減)是常用的簡寫，特別在迴圈計數時非常實用。</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let userName = "小明";
 </code></pre>
 <!-- Code Block Ends-->
@@ -111,7 +111,7 @@ let userName = "小明";
 <h3>範例三：比較運算子</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let x = 10;
 let y = 20;
 
@@ -131,7 +131,7 @@ console.log(x !== y);  // true（不等於）
 <h3>範例四：邏輯運算子</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let isLoggedIn = true;
 let isAdmin = false;
 
@@ -147,7 +147,7 @@ console.log(!isLoggedIn);            // false（NOT：反轉布林值）
 <h3>範例五：複合賦值運算子</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let score = 100;
 
 score += 20;   // 等同於 score = score + 20，結果 120
@@ -169,7 +169,7 @@ console.log(score);  // 55
 <p><strong>錯誤範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let age = "18";
 
 if (age == 18) {
@@ -183,7 +183,7 @@ if (age == 18) {
 <p><strong>正確寫法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let age = "18"; //這邊的 "18" 是 String 字串，不是 Number 數字
 
 if (age === 18) {
@@ -199,7 +199,7 @@ if (age === 18) {
 <p><strong>錯誤範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let result = 10 / 0;
 console.log(result);  // Infinity（無限大）
 
@@ -214,7 +214,7 @@ JavaScript 不會直接報錯，而是回傳特殊值。Infinity 和 NaN 都可�
 <p><strong>正確做法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let divisor = 0;
 
 if (divisor !== 0) {
@@ -229,7 +229,7 @@ if (divisor !== 0) {
 <p><strong>錯誤範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let input = "5";  // 來自使用者輸入的字串
 let bonus = 10;
 
@@ -240,7 +240,7 @@ console.log(input + bonus);   // "510"（字串連接，非數學運算）
 <p><strong>正確寫法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let input = "5";
 let bonus = 10;
 
@@ -254,7 +254,7 @@ console.log(parseInt(input) + bonus);  // 15
 <p><strong>容易混淆的範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log(2 + 3 * 4);   // 14，不是 20
 console.log((2 + 3) * 4); // 20
 </code></pre>

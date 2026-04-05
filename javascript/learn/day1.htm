@@ -80,7 +80,7 @@
         </figure>
        <h3>範例一：第一個 JavaScript 程式</h3>
 
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log("Hello, JavaScript!");
 
 **執行結果：**
@@ -95,7 +95,7 @@ console.log() 是 JavaScript 中最常用的指令之一，用於在 Console 中
 
 <h3>範例二：簡單的數學運算</h3>
 
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log(10 + 5);
 console.log(20 - 8);
 console.log(6 * 7);
@@ -125,7 +125,7 @@ JavaScript 可以直接進行數學運算。運算結果會立即顯示在 Conso
 
        <p>顧名思義，行內的意思就是將 JavaScript 直接寫在 HTML 標籤當中。請參考以下範例：</p>
 
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="zh-TW"&gt;
 &lt;head&gt;
@@ -178,7 +178,7 @@ JavaScript 可以直接進行數學運算。運算結果會立即顯示在 Conso
 
     <p>建立一個 HTML 檔案（例如 index.html），內容如下：</p>
 
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="zh-TW"&gt;
 &lt;head&gt;
@@ -211,14 +211,14 @@ JavaScript 可以直接進行數學運算。運算結果會立即顯示在 Conso
     <p>建立一個 JavaScript 檔案（例如 script.js）：</p>
 
 
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log("這段程式碼來自外部 JS 檔案");
 </code></pre>
 
 <p>在 HTML 中引用：</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="zh-TW"&gt;
 &lt;head&gt;
@@ -242,7 +242,7 @@ console.log("這段程式碼來自外部 JS 檔案");
 <h3>範例四：註解的使用</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 這是單行註解，不會被執行
 
 /*
@@ -269,7 +269,7 @@ console.log("只有這行會被執行");
     <p><strong>錯誤範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 consol.log("Hello");  // console 少了一個 e
 
 **錯誤訊息：**
@@ -283,7 +283,7 @@ JavaScript 對大小寫與拼字非常敏感。console 拼成 consol 會導致�
 <p><strong>正確寫法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log("Hello");
 </code></pre>
 <!-- Code Block Ends-->
@@ -297,7 +297,7 @@ console.log("Hello");
     <p><strong>錯誤範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log(Hello);  // Hello 缺少""引號
 
 **錯誤訊息：**
@@ -314,7 +314,7 @@ Uncaught ReferenceError: Hello is not defined
     <p><strong>錯誤範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;head&gt;
     &lt;script&gt;
         document.getElementById("myButton").click();
@@ -332,7 +332,7 @@ Uncaught ReferenceError: Hello is not defined
 <p><strong>正確寫法：</strong>將 &lt;script&gt; 標籤放在 &lt;/body&gt; 之前：</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;body&gt;
     &lt;button id="myButton">按鈕&lt;/button&gt;
     &lt;!--  必須先等到 myButton 被載入之後，才能執行 JavaScript  --&gt;
@@ -352,7 +352,7 @@ Uncaught ReferenceError: Hello is not defined
     <p><strong>錯誤範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log("Hello');  // 開頭用雙引號，結尾用單引號
 
 **錯誤訊息：**
@@ -366,7 +366,7 @@ Uncaught SyntaxError: Invalid or unexpected token
 <p><strong>正確寫法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log("Hello");
 // 或
 console.log('Hello');
@@ -379,7 +379,7 @@ console.log('Hello');
     <p><strong>範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log("第一行")
 console.log("第二行")
 </code></pre>
@@ -390,7 +390,7 @@ console.log("第二行")
 <p><strong>建議寫法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log("第一行");
 console.log("第二行");
 </code></pre>

@@ -70,7 +70,7 @@
 <h3>範例一：基本 for 迴圈（產生選單項目）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let menuItems = ["首頁", "關於", "作品集", "部落格", "聯絡"];
 
 for (let i = 0; i < menuItems.length; i++) {
@@ -92,7 +92,7 @@ let i = 0 從第一個項目開始；i < menuItems.length 確保不超過陣列�
 <h3>範例二：計算購物車總價</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let cartItems = [
   { name: "T恤", price: 590 },
   { name: "牛仔褲", price: 1280 },
@@ -122,7 +122,7 @@ console.log("購物車總金額：NT$ " + total);
 迴圈遍歷購物車中的每個商品，累加價格到總金額。這是電商網站最常見的功能之一。</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log(sample); 
 </code></pre>
 <!-- Code Block Ends-->
@@ -130,7 +130,7 @@ console.log(sample);
 <h3>範例三：產生產品網格（巢狀迴圈）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 產生 3 列 x 4 欄的產品網格
 for (let row = 1; row <= 3; row++) {
   let rowText = "第 " + row + " 列：";
@@ -155,7 +155,7 @@ for (let row = 1; row <= 3; row++) {
 <h3>範例四：while 迴圈（載入更多內容）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let loadedItems = 0;
 let totalItems = 5;
 
@@ -185,7 +185,7 @@ while 迴圈會先檢查條件，條件為 true 才執行。這個範例模擬�
 <h3>範例五：使用 break 提前結束（搜尋功能）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let products = ["筆電", "滑鼠", "鍵盤", "螢幕", "耳機"];
 let searchTarget = "鍵盤";
 let found = false;
@@ -218,7 +218,7 @@ if (!found) {
 <h3>範例六：使用 continue 跳過迭代</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 for (let i = 1; i <= 10; i++) {
   if (i % 2 === 0) {
     continue;  // 跳過偶數
@@ -244,7 +244,7 @@ for (let i = 1; i <= 10; i++) {
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let i = 1;
 
 while (i <= 5) {
@@ -258,7 +258,7 @@ while (i <= 5) {
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let i = 1;
 
 while (i <= 5) {
@@ -272,7 +272,7 @@ while (i <= 5) {
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 想要執行 10 次，但實際只執行 9 次
 for (let i = 1; i < 10; i++) {
   console.log(i);
@@ -286,7 +286,7 @@ for (let i = 1; i < 10; i++) {
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 for (let i = 1; i <= 10; i++) {
   console.log(i);
 }
@@ -297,7 +297,7 @@ for (let i = 1; i <= 10; i++) {
 <h4>不良範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 for (let i = 0; i < 3; i++) {
   let sum = 0;  // 每次迴圈都重新宣告並初始化
   sum += i;
@@ -315,7 +315,7 @@ for (let i = 0; i < 3; i++) {
 如果希望 sum 累加所有的 i，應該將 sum 宣告在迴圈外。</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let sum = 0;
 
 for (let i = 0; i < 3; i++) {
@@ -330,7 +330,7 @@ console.log(sum);  // 3
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 for (let i = 1; i <= 3; i++) {
   for (let i = 1; i <= 3; i++) {  // 內外層都用 i
     console.log(i);
@@ -344,7 +344,7 @@ for (let i = 1; i <= 3; i++) {
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 for (let i = 1; i <= 3; i++) {
   for (let j = 1; j <= 3; j++) {  // 使用不同變數名
     console.log("i=" + i + ", j=" + j);
@@ -357,7 +357,7 @@ for (let i = 1; i <= 3; i++) {
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 for (let i = 1; i <= 5; i++) {
   if (i === 3) {
     break;  // 想跳過 3，但誤用 break
@@ -376,7 +376,7 @@ break 會終止整個迴圈，而非只跳過當次。如果只想跳過某個�
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 for (let i = 1; i <= 5; i++) {
   if (i === 3) {
     continue;  // 跳過 3，繼續執行

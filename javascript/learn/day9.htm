@@ -81,7 +81,7 @@
 
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;div id="container"&gt;  &lt;!-- 父元素 --&gt;
     &lt;p&gt;段落 1&lt;/p&gt;      &lt;!-- 子元素 --&gt;
     &lt;p&gt;段落 2&lt;/p&gt;      &lt;!-- 子元素 --&gt;
@@ -113,7 +113,7 @@ Frame (container)
 <h3>準備工作：建立測試網頁</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="zh-TW"&gt;
 &lt;head&gt;
@@ -187,7 +187,7 @@ Frame (container)
 <h3>範例一：建立基本元素</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 步驟 1: 建立一個新的 div 元素
 let newDiv = document.createElement("div");
 
@@ -217,7 +217,7 @@ createElement() 只是在記憶體中建立元素，必須用 appendChild() 插�
 <h3>範例二：建立完整的清單項目</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 建立外層容器
 let item = document.createElement("div");
 item.className = "item";  // 設定 class
@@ -249,7 +249,7 @@ console.log("清單項目已建立！");
 </p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log(paragraphs);
 </code></pre>
 <!-- Code Block Ends-->
@@ -257,7 +257,7 @@ console.log(paragraphs);
 <h3>範例三：使用迴圈批次建立元素</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let tasks = ["設計首頁", "撰寫程式碼", "測試功能", "上線部署"];
 let list = document.querySelector("#list");
 
@@ -293,7 +293,7 @@ console.log("已建立 " + tasks.length + " 個項目");
 <h3>範例四：移除元素（remove）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 先建立一個元素
 let item = document.createElement("div");
 item.className = "item";
@@ -317,7 +317,7 @@ remove() 方法會將元素從 DOM 中完全移除。</p>
 <h3>範例五：點擊刪除功能（完整範例）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let addBtn = document.querySelector("#addBtn");
 let list = document.querySelector("#list");
 let itemCount = 0;
@@ -362,7 +362,7 @@ addBtn.addEventListener("click", function() {
 <h3>範例六：insertBefore（插入到特定位置）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let list = document.querySelector("#list");
 
 // 建立新元素
@@ -389,7 +389,7 @@ insertBefore(新元素, 參考元素) 會將新元素插入到參考元素之前
 <h3>範例七：使用 innerHTML 快速建立（簡便但較不安全）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let list = document.querySelector("#list");
 let tasks = ["設計", "開發", "測試"];
 
@@ -423,7 +423,7 @@ list.innerHTML = html;
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let newDiv = document.createElement("div");
 newDiv.textContent = "新元素";
 // 忘記 appendChild，元素不會顯示在網頁上
@@ -435,7 +435,7 @@ newDiv.textContent = "新元素";
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let newDiv = document.createElement("div");
 newDiv.textContent = "新元素";
 
@@ -448,7 +448,7 @@ container.appendChild(newDiv);  // 必須插入
 <h4>容易混淆的範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let element = document.querySelector("#myElement");
 let container1 = document.querySelector("#container1");
 let container2 = document.querySelector("#container2");
@@ -463,7 +463,7 @@ appendChild() 會「移動」元素，不是「複製」。如果元素已經在
 <h4>如果想複製元素：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let element = document.querySelector("#myElement");
 let clone = element.cloneNode(true);  // true 表示深度複製（包含子元素）
 
@@ -476,7 +476,7 @@ container2.appendChild(clone);  // 插入複製品
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let deleteBtn = document.querySelector(".delete-btn");
 deleteBtn.addEventListener("click", function() {
     // 錯誤：這時還沒有 .delete-btn 元素
@@ -493,7 +493,7 @@ btn.className = "delete-btn";
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 建立元素
 let btn = document.createElement("button");
 btn.className = "delete-btn";
@@ -513,7 +513,7 @@ container.appendChild(btn);
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let container = document.querySelector("#container");
 
 // 先綁定事件
@@ -537,7 +537,7 @@ innerHTML 會完全替換內容，原有的事件監聽器會消失。</p>
 <h4>效能不佳的寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 for (let i = 0; i < 100; i++) {
     let item = document.createElement("div");
     item.textContent = "項目 " + i;
@@ -552,7 +552,7 @@ for (let i = 0; i < 100; i++) {
 <h4>比較好的寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 只選取一次
 let list = document.querySelector("#list");
 

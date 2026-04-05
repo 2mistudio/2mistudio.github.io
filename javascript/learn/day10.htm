@@ -58,7 +58,7 @@
 <h3>事件監聽器的運作方式</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 element.addEventListener("事件類型", function() {
     // 當事件發生時，要執行的程式碼
 });
@@ -106,7 +106,7 @@ element.addEventListener("事件類型", function() {
 <p>當事件發生時，瀏覽器會自動建立一個「事件物件」，包含了事件的詳細資訊：</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 element.addEventListener("click", function(event) {
     console.log(event.target);      // 被點擊的元素
     console.log(event.clientX);     // 滑鼠 X 座標
@@ -122,7 +122,7 @@ element.addEventListener("click", function(event) {
 <h3>準備工作：建立測試網頁</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="zh-TW"&gt;
 &lt;head&gt;
@@ -239,7 +239,7 @@ element.addEventListener("click", function(event) {
 <h3>範例一：基本點擊事件</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 建立按鈕
 let btn = document.createElement("button");
 btn.textContent = "點我！";
@@ -260,7 +260,7 @@ addEventListener 的第一個參數是事件類型（"click"），第二個參�
 <h3>範例二：改變元素樣式（點擊切換顏色）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let box = document.createElement("div");
 box.className = "box";
 box.textContent = "點我改變顏色";
@@ -286,7 +286,7 @@ box.addEventListener("click", function() {
 <h3>範例三：滑鼠移入/移出事件</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let hoverBox = document.createElement("div");
 hoverBox.className = "box";
 hoverBox.textContent = "滑鼠移到我身上";
@@ -316,7 +316,7 @@ mouseenter 和 mouseleave 常用於製作 hover 效果，比純 CSS 更靈活。
 <h3>範例四：鍵盤事件（即時顯示按鍵）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let section = document.createElement("div");
 section.className = "section";
 section.innerHTML = `
@@ -355,7 +355,7 @@ document.addEventListener("keydown", function(event) {
 <h3>範例五：表單輸入事件（即時字數統計）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let formSection = document.createElement("div");
 formSection.className = "section";
 formSection.innerHTML = `
@@ -393,7 +393,7 @@ input 事件會在輸入框內容改變時立即觸發，event.target.value 可�
 <h3>範例六：事件物件的使用（點擊顯示座標）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let coordSection = document.createElement("div");
 coordSection.className = "section";
 coordSection.innerHTML = `
@@ -443,7 +443,7 @@ clickBox.addEventListener("click", function(event) {
 <h3>範例七：完整範例（計數器）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let counterSection = document.createElement("div");
 counterSection.className = "section";
 counterSection.innerHTML = `
@@ -525,7 +525,7 @@ document.addEventListener("keydown", function(event) {
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 錯誤：缺少 function
 btn.addEventListener("click", {
     console.log("點擊");
@@ -539,7 +539,7 @@ btn.addEventListener("click", myFunction());
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 方法一：匿名函式
 btn.addEventListener("click", function() {
     console.log("點擊");
@@ -560,7 +560,7 @@ btn.addEventListener("click", handleClick);
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 btn.addEventListener("clik", function() {  // 拼錯：clik（應該是 click）
     console.log("不會執行");
 });
@@ -574,7 +574,7 @@ btn.addEventListener("Click", function() {  // click 大小寫錯誤
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 btn.addEventListener("click", function() {  // 正確：全小寫
     console.log("會執行");
 });
@@ -593,7 +593,7 @@ btn.addEventListener("click", function() {  // 正確：全小寫
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 元素還不存在
 let btn = document.querySelector("#myBtn");
 btn.addEventListener("click", function() {  // 錯誤：btn 是 null
@@ -609,7 +609,7 @@ button.id = "myBtn";
 <h4>正確順序：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 先建立元素
 let button = document.createElement("button");
 button.id = "myBtn";
@@ -629,7 +629,7 @@ document.body.appendChild(button);
 <h4>問題範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let btn = document.querySelector("#btn");
 
 // 在迴圈中重複綁定（不好的做法）
@@ -649,7 +649,7 @@ for (let i = 0; i < 5; i++) {
 只綁定一次，或使用具名函式便於移除：</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 function handleClick() {
     console.log("點擊");
 }
@@ -665,7 +665,7 @@ btn.addEventListener("click", handleClick);
 <h4>容易混淆的範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let btn = document.querySelector("#btn");
 
 btn.addEventListener("click", function() {
@@ -687,7 +687,7 @@ btn.addEventListener("click", () => {
 如果需要使用 this 指向元素，使用一般函式。或使用 event.target：</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 btn.addEventListener("click", (event) => {
     event.target.style.backgroundColor = "red";  // 推薦
 });

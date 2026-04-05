@@ -67,7 +67,7 @@
 
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -128,7 +128,7 @@ html
 <p>首先，建立一個簡單的 HTML 檔案（index.html）：</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="zh-TW"&gt;
 &lt;head&gt;
@@ -177,7 +177,7 @@ html
 <h3>範例一：getElementById（透過 ID 選取）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 選取 ID 為 "main-title" 的元素
 let title = document.getElementById("main-title");
 
@@ -197,7 +197,7 @@ getElementById() 用於選取具有特定 ID 的元素。ID 在網頁中應該�
 <h3>範例二：getElementsByClassName（透過 Class 選取）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 選取所有 class 為 "intro" 的元素
 let paragraphs = document.getElementsByClassName("intro");
 
@@ -222,7 +222,7 @@ getElementsByClassName() 回傳一個「集合」（HTMLCollection），包含�
 <h3>範例三：querySelector（CSS 選擇器，最靈活）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 選取第一個符合條件的元素
 let firstParagraph = document.querySelector(".intro");
 let button = document.querySelector("#myButton");
@@ -247,7 +247,7 @@ querySelector() 使用 CSS 選擇器語法，非常靈活。它只回傳「第�
 <h3>範例四：querySelectorAll（選取所有符合的元素）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 選取所有 class 為 "intro" 的元素
 let allParagraphs = document.querySelectorAll(".intro");
 
@@ -274,7 +274,7 @@ querySelectorAll() 回傳所有符合條件的元素（NodeList），可以搭�
 <h3>範例五：進階 CSS 選擇器</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 選取 container 內的第一個 p
 let firstP = document.querySelector(".container p");
 
@@ -295,7 +295,7 @@ querySelector 支援複雜的 CSS 選擇器，可以精確定位元素。就像�
 
 <h3>範例六：完整互動範例（點擊按鈕改變標題）</h3>
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 選取元素
 let title = document.getElementById("main-title");
 let button = document.getElementById("myButton");
@@ -319,7 +319,7 @@ console.log("已選取按鈕：" + button.textContent);
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -341,7 +341,7 @@ JavaScript 在 &lt;head&gt; 中執行時，&lt;body&gt; 的元素還沒載入，
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -366,7 +366,7 @@ JavaScript 在 &lt;head&gt; 中執行時，&lt;body&gt; 的元素還沒載入，
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // HTML 中是 id="myButton"
 let button = document.getElementById("mybutton");  // 小寫 b，錯誤！
 
@@ -389,7 +389,7 @@ JavaScript 對大小寫敏感，myButton 和 mybutton 是不同的。</p>
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 錯誤：忘記加 # 符號
 let title = document.querySelector("main-title");  // 找不到
 
@@ -401,7 +401,7 @@ let title = document.querySelector("#main-title");  // 正確
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 錯誤：忘記加 . 符號
 let paragraphs = document.querySelectorAll("intro");  // 找不到
 
@@ -415,7 +415,7 @@ let paragraphs = document.querySelectorAll(".intro");  // 正確
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let paragraphs = document.getElementsByClassName("intro");
 
 // 錯誤：HTMLCollection 沒有 forEach 方法
@@ -428,7 +428,7 @@ paragraphs.forEach(function(p) {  // 報錯！
 <h4>正確寫法一：使用 for 迴圈</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let paragraphs = document.getElementsByClassName("intro");
 
 for (let i = 0; i < paragraphs.length; i++) {
@@ -440,7 +440,7 @@ for (let i = 0; i < paragraphs.length; i++) {
 <h4>正確寫法二：改用 querySelectorAll（推薦）</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let paragraphs = document.querySelectorAll(".intro");
 
 // querySelectorAll 回傳的 NodeList 可以使用 forEach
@@ -454,7 +454,7 @@ paragraphs.forEach(function(p) {
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let element = document.getElementById("notExist");
 element.textContent = "新文字";  // 錯誤！element 是 null
 
@@ -466,7 +466,7 @@ Uncaught TypeError: Cannot set property 'textContent' of null
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let element = document.getElementById("notExist");
 
 if (element) {

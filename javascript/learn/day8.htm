@@ -91,7 +91,7 @@
 <h4>直接修改 style：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 element.style.color = "red";
 </code></pre>
 <!-- Code Block Ends-->
@@ -101,7 +101,7 @@ element.style.color = "red";
 <h4>使用 class（推薦）：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 element.classList.add("highlight");
 </code></pre>
 <!-- Code Block Ends-->
@@ -115,7 +115,7 @@ element.classList.add("highlight");
 <h3>準備工作：建立測試網頁</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="zh-TW"&gt;
 &lt;head&gt;
@@ -182,7 +182,7 @@ element.classList.add("highlight");
 <h3>範例一：修改文字內容（textContent）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 選取元素
 let title = document.querySelector("#title");
 
@@ -200,7 +200,7 @@ textContent 會替換元素內的所有文字。這是最安全的方式，因�
 <h3>範例二：修改 HTML 內容（innerHTML）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let description = document.querySelector("#description");
 
 // 插入 HTML 標籤
@@ -219,7 +219,7 @@ innerHTML 可以插入 HTML 標籤，標籤會被瀏覽器解析並渲染。</p>
 <h3>範例三：直接修改 CSS 樣式（style）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let title = document.querySelector("#title");
 
 // 修改多個樣式屬性
@@ -246,7 +246,7 @@ CSS 屬性名稱在 JavaScript 中使用駝峰式命名（camelCase）：</p>
 <h3>範例四：使用 classList 新增/移除 class（推薦）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let description = document.querySelector("#description");
 
 // 新增 class
@@ -274,7 +274,7 @@ classList 是操作 CSS class 的推薦方式：</p>
 <h3>範例五：切換 class（toggle）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let status = document.querySelector("#status");
 
 // 切換 success class
@@ -295,7 +295,7 @@ status.classList.toggle("success");
 <h3>範例六：完整互動範例（按鈕點擊改變內容）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 選取元素
 let title = document.querySelector("#title");
 let btn1 = document.querySelector("#btn1");
@@ -314,7 +314,7 @@ btn1.addEventListener("click", function() {
 <h3>範例七：動態產生內容（實用案例）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 產品資料
 let products = [
     { name: "T恤", price: 590 },
@@ -344,7 +344,7 @@ container.innerHTML += productHTML;
 <h3>範例八：修改元素屬性</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let button = document.querySelector("#btn1");
 
 // 修改按鈕文字
@@ -367,7 +367,7 @@ button.style.cursor = "not-allowed";
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 element.style.background-color = "red";  // 錯誤！不能用連字號
 
 ** 錯誤訊息：**
@@ -378,7 +378,7 @@ Uncaught SyntaxError: Invalid left-hand side in assignment
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 element.style.backgroundColor = "red";  // 駝峰式命名
 </code></pre>
 <!-- Code Block Ends-->
@@ -394,7 +394,7 @@ element.style.backgroundColor = "red";  // 駝峰式命名
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 element.style.color = red;      // 錯誤！紅色要加引號
 element.style.fontSize = 20;    // 錯誤！缺少單位
 </code></pre>
@@ -403,7 +403,7 @@ element.style.fontSize = 20;    // 錯誤！缺少單位
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 element.style.color = "red";       // 顏色要加引號
 element.style.fontSize = "20px";   // 數字要加單位
 </code></pre>
@@ -413,7 +413,7 @@ element.style.fontSize = "20px";   // 數字要加單位
 <h4>危險範例 ⚠️ ：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let userInput = prompt("輸入你的名字：");
 element.innerHTML = "你好，" + userInput;  // ⚠️ 危險！⚠️
 </code></pre>
@@ -423,7 +423,7 @@ element.innerHTML = "你好，" + userInput;  // ⚠️ 危險！⚠️
 <h4>安全寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let userInput = prompt("輸入你的名字：");
 element.textContent = "你好，" + userInput;  // 安全
 </code></pre>
@@ -434,7 +434,7 @@ element.textContent = "你好，" + userInput;  // 安全
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 element.classList.add("class1 class2");  // 錯誤！一次只能加一個
 </code></pre>
 <!-- Code Block Ends-->
@@ -442,7 +442,7 @@ element.classList.add("class1 class2");  // 錯誤！一次只能加一個
 <h3>正確寫法（方法一）：</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 element.classList.add("class1");
 element.classList.add("class2");
 </code></pre>
@@ -451,7 +451,7 @@ element.classList.add("class2");
 <h3>正確寫法（方法二）：</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 element.classList.add("class1", "class2");  // 可以用逗號分隔
 </code></pre>
 <!-- Code Block Ends-->
@@ -460,7 +460,7 @@ element.classList.add("class1", "class2");  // 可以用逗號分隔
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let element = document.querySelector("#notExist");
 element.textContent = "新文字";  // 錯誤！element 是 null
 
@@ -472,7 +472,7 @@ Uncaught TypeError: Cannot set property 'textContent' of null
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let element = document.querySelector("#notExist");
 
 if (element) {

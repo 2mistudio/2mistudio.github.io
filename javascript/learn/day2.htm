@@ -78,7 +78,7 @@
 <h3>範例一：使用 let 宣告變數</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let userName = "小明";
 console.log(userName);  // 小明
 
@@ -93,7 +93,7 @@ let 宣告的變數可以重新賦值。第一次賦值後，後續可以改變�
 <h3>範例二：使用 const 宣告常數</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 const pi = 3.14159;
 console.log(pi);  // 3.14159
 
@@ -110,7 +110,7 @@ const 宣告的常數一旦賦值就不能改變，嘗試重新賦值會產生�
 <h3>範例三：資料型別 - Number</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let age = 25;
 let price = 99.9;
 let temperature = -5;
@@ -127,7 +127,7 @@ JavaScript 不區分整數與浮點數（近似小數點的意思），統一使
 <h3>範例四：資料型別 - String</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let firstName = "張";
 let lastName = '三';
 let greeting = "Hello, World!";
@@ -143,7 +143,7 @@ console.log(firstName + lastName);  // 張三
 <h3>範例五：資料型別 - Boolean</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let isStudent = true;
 let hasLicense = false;
 
@@ -158,7 +158,7 @@ Boolean 又稱布林值，只有 true 和 false（開跟關），常用於條件
 <h3>範例六：Undefined 與 Null</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let x;
 console.log(x);         // undefined
 console.log(typeof x);  // undefined
@@ -180,7 +180,7 @@ undefined （未定義）表示變數未賦值，null (沒有)表示刻意設定
 <p><strong>錯誤範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 console.log(myName);  // 變數未宣告就使用
 
 **錯誤訊息：**
@@ -191,7 +191,7 @@ Uncaught ReferenceError: myName is not defined
 <p><strong>正確寫法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let myName = "小明";
 console.log(myName);
 </code></pre>
@@ -202,7 +202,7 @@ console.log(myName);
 <p><strong>錯誤範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 const score = 100;
 score = 95;  // 錯誤
 </code></pre>
@@ -211,7 +211,7 @@ score = 95;  // 錯誤
 <p><strong>正確做法：</strong>如果值需要改變，應使用 let 而非 const。</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let score = 100;
 score = 95;  // 正確
 </code></pre>
@@ -223,7 +223,7 @@ score = 95;  // 正確
 <p><strong>錯誤範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let 1name = "小明";      // 不能以數字開頭
 let my-name = "小華";    // 不能使用 - 連字號
 let my name = "小李";    // 不能有空格
@@ -233,7 +233,7 @@ let my name = "小李";    // 不能有空格
 <p><strong>正確寫法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let name1 = "小明";
 let myName = "小華";     // 駝峰式（camelCase）命名（推薦）
 let my_name = "小李";    // 蛇形（snake_case）命名（較少用）
@@ -252,7 +252,7 @@ let my_name = "小李";    // 蛇形（snake_case）命名（較少用）
 <p><strong>容易混淆的範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let num1 = "10";     // 字串
 let num2 = 10;       // 數字
 
@@ -266,7 +266,7 @@ console.log(num1 + num2);  // "1010" 字串連接，而非 20
 <p><strong>正確做法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let num1 = 10;
 let num2 = 10;
 console.log(num1 + num2);  // 20
@@ -277,7 +277,7 @@ console.log(num1 + num2);  // 20
 <p><strong>不良範例：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 userName = "小明";  // 忘記使用 let 或 const
 </code></pre>
 <!-- Code Block Ends-->
@@ -287,7 +287,7 @@ userName = "小明";  // 忘記使用 let 或 const
 <p><strong>正確做法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let userName = "小明";
 </code></pre>
 <!-- Code Block Ends-->

@@ -83,7 +83,7 @@
 <h3>範例一：基本 switch 語句（UI 主題切換）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let theme = "dark";
 let backgroundColor;
 
@@ -111,7 +111,7 @@ console.log("背景色：" + backgroundColor);  // 背景色：#1A1A1A
 <h3>範例二：三元運算子（顯示/隱藏元素）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let isMenuOpen = true;
 let menuStatus = isMenuOpen ? "顯示" : "隱藏";
 
@@ -125,7 +125,7 @@ console.log("選單狀態：" + menuStatus);  // 選單狀態：顯示
 <h3>範例三：定義與呼叫函式（顯示訊息）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 定義函式
 function showWelcomeMessage() {
   console.log("歡迎來到我的網站！");
@@ -143,7 +143,7 @@ showWelcomeMessage();  // 歡迎來到我的網站！
 <h3>範例四：帶參數的函式（客製化訊息）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 定義帶參數的函式
 function greetUser(userName) {
   console.log("嗨，" + userName + "！歡迎回來！");
@@ -161,7 +161,7 @@ greetUser("Amy");   // 嗨，Amy！歡迎回來！
 <h3>範例五：多個參數的函式（按鈕樣式設定）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 function setButtonStyle(textColor, bgColor) {
   console.log("按鈕文字顏色：" + textColor);
   console.log("按鈕背景顏色：" + bgColor);
@@ -178,7 +178,7 @@ setButtonStyle("#000000", "#FFD700");  // 黑色文字，金色背景
 <h3>範例六：有回傳值的函式（計算折扣價）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 function calculateDiscountPrice(originalPrice, discountPercent) {
   let discount = originalPrice * (discountPercent / 100);
   let finalPrice = originalPrice - discount;
@@ -199,7 +199,7 @@ return 用於回傳函式的結果。回傳值可以存入變數中，或直接�
 <h3>範例七：實用函式範例（檢查 Email 格式）</h3>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 // 判斷是否為有效的 Email 格式（簡化版）
 function isValidEmail(email) {
   if (email.includes("@") && email.includes(".")) {
@@ -223,7 +223,7 @@ console.log(isValidEmail("invalidemail"));      // false
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 function showAlert() {
   console.log("這是一個警告訊息！");
 }
@@ -238,7 +238,7 @@ showAlert;  // 錯誤：忘記加小括號
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 showAlert();  // 正確：加上小括號
 </code></pre>
 <!-- Code Block Ends-->
@@ -247,7 +247,7 @@ showAlert();  // 正確：加上小括號
 <h4>容易混淆的範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 function displayNotification(title, message) {
   console.log(title + ": " + message);
 }
@@ -261,7 +261,7 @@ displayNotification("提醒");  // 提醒: undefined
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 displayNotification("提醒", "您有新訊息");  // 提醒: 您有新訊息
 </code></pre>
 <!-- Code Block Ends-->
@@ -270,7 +270,7 @@ displayNotification("提醒", "您有新訊息");  // 提醒: 您有新訊息
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 function getButtonText(isLoggedIn) {
   if (isLoggedIn) {
     "登出";  // 忘記 return
@@ -289,7 +289,7 @@ console.log(buttonText);  // undefined
 <h4>正確寫法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 function getButtonText(isLoggedIn) {
   if (isLoggedIn) {
     return "登出";
@@ -307,7 +307,7 @@ console.log(buttonText);  // 登出
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 function showMessage() {
   return "訊息已顯示";
   console.log("這行永遠不會執行");  // 死代碼
@@ -324,7 +324,7 @@ showMessage();
 <h4>錯誤範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 let colorMode = "primary";
 
 switch (colorMode) {
@@ -350,7 +350,7 @@ switch (colorMode) {
 匹配到 "primary" 後，因為沒有 break，會繼續執行下面所有的 case，直到遇到 break。</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-js">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-js">
 switch (colorMode) {
   case "primary":
     console.log("主色：藍色");
