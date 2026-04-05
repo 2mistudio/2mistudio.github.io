@@ -96,7 +96,7 @@
     <li>#ffffff → #fff（白色）</li>
     <li>#000000 → #000（黑色）</li>
 </ul>
-<p><strong>優點：</strong> 最常用、簡潔、標準化、設計工具普遍支援<br>
+<p><strong>優點：</strong> 最常用、簡短、標準化、設計工具普遍支援<br>
 <strong>缺點：</strong> 不直觀、難以理解色值含義、調整顏色麻煩</p>
 
 <p><strong>備註：</strong></p>
@@ -111,7 +111,7 @@
 <p><strong>語法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 rgb(紅, 綠, 藍);
 
 /*範例*/
@@ -127,14 +127,14 @@ rgb(255, 0, 0);
     <li>rgb(255, 255, 255) = 白色（全開）</li>
     <li>rgb(0, 0, 0) = 黑色（全關）</li>
 </ul>
-<p><strong>優點：</strong> 直觀易懂、容易調整單、與設計軟體的色彩選擇器對應<br>
-<strong>缺點：</strong> 語法較長、顏色細部調較不容易</p>
+<p><strong>優點：</strong> 直觀易懂、容易調整、與設計軟體的色彩選擇器對應<br>
+<strong>缺點：</strong> 語法較長、顏色細部變化調較不容易</p>
 <hr>
 
 <h3>4. RGBA (RGB + Alpha)</h3>
 <p>在 RGB 基礎上增加透明度通道（Alpha Channel）。</p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 rgb(紅, 綠, 藍, 透明度)
 
 /*範例*/
@@ -164,7 +164,7 @@ RGBA 的透明度不會影響子元素，只影響背景本身。</p>
 
 <p><strong>語法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 hsl(色相, 飽和度%, 亮度%);
 
 /*範例*/
@@ -182,7 +182,7 @@ hsl(150, 50%, 90%);
 
 <p><strong>語法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 hsl(色相, 飽和度%, 亮度%, 透明度);
 
 /*範例*/
@@ -200,7 +200,7 @@ hsl(150, 50%, 90%, 50%);
 <p><strong>錯誤示範：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ 缺少 # 符號 */
 .bad {
   color: 333333;
@@ -222,7 +222,7 @@ hsl(150, 50%, 90%, 50%);
 <p><strong>正確做法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ 正確格式 */
 .good {
   color: #333333;
@@ -240,7 +240,7 @@ hsl(150, 50%, 90%, 50%);
 <p><strong>錯誤示範：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ RGB 數值超過 255 */
 .bad {
   color: rgb(300, 400, 500);
@@ -257,7 +257,7 @@ hsl(150, 50%, 90%, 50%);
 <p><strong>正確做法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ RGB 範圍 0-255 */
 .good {
   color: rgb(255, 255, 255);
@@ -275,7 +275,7 @@ hsl(150, 50%, 90%, 50%);
 <p><strong>錯誤示範：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ 飽和度和亮度缺少 % 符號 */
 .wrong {
   color: hsl(210, 100, 50);
@@ -292,7 +292,7 @@ hsl(150, 50%, 90%, 50%);
 <p><strong>正確做法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ 飽和度和亮度必須加 % */
 .correct {
   color: hsl(210, 100%, 50%);

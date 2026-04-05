@@ -37,346 +37,179 @@
 
 <!-- Main Content Starts -->
 <h1>Day 6: Flexbox 彈性佈局 </h1>
-<h3 class="sub-title">CSS Display and Position</h3>
-
-<p>本單元算是 「CSS 網頁排版」相關的第一個章節，尤其是 CSS Position 部分，雖然是相當早期的 CSS 技術，但是因為在排版上相當實用，至今還是非常重要常見的排版技術。</p>
+<h3 class="sub-title">CSS Flexbox</h3>
 
 <h2>一、學習目標</h2>
 <p>完成本日課程後，你將能夠：</p>
 <ul>
-    <li>理解 display 屬性的作用與常用值</li>
-    <li>掌握 block、inline、inline-block 的差異</li>
-    <li>了解 position 屬性的五種定位方式</li>
-    <li>使用 top、right、bottom、left 控制元素位置</li>
-    <li>理解 z-index 的層疊順序控制</li>
+    <li>理解 Flexbox 的基本概念與運作原理</li>
+    <li>掌握 Flex Container 與 Flex Items 的屬性</li>
+    <li>使用 justify-content 和 align-items 控制對齊</li>
+    <li>理解主軸與交叉軸的概念</li>
+    <li>使用 flex-wrap 處理換行</li>
+    <li>建立常見的響應式佈局</li>
 </ul>
-<h2>二、Display 屬性</h2>
-<p>Display 屬性決定元素如何顯示及與其他元素的排列方式，有許多種不同的性設定：</p>
+<h2>二、Flexbox 簡介</h2>
+<p>Flexbox（彈性盒子佈局）是現代 CSS 佈局的核心技術，專門用於一維佈局（水平或垂直）。</p>
+<h4>主要優勢：</h4>
 <ul>
-    <li><strong>display: block</strong> （顯示為區塊元素）</li>
-    <li><strong>display: inline</strong> （顯示為行內元素）</li>
-    <li><strong>display: inline-block</strong> （顯示為行內區塊）</li>
-    <li><strong>display: none</strong> （不顯示）</li>
-    <li><strong><a href="day6.htm">display: flex</a></strong> （會在後面的章節介紹）</li>
-    <li><strong><a href="day7.htm">display: grid</a></strong> （會在後面的章節介紹）</li>
+    <li>輕鬆實現垂直置中</li>
+    <li>彈性分配空間</li>
+    <li>自動調整元素大小</li>
+    <li>控制元素排列順序</li>
+    <li>響應式佈局更簡單</li>
 </ul>
-    <hr>
+<h4>適用場景：</h4>
+<ul>
+    <li>導覽列</li>
+    <li>卡片排列</li>
+    <li>表單佈局</li>
+    <li>工具列</li>
+    <li>頁尾資訊</li>
+</ul>
 
-<h3>1. block 區塊元素</h3>
-<p>HTML 元素有許多預設的屬性，區塊元素就是其中之一。</p>
-<p><strong>特性：</strong></p>
-<ul>
-    <li>獨佔一行空間，後面的元素會自動換行</li>
-    <li>可以設定寬度和高度</li>
-    <li>預設寬度為父元素的 100%</li>
-</ul>
+<h3>基本概念</h3>
 
-<p><strong>預設為 block 的元素：</strong>
-&lt;div>, &lt;p>, &lt;h1>-&lt;h6>, &lt;ul>, &lt;ol>, &lt;li>, &lt;section>, &lt;header>, &lt;footer>⋯等。</p>
-<hr>
-
-<h3>2. inline 行內元素</h3>
-<p>行內元素元素也是 HTML 元素許多預設的屬性之一。</p>
-<p><strong>特性：</strong></p>
+<h4>兩個核心角色：</h4>
 <ul>
-    <li>不會換行，與其他元素在同一行</li>
-    <li>不能設定寬度和高度</li>
-    <li>寬度由內容決定</li>
-    <li>垂直方向的 margin 和 padding 無效</li>
+    <li><strong>Flex Container（外包容器）</strong> - 設定 display: flex 的父元素</li>
+    <li><strong>Flex Items（內容項目）</strong> - 容器內的直接子元素</li>
 </ul>
-<p><strong>預設為 inline 的元素：</strong>
-&lt;span>, &lt;a>, &lt;strong>, &lt;em>, &lt;img>, &lt;input>⋯等。</p>
-<hr>
-
-<h3>3. inline-block 行內區塊</h3>
-<p><strong>特性：</strong></p>
+<h4>兩個重要軸線：</h4>
 <ul>
-    <li>不會換行，與其他元素在同一行</li>
-    <li>可以設定寬度和高度</li>
-    <li>結合了 inline 和 block 的優點</li>
-</ul>
-<p><strong>特性：</strong></p>
-<ul>
-    <li>導覽列按鈕</li>
-    <li>圖片排列</li>
-    <li>標籤或徽章</li>
+    <li><strong>Main Axis（主軸）</strong> - 項目排列的方向</li>
+    <li><strong>Cross Axis（交叉軸）</strong> - 與主軸垂直的方向</li>
 </ul>
 <hr>
 
-<h3>4. none 隱藏元素</h3>
-<p>用來讓指定 HTML 元素從網頁中完全消失。</p>
-<p><strong>特性：</strong></p>
-<ul>
-    <li>元素完全不顯示</li>
-    <li>不佔據空間</li>
-</ul>
-<p><strong>與 visibility: hidden 的差異：</strong></p>
-<ul>
-    <li>display: none - 不顯示，不佔空間</li>
-    <li>visibility: hidden - 不顯示，但仍佔空間</li>
-</ul>
-<hr>
+<h2>三、Flex Container 屬性</h2>
 
-<h3>Display 屬性比較表</h3>
-<table>
-    <tr>
-        <th class="text-left">屬性</th>
-        <th>block</th>
-        <th>inline</th>
-        <th>inline-block</th>
-    </tr>
-    <tr>
-        <th class="text-left">換行</th>
-        <td>是</td>
-        <td>否</td>
-        <td>否</td>
-    </tr>
-    <tr>
-        <th class="text-left">設定寬高</th>
-        <td>可以</td>
-        <td>不可以</td>
-        <td>可以</td>
-    </tr>
-    <tr>
-        <th class="text-left">垂直 margin/padding</th>
-        <td>有效</td>
-        <td>無效</td>
-        <td>有效</td>
-    </tr>
-    <tr>
-        <th class="text-left">預設寬度</th>
-        <td>100%</td>
-        <td>內容決定</td>
-        <td>內容決定</td>
-    </tr>
-</table>
-<hr>
-
-
-<h2>三、Position 屬性</h2>
-
-<p>position 屬性決定元素的位置，一共有五種定位設定方式：</p>
-<ul>
-    <li><strong>position: static</strong>（靜態定位，預設值）</li>
-    <li><strong>position: relative</strong>（相對定位）</li>
-    <li><strong>position: absolute</strong>（絕對定位）</li>
-    <li><strong>position: fixed</strong>（固定定位）</li>
-    <li><strong>position: sticky</strong>（黏著定位）</li>
-</ul>
-<hr>
-
-<h3>1. static（靜態定位，預設值）</h3>
-<p><strong>特性：</strong></p>
-<ul>
-    <li>元素按照正常文檔流（從上到下、由左而右）排列</li>
-    <li>top、right、bottom、left、z-index 無效</li>
-</ul>
-<hr>
-<h3>2. relative（相對定位）</h3>
-<p><strong>特性：</strong></p>
-<ul>
-    <li>相對於元素原本的位置進行偏移</li>
-    <li>原本所在的空間仍然保留</li>
-    <li>不影響其他元素的位置</li>
-</ul>
-<p><strong>使用場景：</strong></p>
-<ul>
-    <li>微調元素位置</li>
-    <li>作為 absolute 定位的參考點（父元素）</li>
-</ul>
-<hr>
-<h3>3. absolute（絕對定位）</h3>
-<p><strong>特性：</strong></p>
-<ul>
-    <li>相對於最近的 <strong>已定位父元素</strong>（非 static）進行定位</li>
-    <li>如果沒有已定位的父元素，則相對於 &lt;body> 標籤位置（也就是網頁頁面的左上角）</li>
-    <li>設定絕對定位的元素會脫離正常文檔流，不佔空間</li>
-    <li>其他元素會忽略它的存在</li>
-</ul>
-<p><strong>使用場景：</strong></p>
-<ul>
-    <li>彈出視窗</li>
-    <li>下拉選單</li>
-    <li>浮動按鈕</li>
-    <li>徽章或標記</li>
-</ul>
-<hr>
-
-<h3>4. fixed（固定定位）</h3>
-<p><strong>特性：</strong></p>
-<ul>
-    <li>相對於瀏覽器視窗進行定位</li>
-    <li>脫離正常文檔流</li>
-    <li>捲動頁面時位置不變</li>
-</ul>
-<p><strong>使用場景：</strong></p>
-<ul>
-    <li>固定導覽列</li>
-    <li>回到頂部按鈕</li>
-    <li>浮動客服視窗</li>
-</ul>
-<hr>
-<h3>5. sticky（黏著定位）</h3>
-<p><strong>特性：</strong></p>
-<ul>
-    <li>結合 relative 和</li>
-    <li>在捲動到指定位置前表現為 relative</li>
-    <li>捲動到指定位置後表現為 fixed</li>
-    <li>需要設定 top、bottom 等值</li>
-</ul>
-<p><strong>使用場景：</strong></p>
-<ul>
-    <li>頁首選單</li>
-    <li>表格標題</li>
-    <li>側邊欄</li>
-    <li>區塊標題</li>
-</ul>
-<hr>
-
-<h2>四、定位偏移屬性</h2>
-<p>用來配合 position 使用（static 除外）：</p>
-
+<h3>1. display</h3>
+<p>啟用 Flexbox 佈局。</p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
-top: 值;      /* 距離頂部 */
-right: 值;    /* 距離右側 */
-bottom: 值;   /* 距離底部 */
-left: 值;     /* 距離左側 */
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+display: flex;        /* 區塊級 Flex 容器 */
+display: inline-flex; /* 行內 Flex 容器 */
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>2. flex-direction</h3>
+<p>設定主軸方向（項目排列方向）。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+flex-direction: row;            /* 水平，從左到右（預設） */
+flex-direction: row-reverse;    /* 水平，從右到左 */
+flex-direction: column;         /* 垂直，從上到下 */
+flex-direction: column-reverse; /* 垂直，從下到上 */
+
+</code></pre>
+<!-- Code Block Ends-->
+ 
+<h3>3. justify-content</h3>
+<p>控制項目在主軸上的對齊方式。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+justify-content: flex-start;    /* 靠主軸起點（預設） */
+justify-content: flex-end;      /* 靠主軸終點 */
+justify-content: center;        /* 置中 */
+justify-content: space-between; /* 兩端對齊，項目間距相等 */
+justify-content: space-around;  /* 項目兩側間距相等 */
+justify-content: space-evenly;  /* 所有間距相等 */
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>4. align-items</h3>
+<p>控制項目在交叉軸上的對齊方式。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+align-items: stretch;     /* 拉伸填滿容器（預設） */
+align-items: flex-start;  /* 靠交叉軸起點 */
+align-items: flex-end;    /* 靠交叉軸終點 */
+align-items: center;      /* 垂直置中 */
+align-items: baseline;    /* 基線對齊 */
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>5. flex-wrap</h3>
+<p>控制項目是否換行。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+flex-wrap: nowrap;       /* 不換行（預設），項目會壓縮 */
+flex-wrap: wrap;         /* 換行 */
+flex-wrap: wrap-reverse; /* 反向換行 */
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>6. align-content</h3>
+<p>控制多行項目在交叉軸上的對齊（單行無效）。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+align-content: stretch;       /* 拉伸（預設） */
+align-content: flex-start;    /* 靠起點 */
+align-content: flex-end;      /* 靠終點 */
+align-content: center;        /* 置中 */
+align-content: space-between; /* 兩端對齊 */
+align-content: space-around;  /* 周圍間距 */
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>7. gap</h3>
+<p>設定項目之間的間距（現代瀏覽器支援）。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+gap: 20px;           /* 水平和垂直間距都是 20px */
+gap: 20px 10px;      /* 垂直 20px，水平 10px */
+row-gap: 20px;       /* 只設定垂直間距 */
+column-gap: 10px;    /* 只設定水平間距 */
 
 </code></pre>
 <!-- Code Block Ends-->
 <hr>
 
-<h2>五、z-index（層疊順序）</h2>
-<p>可以想像成 Photoshop 的圖層概念，用來控制被定位的 HTML 元素的堆疊順序（只對已設定定位的元素有效）。</p>
-<p><strong>特性：</strong></p>
-<ul>
-    <li>數值越大，越在上層</li>
-    <li>預設值為 auto（等於 0）</li>
-    <li>可以使用負值</li>
-</ul>
+<h2>四、Flex Items 屬性</h2>
 
+<h3>1. flex-grow</h3>
+<p>控制項目的放大比例（分配剩餘空間）。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+flex-grow: 0;  /* 不放大（預設） */
+flex-grow: 1;  /* 平均分配剩餘空間 */
+flex-grow: 2;  /* 獲得兩倍的剩餘空間 */
 
+</code></pre>
+<!-- Code Block Ends-->
+ 
+<hr>
 
 <h2>六、常見錯誤與注意事項</h2>
 <h3>錯誤 1: 忘記設定 box-sizing</h3>
 <p><strong>問題示範：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 
 </code></pre>
 <!-- Code Block Ends-->
 <p><strong>建議做法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 
 
 </code></pre>
 <!-- Code Block Ends-->
-
-<h3>錯誤 2: Margin 疊加問題</h3>
-<p><strong>垂直 Margin 會疊加（兩組設定會取較大值）：</strong></p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-
-
-</code></pre>
-<!-- Code Block Ends-->
-<p><strong>解決方式：</strong></p>
-<ul>
-    <li>了解這是正常行為</li>
-
-</ul>
-<h3>錯誤 3: Padding 使用負值</h3>
-<p><strong>錯誤示範：</strong></p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-
-</code></pre>
-<p>只有 margin 可以使用負值，Padding 不行。</p>
-
-<h3>錯誤 4: 百分比高度問題</h3>
-<p><strong>問題示範：</strong></p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-
-</code></pre>
-<!-- Code Block Ends-->
-<p><strong>正確做法：</strong></p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-
-
-</code></pre>
-<!-- Code Block Ends-->
-<p>高度設定在網頁中是一個特別的存在。</p>
-<ul>
-    <li>網頁中 HTML 區塊元素預設的寬度是 100%</li>
-
-</ul>
-
-<h3>錯誤 5: Border 語法順序錯誤</h3>
-<p><strong>錯誤示範：</strong></p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-
-
-</code></pre>
-<!-- Code Block Ends-->
-<p><strong>正確做法：</strong></p>
-<!-- Code Block Begin-->
-<pre><code class="language-css">
-
-
-</code></pre>
-<!-- Code Block Ends-->
+<hr>
 
 <h2>七、重點整理</h2>
 <h3>Box Model 盒模型組成：</h3>
 <ul>
     <li>Content（內容）→ Padding（內邊距）→ Border（邊框）→ Margin（外邊距）</li>
 </ul>
-<h3>Margin & Padding 間距屬性：</h3>
-<ul>
-    <li>margin - 外邊距，可用負值，margin: 0 auto 可水平置中
-padding - 內</li>
-    <li>font-size - 字體大小（建議用 px 或 rem）</li>
-    <li>padding - 內邊距，不可用負值</li>
-    <li>設定方式：四個值 / 兩個值 / 一個值 / 單獨設定</li>
-</ul>
-<h3>Border 邊框：</h3>
-<ul>
-    <li>border: 寬度 樣式 顏色</li>
-    <li>樣式：solid、dashed、dotted、double、none</li>
-    <li>border-radius - 圓角，50% 可製作圓形</li>
-</ul>
-<h3>Width & Height 寬高尺寸：</h3>
-<ul>
-    <li>width、height - 寬度和高度</li>
-    <li>max-width、min-width - 最大/最小寬度</li>
-    <li>max-height、min-height - 最大/最小高度</li>
-</ul>
-<h3>Box-sizing：</h3>
-<ul>
-    <li>content-box - 預設，寬度不包含 padding 和 border</li>
-    <li>border-box - 推薦，寬度包含 padding 和 border</li>
-    <li>建議全域設定為 border-box</li>
-</ul>
-<h3>Background 背景：</h3>
-<ul>
-    <li>background-color - 背景顏色</li>
-    <li>background-image - 背景圖片</li>
-    <li>background-size - 圖片尺寸（cover / contain）</li>
-    <li>background-position - 圖片位置</li>
-    <li>background-repeat - 是否重複</li>
-</ul>
-<h3>重要觀念：</h3>
-<ul>
-    <li>垂直 margin 會疊加（取較大值）</li>
-    <li>Padding 不能用負值，Margin 可以</li>
-    <li>百分比高度需要父元素有明確高度</li>
-    <li>推薦使用 box-sizing: border-box</li>
-</ul>
+
+<hr>
 
     <section class="footer-nav">
         <a class="prev" href="day5.htm">

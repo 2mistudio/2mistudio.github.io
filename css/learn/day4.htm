@@ -61,7 +61,7 @@
 <p><strong>基本語法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 margin: 值;
 
 </code></pre>
@@ -69,7 +69,7 @@ margin: 值;
 
 <p><strong>四個方向的設定：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* 四個值（上 右 下 左，順時針） */
 margin: 10px 20px 30px 40px;
 
@@ -90,7 +90,7 @@ margin-left: 40px;
 
 <p><strong>水平置中技巧：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 .center {
   width: 300px;
   margin: 0 auto;  /* 上下 0，左右自動 */
@@ -101,7 +101,7 @@ margin-left: 40px;
 <p><strong>負值應用：</strong>
 Margin 可以使用負值，讓元素重疊或突破容器。</p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 .overlap {
   margin-top: -20px;  /* 向上移動 20px */
 }
@@ -114,7 +114,7 @@ Margin 可以使用負值，讓元素重疊或突破容器。</p>
 <p>內容與邊框之間的距離。</p>
 <p><strong>語法：</strong>與 margin 相同。</p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* 四個值 */
 padding: 10px 20px 30px 40px;
 
@@ -139,7 +139,7 @@ padding-left: 40px;
 <p>HTML 元素的邊框樣式。</p>
 <p><strong>基本語法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 border: 寬度 樣式 顏色;
 </code></pre>
 <!-- Code Block Ends-->
@@ -154,7 +154,7 @@ border: 寬度 樣式 顏色;
 </ul>
 <p><strong>完整設定：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* 簡寫 */
 border: 2px solid #333;
 
@@ -171,7 +171,7 @@ border-bottom: 1px solid gray;
 
 <p><strong>圓角邊框：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 border-radius: 10px;  /* 四角相同 */
 border-radius: 10px 20px 30px 40px;  /* 左上 右上 右下 左下 */
 
@@ -185,7 +185,7 @@ border-radius: 50%;
 
 <p><strong>基本語法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 width: 值;
 height: 值;
 </code></pre>
@@ -199,7 +199,7 @@ height: 值;
 </ul>
 <p><strong>最大/最小值：</strong>用在響應式設計，防止網頁內容元件過大或過小</p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 max-width: 1200px;   /* 最大寬度 */
 min-width: 300px;    /* 最小寬度 */
 max-height: 500px;   /* 最大高度 */
@@ -222,7 +222,7 @@ min-height: 200px;   /* 最小高度 */
 
 <p><strong>範例對比：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* content-box（預設） */
 .box1 {
   width: 300px;
@@ -244,7 +244,7 @@ min-height: 200px;   /* 最小高度 */
 <!-- Code Block Ends-->
 <p><strong>全域設定（推薦）：</strong>通常會寫在 CSS 一開始的地方，讓它影響整個頁面</p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 * {
   box-sizing: border-box;
 }
@@ -262,7 +262,7 @@ min-height: 200px;   /* 最小高度 */
 
 <p><strong>背景語法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 background-color: #f0f0f0;         /*背景顏色*/
 background-image: url('image.jpg');/*背景圖片*/
 background-size: cover;            /* cover 或 contain */
@@ -273,7 +273,7 @@ background-repeat: no-repeat;      /* 是否重複(預設背景會重複) */
 
 <p><strong>背景語法簡寫：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* 排列順序：color image repeat position/size */
 background: #f0f0f0 url('image.jpg') no-repeat center/cover;
 
@@ -282,7 +282,7 @@ background: #f0f0f0 url('image.jpg') no-repeat center/cover;
 
 <p><strong>背景尺寸完整使用說明：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* 關鍵字 */
 background-size: cover;    /* 填滿容器，可能裁切圖片 */
 background-size: contain;  /* 完整顯示圖片，可能留白 */
@@ -303,7 +303,7 @@ background-size: auto;  /* 圖片原始尺寸 */
 
 <p><strong>背景位置完整使用說明：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* 關鍵字 */
 background-position: center;        /* 置中 */
 background-position: top;           /* 頂部 */
@@ -336,7 +336,7 @@ background-position: 80% bottom;    /* 水平 80%，底部 */
 
 <p><strong>背景重複完整使用說明：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 background-repeat: no-repeat;  /* 不重複 */
 background-repeat: repeat;     /* 重複（預設） */
 background-repeat: repeat-x;   /* 只水平重複 */
@@ -351,7 +351,7 @@ background-repeat: repeat-y;   /* 只垂直重複 */
 <h3>錯誤 1: 忘記設定 box-sizing</h3>
 <p><strong>問題示範：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ 沒有設定 box-sizing */
 .box {
   width: 300px;
@@ -364,7 +364,7 @@ background-repeat: repeat-y;   /* 只垂直重複 */
 <!-- Code Block Ends-->
 <p><strong>建議做法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ 全域設定 border-box */
 * {
   box-sizing: border-box;
@@ -383,7 +383,7 @@ background-repeat: repeat-y;   /* 只垂直重複 */
 <h3>錯誤 2: Margin 疊加問題</h3>
 <p><strong>垂直 Margin 會疊加（兩組設定會取較大值）：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 .box1 {
   margin-bottom: 20px;
 }
@@ -404,7 +404,7 @@ background-repeat: repeat-y;   /* 只垂直重複 */
 <h3>錯誤 3: Padding 使用負值</h3>
 <p><strong>錯誤示範：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ Padding 不能使用負值 */
 .box {
   padding: -10px;  /* 無效 */
@@ -416,7 +416,7 @@ background-repeat: repeat-y;   /* 只垂直重複 */
 <h3>錯誤 4: 百分比高度問題</h3>
 <p><strong>問題示範：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ 父元素沒有明確高度時，百分比高度無效 */
 .parent {
   /* 沒有設定 height */
@@ -430,7 +430,7 @@ background-repeat: repeat-y;   /* 只垂直重複 */
 <!-- Code Block Ends-->
 <p><strong>正確做法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ 父元素要有明確高度 */
 .parent {
   height: 500px;
@@ -453,7 +453,7 @@ background-repeat: repeat-y;   /* 只垂直重複 */
 <h3>錯誤 5: Border 語法順序錯誤</h3>
 <p><strong>錯誤示範：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ 順序不對 */
 .box {
   border: blue 2px solid;
@@ -463,7 +463,7 @@ background-repeat: repeat-y;   /* 只垂直重複 */
 <!-- Code Block Ends-->
 <p><strong>正確做法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ 正確順序：寬度 樣式 顏色 */
 .box {
   border: 2px solid blue;

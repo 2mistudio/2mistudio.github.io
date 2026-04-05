@@ -80,7 +80,7 @@
 <p>直接寫在 HTML 標籤的 style 屬性中。</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;p style="color: red;"&gt;紅色文字&lt;/p&gt;
     
 </code></pre>
@@ -100,7 +100,7 @@
 <p>寫在 HTML 的 &lt;head&gt; 區塊內的 &lt;style&gt; 標籤中。</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="zh-TW"&gt;
 &lt;head&gt;
@@ -132,7 +132,7 @@
 <h4>方法 A: 使用 HTML 的 &lt;link&gt; 標籤（推薦）</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="zh-TW"&gt;
 &lt;head&gt;
@@ -159,7 +159,7 @@
 <h4>方法 B: 使用 CSS 的 @import 規則</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="zh-TW"&gt;
 &lt;head&gt;
@@ -234,7 +234,7 @@
 <p>直接使用 HTML 標籤名稱作為選擇器。</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* 選取頁面中所有的 &lt;p&gt; 元素 */
 p {
   color: #333;
@@ -263,7 +263,7 @@ h1 {
 <p>使用 . 開頭，搭配 HTML 的 class 屬性作為選擇器。</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* 類別選擇器 */
 .highlight {
   background-color: yellow;
@@ -277,7 +277,7 @@ h1 {
 <!-- Code Block Ends-->
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;p>這是普通文字&lt;/p>
 &lt;p class="highlight">這是重點文字&lt;/p>
 &lt;p class="hilight text-center">這是重點又居中的文字&lt;/p>
@@ -315,7 +315,7 @@ h1 {
 <p>使用 # 開頭，搭配 HTML 的 id 屬性。</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ID 選擇器 */
 #main-header {
   background-color: navy;
@@ -330,7 +330,7 @@ h1 {
 <!-- Code Block Ends-->
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;header id="main-header">
   &lt;h1>網站標題&lt;/h1>
 &lt;/header>
@@ -365,7 +365,7 @@ h1 {
 <p>Pseudo （唸起來像速度）偽類選擇器，通常用在選取 HTML 元素的特定「狀態」。偽類選擇器相當多，為了降低學習複雜度，這邊先介紹 &lt;a&gt; 連結的四個重要狀態偽類。</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* 必須按照 LVHA 順序 */
 
 /* :link - 未訪問的連結 */
@@ -433,7 +433,7 @@ a:active {
 <h4>測試範例：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 p {
   color: black;
 }
@@ -450,7 +450,7 @@ p {
 <!-- Code Block Ends-->
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!-- 這段語法同時符合了三種選擇器的設定  -->
 &lt;p id="intro" class="highlight">這是一段測試文字&lt;/p>
 
@@ -470,7 +470,7 @@ p {
 <h4>錯誤示範：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ 忘記分號：等於 color 這一行設定沒有結束 */
 p {
   color: red /* 應該要加上 ; 收尾 */
@@ -498,7 +498,7 @@ p {
 <h4>正確做法：</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ 正確語法 */
 p {
   color: red;
@@ -512,7 +512,7 @@ p {
 <h4>1. CSS 不區分大小寫（屬性和值），但建議全部用小寫</h4>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* 技術上都有效，但不推薦混用 */
    p { COLOR: RED; }
    p { Color: Red; }
@@ -526,14 +526,14 @@ p {
 
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;div class="Card">&lt;/div>
 
 </code></pre>
 <!-- Code Block Ends-->
  
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 .card { }   /* ❌ 第一個字小寫，無法選取 */
 .Card { }   /* ✅ 大小寫完全符合，可以選取 */
 
@@ -553,7 +553,7 @@ p {
 <p><strong>錯誤示範：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ 錯誤：這會選取叫做 &lt;highlight> 的自訂 HTML 元素，而不是 class */
 highlight {
   background-color: yellow;
@@ -570,7 +570,7 @@ header {
 <p><strong>正確做法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ 正確：class 選擇器要加 . */
 .highlight {
   background-color: yellow;
@@ -590,7 +590,7 @@ header {
 <p><strong>錯誤示範：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 **檔案結構：**
 
 project/
@@ -609,7 +609,7 @@ project/
 <p><strong>正確做法：</strong></p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-html">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
 &lt;!-- ✅ 正確：路徑要對應實際檔案位置 -->
 &lt;link rel="stylesheet" href="css/style.css">
 

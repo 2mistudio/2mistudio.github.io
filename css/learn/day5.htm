@@ -65,7 +65,7 @@
 <h3>1. block 區塊元素</h3>
 <p>HTML 元素有許多預設的屬性，block 區塊元素就是其中之一。block 元素通常用來作為網頁內容的「分類」與「骨架結構」，是<strong>排版專用的 HTML 元素</strong>。</p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* Block - 區塊元素 */
 .block {
   display: block;
@@ -95,7 +95,7 @@
 <h3>2. inline 行內元素</h3>
 <p>行內元素元素也是 HTML 元素許多預設的屬性之一。</p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* Inline - 行內元素 */
 .inline {
   display: inline;
@@ -118,7 +118,7 @@
 
 <h3>3. inline-block 行內區塊</h3>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* Inline-block - 行內區塊 */
 .inline-block {
   display: inline-block;
@@ -147,7 +147,7 @@
 <h3>4. none 隱藏元素</h3>
 <p>用來讓指定 HTML 元素從網頁中完全消失。</p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* None - 隱藏 */
 .hidden {
   display: none;
@@ -229,7 +229,7 @@
 
 <h3>2. relative（相對定位）</h3>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* Relative - 相對定位 */
 .relative {
   position: relative;
@@ -255,7 +255,7 @@
 
 <h3>3. absolute（絕對定位）</h3>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* Absolute - 絕對定位 */
 .parent {
   position: relative;  /* 作為參考點 */
@@ -293,7 +293,7 @@
 
 <h3>4. fixed（固定定位）</h3>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* Fixed - 固定定位 */
 .fixed-header {
   position: fixed;
@@ -333,7 +333,7 @@
 <hr>
 <h3>5. sticky（黏著定位）</h3>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* Sticky - 黏性定位 */
 .sticky-nav {
   position: sticky;
@@ -368,7 +368,7 @@
 <p>用來配合 position 使用（static 除外）：</p>
 
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 top: 值;      /* 距離頂部 */
 right: 值;    /* 距離右側 */
 bottom: 值;   /* 距離底部 */
@@ -381,7 +381,7 @@ left: 值;     /* 距離左側 */
 <h2>五、z-index（層疊順序）</h2>
 <p>可以想像成 Photoshop 的圖層概念，用來控制被定位的 HTML 元素的堆疊順序（只對已設定定位的元素有效）。</p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 .layer-1 {
   position: absolute;
   z-index: 1;
@@ -417,7 +417,7 @@ left: 值;     /* 距離左側 */
 <h3>錯誤 1: inline 元素設定寬高</h3>
 <p><strong>錯誤示範：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ inline 元素無法設定寬高 */
 span {
   display: inline;
@@ -428,7 +428,7 @@ span {
 <!-- Code Block Ends-->
 <p><strong>正確做法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ 改用 inline-block */
 span {
   display: inline-block;
@@ -443,7 +443,7 @@ span {
 <h3>錯誤 2: absolute 定位沒有參考點</h3>
 <p><strong>錯誤示範：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ 父元素沒有設定 position */
 .parent {
   /* 沒有 position 屬性 */
@@ -459,7 +459,7 @@ span {
 <!-- Code Block Ends-->
 <p><strong>正確做法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ 父元素設定 position: relative */
 .parent {
   position: relative;  /* 作為參考點 */
@@ -478,7 +478,7 @@ span {
 <h3>錯誤 3: z-index 對非定位元素無效</h3>
 <p><strong>錯誤示範：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ static 元素無法使用 z-index */
 .box {
   position: static;  /* 或未設定 position */
@@ -489,7 +489,7 @@ span {
 <!-- Code Block Ends-->
 <p><strong>正確做法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ 必須是定位元素 */
 .box {
   position: relative;  /* 或 absolute, fixed, sticky */
@@ -503,7 +503,7 @@ span {
 <h3>錯誤 4: fixed 元素導致內容被遮蓋</h3>
 <p><strong>問題示範：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ 固定導覽列遮住頁面內容 */
 .header {
   position: fixed;
@@ -517,7 +517,7 @@ span {
 <!-- Code Block Ends-->
 <p><strong>正確做法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ 為內容留出空間 */
 .header {
   position: fixed;
@@ -536,7 +536,7 @@ body {
 <h3>錯誤 5: sticky 定位沒有設定 top / bottom / left / right</h3>
 <p><strong>錯誤示範：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ❌ sticky 必須設定 top/bottom 等閾值 */
 .sticky {
   position: sticky;
@@ -547,7 +547,7 @@ body {
 <!-- Code Block Ends-->
 <p><strong>正確做法：</strong></p>
 <!-- Code Block Begin-->
-<pre><code class="language-css">
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
 /* ✅ 設定觸發閾值 */
 .sticky {
   position: sticky;
