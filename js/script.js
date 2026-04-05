@@ -32,7 +32,7 @@
 
 // Button focuse in Mobile view
 
-history.scrollRestoration = "manual";
+// history.scrollRestoration = "manual";
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -50,3 +50,63 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+// Code View Copy Function
+
+  const COPY_LABEL = "Copy code";
+
+    function getCodeTextFromPre(preEl) {
+      const codeEl = preEl?.querySelector("code");
+      return codeEl ? codeEl.innerText : "";
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.top = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        return document.execCommand("copy");
+      } finally {
+        document.body.removeChild(ta);
+      }
+    }
+
+    async function copyToClipboard(text) {
+      if (!text) return false;
+
+      if (navigator.clipboard?.writeText) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch {
+          // continue to fallback
+        }
+      }
+
+      try {
+        return fallbackCopy(text);
+      } catch {
+        return false;
+      }
+    }
+
+    document.addEventListener("click", async (e) => {
+      const btn = e.target.closest(".copy-btn");
+      if (!btn) return;
+
+      const pre = btn.closest("pre");
+      const ok = await copyToClipboard(getCodeTextFromPre(pre));
+
+      btn.setAttribute("aria-label", ok ? "Copied!" : "Copy failed");
+      if (ok) btn.dataset.copied = "1";
+
+      window.clearTimeout(btn._copyTimer);
+      btn._copyTimer = window.setTimeout(() => {
+        btn.setAttribute("aria-label", COPY_LABEL);
+        delete btn.dataset.copied;
+      }, 2000);
+    });
