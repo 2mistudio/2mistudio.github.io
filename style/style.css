@@ -139,6 +139,7 @@ table th,td {
 pre {
     border-radius: 0.6rem;
     overflow: hidden;
+    position: relative;
 }
 code {
     overflow-x: auto;
@@ -157,6 +158,49 @@ code.language-css::before {
 }
 code.language-js::before {
     content: "JavaScript";
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    z-index: 10;
+
+    width: 1.6rem;
+    height: 1.6rem;
+    padding: 0;
+    border: 0;
+    border-radius: 20%;
+
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+
+    background-color: transparent;
+    background-image: url("../icon/copy.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1rem 1rem;
+
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+pre:hover .copy-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+pre:hover .copy-btn:hover {
+    background-color: #ddd;
+}
+
+.copy-btn[data-copied="1"] {
+    background-image: url("../icon/check.svg");
+}
+
+.copy-btn:focus-visible {
+    outline: 2px solid #666;
+    outline-offset: 2px;
 }
 
 /*Utility Class*/
@@ -414,6 +458,10 @@ footer p {
     font-size: 1.2rem;
     line-height: 180%;
 }
+
+
+
+
 #page-css .sub-nav .css-home a {
     color: white;
     background-color: var(--prime-green);
