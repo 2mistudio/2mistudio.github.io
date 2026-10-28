@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet" >
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 9: Transition and Animation 漸變與基礎動畫效果 - CSS 9天快速入門</title>
+</head>
+<body id="page-css-day9">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/css/">CSS</a></li>
+            <li><a href="/css/learn/">9天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0 active"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-CSS基礎與選擇器</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-色彩介紹</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-文字應用</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-區塊與間距</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-顯示與定位</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Flexbox 彈性佈局</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-Grid 網格系統</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-響應式網頁設計</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-漸變與基礎動畫</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 9: 漸變與基礎動畫效果</h1>
+<h3 class="sub-title">CSS Transition and Basic Animation</h3>
+
+
+<h2>一、學習目標</h2>
+<p>完成本日課程後，你將能夠：</p>
+<ul>
+    <li>使用 transition 為狀態變化加上過渡效果</li>
+    <li>理解 timing function（速度曲線）的差異</li>
+    <li>使用 transform 做位移、縮放、旋轉</li>
+    <li>使用 @keyframes 與 animation 建立簡單動畫</li>
+    <li>了解哪些屬性適合做動畫</li>
+</ul>
+
+<hr>
+
+<h2>二、Transition 漸變效果</h2>
+
+<p>預設情況下，樣式改變（例如 :hover）是瞬間完成的。transition 讓變化在一段時間內平滑過渡轉換。</p>
+<p><strong>運作方式：</strong>只要元素的某個屬性值改變（hover、focus、class 切換等），transition 就會在「起始值」與「結束值」之間補上中間的變化。</p>
+
+<h3>Transition 的屬性</h3>
+<table>
+    <tr>
+        <th class="text-left">屬性</th>
+        <th class="text-left">說明</th>
+        <th class="text-left">範例</th>
+    </tr>
+    <tr>
+        <td class="text-left">transition-property</td>
+        <td class="text-left">要過渡的屬性</td>
+        <td class="text-left">background-color、all</td>
+    </tr>
+    <tr>
+        <td class="text-left">transition-duration</td>
+        <td class="text-left">持續時間</td>
+        <td class="text-left">0.3s、300ms</td>
+    </tr>
+    <tr>
+        <td class="text-left">transition-timing-function</td>
+        <td class="text-left">速度曲線</td>
+        <td class="text-left">ease、linear</td>
+    </tr>
+    <tr>
+        <td class="text-left">transition-delay</td>
+        <td class="text-left">延遲開始時間</td>
+        <td class="text-left">0s、0.2s</td>
+    </tr>
+</table>
+
+<h4>簡寫語法：</h4>
+<p>以上四種屬性可以分開寫，也可以合併在一起寫。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+transition: property duration timing-function delay;
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>同時過渡多個屬性（用逗號分隔）：</h4>
+<p>同時要設定多個漸變屬性時，例如「背景」跟「形狀」的改變，可用逗號分隔不同的設定。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+transition: background-color 0.3s ease, transform 0.3s ease;
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>速度曲線 (Timing Function)</h3>
+<table>
+    <tr>
+        <th class="text-left">值</th>
+        <th class="text-left">說明</th>
+    </tr>
+    <tr>
+        <td class="text-left">ease</td>
+        <td class="text-left">慢 → 快 → 慢（預設）</td>
+    </tr>
+    <tr>
+        <td class="text-left">linear</td>
+        <td class="text-left">等速</td>
+    </tr>
+    <tr>
+        <td class="text-left">ease-in</td>
+        <td class="text-left">慢速開始</td>
+    </tr>
+    <tr>
+        <td class="text-left">ease-out</td>
+        <td class="text-left">慢速結束</td>
+    </tr>
+    <tr>
+        <td class="text-left">ease-in-out</td>
+        <td class="text-left">慢速開始與結束</td>
+    </tr>
+</table>
+
+<p><strong>一般 UI 互動建議：</strong> 時間 0.2s ~ 0.4s，搭配 ease 或 ease-out，看起來最自然。</p>
+
+<h3>Transition 要寫在哪裡？</h3>
+<p>⚠️ <strong>重要：寫在元素的原始狀態上，而非轉場後的結果狀態。</strong>這樣滑入與滑出都會有漸變轉場效果。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/*元素的原始狀態*/
+a {
+    background-color: light-grey;
+    transition: background-color 0.3s ease;
+}
+/*轉場後的結果狀態*/
+a:hover {
+    background-color: red;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>Transition  的特性：</h3>
+<ul>
+    <li>效能較差（運用 CPU 處理器運算），會跟其他軟體搶效能</li>
+    <li>建議用在小面積，需要轉場面積過大會嚴重拖累瀏覽器的執行效率，導致畫面延遲或卡頓</li>
+</ul>
+
+<hr>
+
+<h2>三、Transform 變形</h2>
+
+<p>transform 可以在不影響版面配置的情況下，改變元素的外觀位置。常與 transition 搭配使用。</p>
+
+<table>
+    <tr>
+        <th class="text-left">函式</th>
+        <th class="text-left">說明</th>
+        <th class="text-left">範例</th>
+    </tr>
+    <tr>
+        <td class="text-left">translate()</td>
+        <td class="text-left">位移</td>
+        <td class="text-left">translate(20px, 10px)</td>
+    </tr>
+    <tr>
+        <td class="text-left">scale()</td>
+        <td class="text-left">縮放</td>
+        <td class="text-left">scale(1.2)</td>
+    </tr>
+    <tr>
+        <td class="text-left">rotate()</td>
+        <td class="text-left">旋轉</td>
+        <td class="text-left">rotate(45deg)</td>
+    </tr>
+    <tr>
+        <td class="text-left">skew()</td>
+        <td class="text-left">傾斜</td>
+        <td class="text-left">skew(10deg)</td>
+    </tr>
+</table>
+<p><strong>多個變形組合：</strong> 用「空格」分開，由左至右依序套用。</p>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+transform: translateY(-5px) scale(1.05);
+</code></pre>
+<!-- Code Block Ends-->
+
+<p>transform-origin： 設定變形的基準點（預設為元素中心）。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+transform-origin: center;
+transform-origin: top left;
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>Transform 的特性：</h3>
+<ul>
+    <li>不會改變其他元素的位置（不佔用也不推擠空間）</li>
+    <li>效能較佳（運用 GPU 顯卡運算），適合做動畫效果</li>
+    <li>inline 元素無法使用 transform</li>
+</ul>
+
+<hr>
+
+<h2>四、Animation 動畫</h2>
+
+<p>transition 只能處理「A 狀態到 B 狀態」，需要<strong> 自動播放</strong>、<strong>重複</strong>或<strong>多個階段時</strong>，使用 @keyframes 搭配 animation。</p>
+
+<h3>步驟 1：用 @keyframes 定義動畫</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+@keyframes 動畫名稱 {
+  from { 起始樣式 }
+  to   { 結束樣式 }
+}
+
+/*舉個例子*/
+@keyframes show-item {
+  from { opacity: 0; }
+  to   { opacity: 100%; }
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>多階段使用百分比：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+@keyframes 動畫名稱 {
+  0%   { 樣式 }
+  50%  { 樣式 }
+  100% { 樣式 }
+}
+
+/*舉個例子*/
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(50px); }
+  100% { transform: translateY(0); }
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>步驟 2：用 animation 套用到元素</h3>
+<p>Animation 的屬性介紹：</p>
+<table>
+    <tr>
+        <th class="text-left">屬性</th>
+        <th class="text-left">說明</th>
+        <th class="text-left">常用值</th>
+    </tr>
+    <tr>
+        <td class="text-left">animation-name</td>
+        <td class="text-left">動畫名稱</td>
+        <td class="text-left">對應 @keyframes 名稱</td>
+    </tr>
+    <tr>
+        <td class="text-left">animation-duration</td>
+        <td class="text-left">持續時間</td>
+        <td class="text-left">1s、500ms</td>
+    </tr>
+    <tr>
+        <td class="text-left">animation-timing-function</td>
+        <td class="text-left">速度曲線</td>
+        <td class="text-left">ease、linear</td>
+    </tr>
+    <tr>
+        <td class="text-left">animation-delay</td>
+        <td class="text-left">延遲</td>
+        <td class="text-left">0s、1s</td>
+    </tr>
+    <tr>
+        <td class="text-left">animation-iteration-count</td>
+        <td class="text-left">重複次數</td>
+        <td class="text-left">1、3、infinite</td>
+    </tr>
+    <tr>
+        <td class="text-left">animation-direction</td>
+        <td class="text-left">播放方向</td>
+        <td class="text-left">normal、reverse、alternate</td>
+    </tr>
+    <tr>
+        <td class="text-left">animation-fill-mode</td>
+        <td class="text-left">動畫前後的樣式</td>
+        <td class="text-left">none、forwards</td>
+    </tr>
+</table>
+<h4>簡寫語法：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+animation: 名稱 持續時間 速度曲線 延遲 重複次數 方向 填充模式;
+animation: name duraion timing-function depay iteration-count direction fill-mode;
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>animation-fill-mode 說明：</h4>
+<ul>
+    <li>none：動畫結束後回到原本樣式（預設）</li>
+    <li>forwards：動畫結束後停在最後一個影格的樣式</li>
+</ul>
+
+<hr>
+
+<h2>五、哪些屬性適合做動畫？</h2>
+
+<h3>效能佳（建議優先使用）：</h3>
+<ul>
+    <li>transform</li>
+    <li>opacity</li>
+</ul>
+<h3>可以使用，但必須考量對網站執行效能的影響：</h3>
+<ul>
+    <li>width、height、margin、padding、top、left 等會改變版面配置的屬性</li>
+    <li>如果評估非用不可，可從減少變動的面積的大小開始著手，以降低動畫效果對效能的影響程度</li>
+</ul>
+
+<hr>
+
+<h2>六、程式碼範例</h2>
+<h3>按鈕 Hover 效果</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+.button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #2980b9;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>卡片懸浮效果</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>圖片放大</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+.image-wrapper {
+  overflow: hidden;  /* 隱藏放大後超出的部分 */
+}
+
+.image-wrapper img {
+  transition: transform 0.4s ease;
+}
+
+.image-wrapper:hover img {
+  transform: scale(1.1);
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>淡入效果</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>由下往上淡入</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>無限循環動畫</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* 旋轉的載入圖示 */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ddd;
+  border-top-color: #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* 跳動效果 */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-20px); }
+}
+
+.bounce {
+  animation: bounce 1s ease infinite;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>尊重使用者的動態偏好</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<hr>
+
+<h2>七、常見錯誤與注意事項</h2>
+
+<h3>錯誤 1: 忘記設定 duration</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ 沒有時間，預設為 0s，看不到過渡 */
+.button {
+  transition: background-color;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確做法：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ✅ 一定要指定 duration */
+.button {
+  transition: background-color 0.3s;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 2: transition 寫在 :hover 裡</h3>
+<h4>錯誤示範：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ 滑入有過渡，滑出時瞬間跳回 */
+.box {
+  background-color: blue;
+}
+
+.box:hover {
+  background-color: red;
+  transition: background-color 0.3s;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確做法：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ✅ 寫在原始狀態，進出都有過渡 */
+.box {
+  background-color: blue;
+  transition: background-color 0.3s;
+}
+
+.box:hover {
+  background-color: red;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 3: 對 display 做過渡</h3>
+<h4>錯誤示範：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ display 無法過渡 */
+.menu {
+  display: none;
+  transition: display 0.3s;
+}
+
+.menu.open {
+  display: block;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<p><strong>替代做法：</strong>改用 opacity 與 visibility 控制顯示。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+.menu {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 4: 動畫名稱不一致</h3>
+<h4>錯誤示範：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ animation 名稱與 @keyframes 名稱不同 */
+@keyframes fadeIn { /* ... */ }
+
+.box {
+  animation: fade-in 1s;
+}</code></pre>
+<!-- Code Block Ends-->
+<p><strong>正確做法：</strong> 兩邊名稱必須完全一致（區分大小寫）。</p>
+
+<h3>錯誤 5: 對 inline 元素使用 transform</h3>
+<h4>錯誤示範：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ span 預設為 inline，transform 無效 */
+span {
+  transform: rotate(10deg);
+}
+</code></pre>
+<!-- Code Block Ends-->
+<h4>正確做法：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ✅ 改為 inline-block 或 block */
+span {
+  display: inline-block;
+  transform: rotate(10deg);
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 6: 多個 transform 分開寫</h3>
+<h4>錯誤示範：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ 後面的 transform 會覆蓋前面的 */
+.box {
+  transform: translateX(20px);
+  transform: rotate(45deg);  /* 只有這行生效 */
+}
+</code></pre>
+<!-- Code Block Ends-->
+<h4>正確做法：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ✅ 寫在同一行 */
+.box {
+  transform: translateX(20px) rotate(45deg);
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<hr>
+
+<h2>八、注意事項</h2>
+<h3>1. 動畫不要過度使用</h3>
+<ul>
+    <li>動畫應該輔助使用者理解，而非炫技</li>
+    <li>過多動畫會分散注意力，也可能影響效能</li>
+</ul>
+<h3>2. 時間長度的拿捏</h3>
+<ul>
+    <li>小型互動（按鈕、hover）：0.2s ~ 0.3s</li>
+    <li>較大的變化（面板、彈窗）：0.3s ~ 0.5s</li>
+    <li>超過 1s 的動畫會讓使用者感到等待</li>
+</ul>
+<h3>3. 手機沒有 hover</h3>
+<ul>
+    <li>觸控裝置沒有真正的 hover 狀態</li>
+    <li>重要的資訊或功能不要只依賴 hover 呈現</li>
+</ul>
+<h3>4. 無障礙考量</h3>
+<ul>
+    <li>部分使用者會在系統中開啟「減少動態效果」</li>
+    <li>可用 prefers-reduced-motion 尊重此設定</li>
+</ul>
+<h3>5. 用開發者工具除錯</h3>
+<ul>
+    <li>Chrome 開發者工具的 Animations 面板可以檢視、放慢動畫</li>
+</ul>
+
+<hr>
+
+    <section class="footer-nav">
+        <a class="prev" href="day8.htm">
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+            DAY 8
+            </a>
+        <a class="next" href="faq.htm">
+            FAQ
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+
+
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

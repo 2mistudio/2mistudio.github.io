@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/style/style.css" rel="stylesheet" >
         <link href="/style/prism.css" rel="stylesheet">
-    <title>Day 6: Flexbox 彈性佈局 </title>
+    <title>Day 6: Flexbox 彈性佈局  - CSS 9天快速入門</title>
 </head>
 <body id="page-css-day6">
     <a href="#" class="button-top">TOP</a>
@@ -14,30 +14,29 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/css/">CSS</a></li>
-            <li><a href="/css/learn/">10天快速入門</a></li>
+            <li><a href="/css/learn/">9天快速入門</a></li>
         </ul>  
     </div>  
     </nav>  
     <div class="wrap">
 
         <ul class="sub-nav">
-            <li class="link-day0"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day0 active"><a href="index.htm">D0-計劃說明</a></li>
             <li class="link-day1"><a href="day1.htm">D1-CSS基礎與選擇器</a></li>
             <li class="link-day2"><a href="day2.htm">D2-色彩介紹</a></li>
             <li class="link-day3"><a href="day3.htm">D3-文字應用</a></li>
             <li class="link-day4"><a href="day4.htm">D4-區塊與間距</a></li>
             <li class="link-day5"><a href="day5.htm">D5-顯示與定位</a></li>
-            <li class="link-day6 active"><a href="day6.htm">D6-Flexbox 彈性佈局</a></li>
-            <li class="link-day7"><a href="day7.htm">D7-實作 UI 元件</a></li>
-            <li class="link-day8"><a href="day8.htm">D8-Grid 網格系統</a></li>
-            <li class="link-day9"><a href="day9.htm">D9-響應式網頁設計</a></li>
-            <li class="link-day10"><a href="day10.htm">D10-漸變與基礎動畫</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Flexbox 彈性佈局</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-Grid 網格系統</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-響應式網頁設計</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-漸變與基礎動畫</a></li>
             <li class="link-faq"><a href="faq.htm">常見問題</a></li>
         </ul>
 
 <!-- Main Content Starts -->
-<h1>Day 6: Flexbox 彈性佈局 </h1>
-<h3 class="sub-title">CSS Flexbox</h3>
+<h1>Day 6: Flexbox 彈性佈局排版 </h1>
+<h3 class="sub-title">CSS Flexbox Layout</h3>
 
 <h2>一、學習目標</h2>
 <p>完成本日課程後，你將能夠：</p>
@@ -168,6 +167,9 @@ row-gap: 20px;       /* 只設定垂直間距 */
 column-gap: 10px;    /* 只設定水平間距 */
 
 </code></pre>
+<div class="notice">
+<p> <strong>注意：</strong>gap 是相對比較新的 flex 語法，IE 和舊版瀏覽器都不支援。不過，自 2021 年 4 月起已被列為<a href="https://web.dev/baseline?hl=zh-tw" target="_blank" rel="noreferrer">網路平台實際使用基準 Baseline</a>，意思是在這個時間之後推出的新瀏覽器都支援 gap 語法。</p>
+</div>
 <!-- Code Block Ends-->
 <hr>
 
@@ -184,29 +186,215 @@ flex-grow: 2;  /* 獲得兩倍的剩餘空間 */
 </code></pre>
 <!-- Code Block Ends-->
  
+
+<h3>2. flex-shrink</h3>
+<p>控制項目的縮小比例（空間不足時）。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+flex-shrink: 1;  /* 允許縮小（預設） */
+flex-shrink: 0;  /* 不縮小 */
+flex-shrink: 2;  /* 縮小兩倍 */
+
+</code></pre>
+<!-- Code Block Ends-->
+ 
+
+<h3>3. flex-basis</h3>
+<p>設定項目的基準大小（分配空間前的初始大小）。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+flex-basis: auto;   /* 根據內容決定（預設） */
+flex-basis: 200px;  /* 固定 200px */
+flex-basis: 50%;    /* 容器的 50% */
+
+</code></pre>
+<!-- Code Block Ends-->
+ 
+
+<h3>4. flex 簡寫</h3>
+<p>結合 flex-grow、flex-shrink、flex-basis。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+flex: 1;              /* flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
+flex: 0 0 200px;      /* 固定 200px，不放大不縮小 */
+flex: 1 1 auto;       /* 彈性調整（預設值） */
+
+</code></pre>
+<!-- Code Block Ends-->
+ <p><strong>常用簡寫：</strong></p>
+ <!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+flex: 1;        /* 平均分配空間 */
+flex: none;     /* 等於 0 0 auto，不彈性 */
+flex: auto;     /* 等於 1 1 auto，完全彈性 */
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>5. align-self</h3>
+<p>單獨控制某個項目在交叉軸上的對齊（覆蓋 align-items）。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+align-self: auto;       /* 繼承容器的 align-items（預設） */
+align-self: flex-start; /* 靠起點 */
+align-self: flex-end;   /* 靠終點 */
+align-self: center;     /* 置中 */
+align-self: stretch;    /* 拉伸 */
+
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>6. order</h3>
+<p>改變項目的排列順序。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+order: 0;   /* 預設值 */
+order: -1;  /* 排在前面 */
+order: 1;   /* 排在後面 */
+
+</code></pre>
+<!-- Code Block Ends-->
+<p>數值越小越靠前，相同數值按 HTML 順序。</p>
+
+
 <hr>
 
 <h2>六、常見錯誤與注意事項</h2>
-<h3>錯誤 1: 忘記設定 box-sizing</h3>
-<p><strong>問題示範：</strong></p>
+
+<h3>錯誤 1: 忘記設定 display: flex</h3>
+<p><strong>錯誤示範：</strong></p>
 <!-- Code Block Begin-->
 <pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
-
+/* ❌ 沒有設定 display: flex */
+.container {
+  justify-content: center;  /* 無效 */
+  align-items: center;      /* 無效 */
+}
 </code></pre>
 <!-- Code Block Ends-->
-<p><strong>建議做法：</strong></p>
+<p><strong>正確做法：</strong></p>
 <!-- Code Block Begin-->
 <pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
-
-
+/* ✅ 先設定 display: flex */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </code></pre>
 <!-- Code Block Ends-->
+
+<h3>錯誤 2: 混淆主軸和交叉軸</h3>
+<p><strong>錯誤示範：</strong></p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ 想要垂直置中，卻用錯屬性 */
+.container {
+  display: flex;
+  justify-content: center;  /* 這是水平置中 */
+}
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>正確做法：</strong></p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ✅ 垂直置中要用 align-items */
+.container {
+  display: flex;
+  align-items: center;  /* 垂直置中 */
+  height: 400px;        /* 容器要有高度 */
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 3: align-items 沒效果</h3>
+<p><strong>錯誤示範：</strong></p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ 容器沒有高度，看不出效果 */
+.container {
+  display: flex;
+  align-items: center;
+  /* 沒有設定高度 */
+}
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>正確做法：</strong></p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ✅ 容器要有明確高度 */
+.container {
+  display: flex;
+  align-items: center;
+  height: 300px;  /* 或 min-height */
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 4: flex 簡寫理解錯誤</h3>
+<p><strong>錯誤示範：</strong></p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ 誤以為 flex: 1 只設定 flex-grow */
+.item {
+  flex: 1;
+  /* 實際是 flex: 1 1 0%，會將 basis 設為 0 */
+}
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>正確做法：</strong></p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ✅ 理解 flex 簡寫的完整含義 */
+.item {
+  flex: 1;  /* 等於 flex: 1 1 0% */
+}
+
+/* 如果要保留原本大小 */
+.item {
+  flex: 1 1 auto;  /* 或 flex: auto */
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+
 <hr>
 
 <h2>七、重點整理</h2>
-<h3>Box Model 盒模型組成：</h3>
+<h3>1. Flexbox 是一維佈局</h3>
 <ul>
-    <li>Content（內容）→ Padding（內邊距）→ Border（邊框）→ Margin（外邊距）</li>
+    <li>適合處理一行或一列的排列</li>
+    <li>複雜的二維網格建議使用 <a href="day7.htm">Grid</a></li>
+</ul>
+<h3>2. justify-content vs align-items</h3>
+<ul>
+    <li>justify-content - 主軸對齊</li>
+    <li>align-items - 交叉軸對齊</li>
+    <li>記住：主軸方向由 flex-direction 決定</li>
+</ul>
+<h3>3. flex: 1 的含義</h3>
+<ul>
+    <li>等於 flex: 1 1 0%</li>
+    <li>flex item 項目會自動平均分配空間</li>
+    <li>最常用的彈性設定</li>
+</ul>
+<h3>4. flex-wrap 的使用</h3>
+<ul>
+    <li>預設 nowrap，內容項目會壓縮</li>
+    <li>設定 wrap 可以換行（達到響應式效果）</li>
+    <li>換行後可用 align-content 控制多行對齊</li>
+</ul>
+<h3>5. 容器高度的重要性</h3>
+<ul>
+    <li>align-items 需要容器有高度才看得出效果</li>
+    <li>可用 height、min-height 或 100vh</li>
+</ul>
+
+<h3>6. 瀏覽器支援</h3>
+<ul>
+    <li>現代瀏覽器全面支援 CSS Flexbox 語法（<a href="https://caniuse.com/?search=flex" target="_blank" rel="noreferrer">全球瀏覽器支援超過97%</a>）</li>
+    <li>IE 10-11 部分支援（支援性有 bug，但目前 IE 已幾乎完全退役）</li>
+    <li>雖然 gap 屬性較新，但目前已成為 <a href="https://web.dev/baseline?hl=zh-tw" target="_blank" rel="noreferrer">實際使用基準 Baseline</a></li>
 </ul>
 
 <hr>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet" >
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 8: Responsive Design 響應式網頁設計 - CSS 9天快速入門</title>
+</head>
+<body id="page-css-day8">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/css/">CSS</a></li>
+            <li><a href="/css/learn/">9天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0 active"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-CSS基礎與選擇器</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-色彩介紹</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-文字應用</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-區塊與間距</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-顯示與定位</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Flexbox 彈性佈局</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-Grid 網格系統</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-響應式網頁設計</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-漸變與基礎動畫</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 8: Responsive Design 響應式設計</h1>
+<h3 class="sub-title">Responsive Web Design</h3>
+
+<h2>一、學習目標</h2>
+<p>完成本日課程後，你將能夠：</p>
+<ul>
+    <li>理解響應式設計的概念與 viewport 設定</li>
+    <li>使用 Media Query 針對不同螢幕寬度套用樣式</li>
+    <li>了解 Mobile-First 與 Desktop-First 的差異</li>
+    <li>使用相對單位（%、rem、vw、vh）建立彈性版面</li>
+    <li>讓圖片自動適應容器大小</li>
+</ul>
+
+<hr>
+
+<h2>二、什麼是響應式設計？</h2>
+<p>響應式設計（Responsive Web Design）是讓同一份 HTML，能在手機、平板、桌機上都有合適的顯示效果。</p>
+<h3>三大核心要素：</h3>
+<ul>
+    <li><strong>彈性版面：</strong>優先使用相對單位，而非固定像素</li>
+    <li><strong>彈性圖片：</strong>圖片隨容器縮放</li>
+    <li><strong>Media Query：</strong>依螢幕條件切換 CSS 樣式</li>
+</ul>
+
+<h3>Viewport 設定：</h3>
+<h4>1. 歷史的包袱：預設的 980px 畫布</h4>
+<p>在智慧型手機剛問世時，市面上只有專為電腦設計的寬網頁。為了不讓網頁排版擠成一團，手機瀏覽器採取了一個相容策略：在後台開一張約 980px 的虛擬畫布（Layout Viewport）來載入網頁，接著再將畫面等比例「微縮」塞進小小的手機螢幕裡。這導致使用者看舊網頁時，字體都像芝麻一樣小，必須用手指放大、滑動。</p>
+<h4>2. Retina 時代的挑戰：實體像素 vs 邏輯像素</h4>
+<p>現代手機普遍配備了高解析度螢幕（如 Retina 螢幕），硬體的實體像素非常多（例如寬度達 1179px）。如果網頁直接按照這個硬體數字去顯示，高密度的像素點會讓網頁上的按鈕和文字縮得更小、完全無法閱讀。</p>
+
+<p>為了解決上述兩個問題，告訴瀏覽器「這是一頁做好響應式（RWD）的現代網頁」，我們必須在 HTML 的 &lt;head&gt; 標間之間加入這行標準設定：</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+</code></pre>
+<!-- Code Block Ends-->
+<ul>
+    <li>width=device-width：寬度等於裝置螢幕寬度</li>
+    <li>initial-scale=1.0：初始縮放比例為 1</li>
+</ul>
+
+<h3>Media Query 媒體查詢：</h3>
+<p>常用於根據瀏覽器視窗尺寸，動態切換並套用對應的 CSS 樣式。</p>
+<h4>基本語法：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+@media 媒體類型 and (條件) {
+  選擇器 {
+    屬性: 值;
+  }
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>常用條件：</h4>
+
+<table>
+    <tr>
+        <th class="text-left">條件</th>
+        <th class="text-left">說明</th>
+    </tr>
+    <tr>
+        <td class="text-left">min-width</td>
+        <td class="text-left">螢幕寬度 <strong>大於等於</strong>指定值時套用</td>
+    </tr>
+    <tr>
+        <td class="text-left">max-width</td>
+        <td class="text-left">螢幕寬度<strong>小於等於</strong>指定值時套用</td>
+    </tr>
+    <tr>
+        <td class="text-left">orientation: portrait</td>
+        <td class="text-left">直向</td>
+    </tr>
+    <tr>
+        <td class="text-left">orientation: landscape</td>
+        <td class="text-left">橫向</td>
+    </tr>
+</table>
+
+<h3>Media Types 媒體類型（可省略，預設為 all）：</h3>
+<ul>
+    <li>screen：螢幕裝置（電腦、手機、平板等，RWD 最常用）</li>
+    <li>print：列印或列印預覽模式</li>
+    <li>all：適用於所有裝置</li>
+</ul>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* 媒體類型為螢幕，且寬度介於 768px 到 1024px 之間*/
+@media screen and (min-width: 768px) and (max-width: 1024px) { }
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>組合條件：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* 寬度介於 768px 到 1024px */
+@media (min-width: 768px) and (max-width: 1024px) { }
+
+/* 符合任一條件，用逗號分隔 */
+@media (max-width: 480px), (orientation: portrait) { }
+</code></pre>
+<!-- Code Block Ends-->
+
+<hr>
+<h2>三、Mobile-First 還是 Desktop-First</h2>
+<h4>Mobile-First（行動優先）</h4>
+<ul>
+    <li><strong>寫法邏輯：</strong>預設樣式就是手機版，透過 @media (min-width: ...) 逐步往大螢幕（平板、桌機）疊加樣式。</li>
+    <li><strong>優點：</strong>手機載入時不需要解析一堆桌機用的冗餘樣式（效能表現比較好），且迫使開發者在有限空間內先篩選出「最核心的內容與功能」。</li>
+</ul>
+<h4>Desktop-First（桌機優先）</h4>
+<ul>
+    <li><strong>寫法邏輯：</strong>預設樣式是桌機版，透過 @media (max-width: ...) 逐步把版面縮小或隱藏元素來適應小螢幕。</li>
+    <li><strong>缺點：</strong>桌機優先的手機版網頁常常只是把桌機版硬塞進小螢幕再隱藏東隱藏西，容易造成載入過多不必要的程式碼與圖片，影響手機瀏覽體驗。</li>
+</ul>
+<p>Google 早從 <strong><a href="https://developers.google.com/search/blog/2016/11/mobile-first-indexing?hl=zh-tw" target="_blank" rel="noopener noreferrer"> 2016 年起</a>全面改用「行動版網頁」的內容來進行索引與排名評分</strong> 。如果網站手機載入太慢或排版出問題，在 Google 搜尋引擎上的排名就會受到負面影響。此外，手機用戶的網路環境與硬體往往不如桌機。從 Mobile-First 出發可以強迫團隊精簡資源、優化載入速度，這直接符合 Google 對網頁效能的核心指標要求。</p>
+
+<hr>
+
+<h2>四、常見的斷點設定 (Breakpoints)</h2>
+<p>斷點就是用來切換版面的視窗螢幕寬度。以下為常見參考值：</p>
+<table>
+    <tr>
+        <th class="text-left">裝置</th>
+        <th class="text-left">寬度</th>
+    </tr>
+    <tr>
+        <td class="text-left">手機</td>
+        <td class="text-left">< 576px</td>
+    </tr>
+    <tr>
+        <td class="text-left">大手機 / 小平板</td>
+        <td class="text-left">≥ 576px</td>
+    </tr>
+    <tr>
+        <td class="text-left">平板</td>
+        <td class="text-left">≥ 768px</td>
+    </tr>
+    <tr>
+        <td class="text-left">小桌機</td>
+        <td class="text-left">≥ 1024px</td>
+    </tr>
+    <tr>
+        <td class="text-left">大桌機</td>
+        <td class="text-left">≥ 1200px</td>
+    </tr>
+</table>
+<p><strong>建議：</strong> 斷點應依內容何時破版來決定，而非特定裝置型號。初學者一開始使用 2-3 個斷點即可（例如 768px、1024px）。</p>
+
+<hr>
+
+<h2>五、響應式單位</h2>
+<p>為了達到網頁最大的彈性，比起固定鎖死的絕對單位（如：像素 px）響應式頁面更常使用相對單位來控制版面。以下為常用的相對單位：</p>
+<table>
+    <tr>
+        <th class="text-left">單位</th>
+        <th class="text-left">說明</th>
+        <th class="text-left">適用情境</th>
+    </tr>
+    <tr>
+        <td class="text-left">%</td>
+        <td class="text-left">百分比，相對於上一層 HTML 父元素（1% - 100%）</td>
+        <td class="text-left">寬度、欄位</td>
+    </tr>
+    <tr>
+        <td class="text-left">rem</td>
+        <td class="text-left">相對於網頁預設字體大小（1rem = 16px）</td>
+        <td class="text-left">字體、間距</td>
+    </tr>
+    <tr>
+        <td class="text-left">vw</td>
+        <td class="text-left">Viewport-Width 視窗的寬度（1vw - 100vw）</td>
+        <td class="text-left">滿版寬度、大標題</td>
+    </tr>
+    <tr>
+        <td class="text-left">vh</td>
+        <td class="text-left">Viewport-Height 視窗的高度（1vh - 100vh）</td>
+        <td class="text-left">滿版高度區塊</td>
+    </tr>
+</table>
+
+<h4>語法範例：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+width: 50%;         /* 父元素寬度的一半 */
+font-size: 1.5rem;  /* 根元素 16px 時為 24px */
+width: 100vw;       /* 完整視窗寬度 */
+height: 100vh;      /* 完整視窗高度 */
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>搭配 max-width / min-width：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+.container {
+  width: 90%;
+  max-width: 1200px;  /* 大螢幕不要無限拉寬 */
+  margin: 0 auto;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>響應式圖片</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+img {
+  max-width: 100%;  /* 不超出容器 */
+  height: auto;     /* 維持原比例 */
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<hr>
+
+<h2>六、程式碼範例</h2>
+
+<h3>Mobile-First 基本寫法</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* 預設：手機版（單欄） */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* 平板以上：兩欄 */
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 桌機以上：四欄 */
+@media (min-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>響應式導覽列</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* 手機：垂直排列 */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 平板以上：水平排列 */
+@media (min-width: 768px) {
+  .nav {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>顯示與隱藏</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+.menu-button {
+  display: block;  /* 手機顯示 */
+}
+
+.menu-links {
+  display: none;   /* 手機隱藏 */
+}
+
+@media (min-width: 768px) {
+  .menu-button { display: none; }
+  .menu-links  { display: flex; }
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>響應式容器與字體</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+html {
+  font-size: 16px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<hr>
+
+<h2>七、常見錯誤與注意事項</h2>
+
+<h3>錯誤 1: 忘記加 viewport meta</h3>
+<p><strong>問題：</strong>沒有 viewport 設定時，手機會以約 980px 的寬度渲染，Media Query 看起來像是「沒有生效」。</p>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
+&lt;!-- 每個頁面都要記得加 --&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 2: 混用 min-width 與 max-width</h3>
+<h4>錯誤示範：</h4>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ 同一份 CSS 中混用兩種方向，容易互相覆蓋、難以維護 */
+@media (min-width: 768px) { .box { width: 50%; } }
+@media (max-width: 1024px) { .box { width: 80%; } }
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>正確做法：</strong>一份 CSS 只選擇一種方向（建議 Mobile-First，全部使用 min-width），並由小到大排列。</p>
+
+<h3>錯誤 3: Media Query 寫在基礎樣式之前</h3>
+<h4>錯誤示範：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ 後面的基礎樣式會覆蓋 Media Query */
+@media (min-width: 768px) {
+  .box { width: 50%; }
+}
+
+.box { width: 100%; }
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>正確做法：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ✅ 基礎樣式在前，Media Query 在後 */
+.box { width: 100%; }
+
+@media (min-width: 768px) {
+  .box { width: 50%; }
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 4: 使用 100vw 造成橫向捲軸</h3>
+<p>100vw 包含垂直捲軸的寬度，在有捲軸的頁面會比實際可視寬度多出一點，造成橫向捲動。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ 可能出現橫向捲軸 */
+.full { width: 100vw; }
+
+/* ✅ 一般滿版用 100% 即可 */
+.full { width: 100%; }
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>錯誤 5: 使用固定像素寬度</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ 螢幕小於 960px 時會溢出 */
+.container { width: 960px; }
+
+/* ✅ 彈性寬度 + 最大寬度 */
+.container {
+  width: 100%;
+  max-width: 960px;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>錯誤 6: 圖片超出容器</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ✅ 全站圖片的基本設定 */
+img {
+  max-width: 100%;   /*設定最大寬度為 100%，讓圖片最大只會填滿父系元件的寬度，不會超出容器*/
+  height: auto;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h2>注意事項</h2>
+
+<h3>1. 斷點數量不要過多</h3>
+<ul>
+    <li>每增加一個斷點，維護成本就增加</li>
+    <li>先確保彈性版面在各種寬度都能運作，再補斷點</li>
+</ul>
+
+<h3>2. 善用相對單位，以及 Flexbox 與 Grid 的彈性</h3>
+<ul>
+    <li>相對單位可以增加介面元件的彈性，減少 Media Query 的使用量</li>
+    <li>flex-wrap、repeat(auto-fit, minmax()) 本身就具有響應式能力</li>
+</ul>
+
+<h3>3. 善用瀏覽器的開發者工具測試</h3>
+<ul>
+    <li>按 F12，再按「裝置工具列」圖示（或 Ctrl/Cmd + Shift + M）</li>
+    <li>可模擬各種裝置尺寸，並拖曳調整寬度</li>
+    <li><strong>注意：</strong>開發者工具只是模擬實際環境，真實裝置中仍有不少情境跟問題是無法被模擬的，最理想狀態還是用真正的上網裝置來做測試</li>
+</ul>
+
+<h3>4. 手機上的 100vh</h3>
+<ul>
+    <li>手機瀏覽器的網址列會伸縮，100vh 可能比實際可視高度大</li>
+    <li>新版瀏覽器提供 dvh 單位（如 100dvh）可改善此問題，了解即可</li>
+</ul>
+
+<h3>5. 延伸學習</h3>
+<ul>
+    <li>網頁會隨裝置改變大小，這正是網頁介面和傳統平面設計最不一樣的地方。因此，想學好介面設計，響應式邏輯是不可或缺的基本功。</li>
+    <li>響應式設計的語法其實非常有彈性、也稍微進階，不過本篇已經為大家精選出初學者最需要知道的入門精華。讀完之後，非常推薦大家進一步延伸閱讀相關教學，讓你的響應式觀念更完整。</li>
+</ul>
+
+
+
+<hr>
+
+    <section class="footer-nav">
+        <a class="prev" href="day7.htm">
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+            DAY 7
+            </a>
+        <a class="next" href="day9.htm">
+            DAY 9
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+
+
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

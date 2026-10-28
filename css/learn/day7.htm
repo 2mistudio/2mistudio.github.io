@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style/style.css" rel="stylesheet" >
+        <link href="/style/prism.css" rel="stylesheet">
+    <title>Day 7: CSS Grid 網格系統  - CSS 9天快速入門</title>
+</head>
+<body id="page-css-day7">
+    <a href="#" class="button-top">TOP</a>
+    <nav>
+    <div class="wrap">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/css/">CSS</a></li>
+            <li><a href="/css/learn/">9天快速入門</a></li>
+        </ul>  
+    </div>  
+    </nav>  
+    <div class="wrap">
+
+        <ul class="sub-nav">
+            <li class="link-day0 active"><a href="index.htm">D0-計劃說明</a></li>
+            <li class="link-day1"><a href="day1.htm">D1-CSS基礎與選擇器</a></li>
+            <li class="link-day2"><a href="day2.htm">D2-色彩介紹</a></li>
+            <li class="link-day3"><a href="day3.htm">D3-文字應用</a></li>
+            <li class="link-day4"><a href="day4.htm">D4-區塊與間距</a></li>
+            <li class="link-day5"><a href="day5.htm">D5-顯示與定位</a></li>
+            <li class="link-day6"><a href="day6.htm">D6-Flexbox 彈性佈局</a></li>
+            <li class="link-day7"><a href="day7.htm">D7-Grid 網格系統</a></li>
+            <li class="link-day8"><a href="day8.htm">D8-響應式網頁設計</a></li>
+            <li class="link-day9"><a href="day9.htm">D9-漸變與基礎動畫</a></li>
+            <li class="link-faq"><a href="faq.htm">常見問題</a></li>
+        </ul>
+
+<!-- Main Content Starts -->
+<h1>Day 7: CSS Grid 網格排版系統</h1>
+<h3 class="sub-title">CSS Grid Layout</h3>
+
+<h2>一、學習目標</h2>
+<p>完成本日課程後，你將能夠：</p>
+<ul>
+    <li>理解 Grid 與 Flexbox 的差異與適用時機</li>
+    <li>使用 grid-template-columns 與 grid-template-rows 定義網格</li>
+    <li>掌握 fr 單位與 repeat() 函式</li>
+    <li>使用 grid-column、grid-row 讓項目跨欄跨列</li>
+    <li>使用 grid-template-areas 建立具名版面</li>
+</ul>
+
+<h2>二、Grid 簡介</h2>
+
+<p>CSS Grid（網格佈局）是專為二維佈局（同時控制橫向的行與直向的列）而設計的系統。</p>
+
+<h4>Grid 與 Flexbox 的選擇：</h4>
+<table>
+    <tr>
+        <th></th>
+        <th>Flexbox</th>
+        <th>Grid</th>
+    </tr>
+    <tr>
+        <th class="text-left">維度</th>
+        <td>一維（一行或一列）</td>
+        <td>二維（行與列同時控制）</td>
+    </tr>
+    <tr>
+        <th class="text-left">設計思維</th>
+        <td>由內容決定佈局</td>
+        <td>由網格決定佈局</td>
+    </tr>
+    <tr>
+        <th class="text-left">適用場景</th>
+        <td>導覽列、按鈕群組、元件內部排列</td>
+        <td>整頁版面、卡片網格、複雜排版</td>
+    </tr>
+</table>
+<p>Grid 與 Flexbox 都是新一代的網頁排版系統。兩者的運作邏輯不同，但各有強項。視排版情境的不同，兩者可以搭配使用。並沒有說哪個一定比較好，或是非怎麼安排才是對的。不過網路上有此一說：Grid 處理整體版面，Flexbox 處理內部元件。</p>
+
+<h3>基本概念</h3>
+
+<h4>兩個核心角色（與 Flexbox 相同）：</h4>
+<ul>
+    <li><strong>Grid Container（容器）</strong> - 設定 display: grid 的父元素</li>
+    <li><strong>Grid Items（項目）</strong> - 容器內的直接子元素</li>
+</ul>
+<h4>名詞說明：</h4>
+<ul>
+    <li><strong>Grid Line（網格線）</strong> - 分隔行與列的線，編號從 1 開始</li>
+    <li><strong>Grid Track（軌道）</strong> - 兩條相鄰網格線之間的空間（一欄或一列）</li>
+    <li><strong>Grid Cell（儲存格）</strong> - 行與列交會的最小單位</li>
+    <li><strong>Grid Area（網格區域）</strong> - 由多個儲存格組成的矩形區域</li>
+</ul>
+<hr>
+
+<h2>三、Grid Container 屬性</h2>
+
+<h3>1. display</h3>
+<p>啟用 Grid 佈局。</p>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+display: grid;         /* 區塊級 Grid 容器 */
+display: inline-grid;  /* 行內 Grid 容器 */
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>2. grid-template-columns / grid-template-rows</h3>
+<p>定義直欄（column）與橫列（row）的數量與尺寸。</p>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+grid-template-columns: 200px 200px 200px;  /* 三欄，各 200px */
+grid-template-columns: 1fr 2fr 1fr;        /* 三欄，比例 1:2:1 */
+grid-template-columns: 200px 1fr;          /* 固定 + 彈性 */
+grid-template-rows: 100px auto 100px;      /* 三列 */
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>3. fr 單位</h3>
+<p>fr（fraction）代表 <strong>剩餘空間的比例</strong>，是 Grid 專用的特殊單位。<br> 可以試著用中文的「份」去理解它，例如（一塊麵包切幾份）。</p>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+grid-template-columns: 1fr 1fr 1fr;  /* 三等分 */
+grid-template-columns: 1fr 2fr;      /* 第二欄是第一欄的兩倍寬 */
+grid-template-columns: 250px 1fr;    /* 側邊欄固定，內容區佔滿剩餘空間 */
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>4. repeat() 函式</h3>
+<p>將相同的尺寸用repeat() 取代，可避免重複書寫，讓語法更精簡。</p>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+grid-template-columns: repeat(3, 1fr);       /* 等同 1fr 1fr 1fr */
+grid-template-columns: repeat(4, 100px);     /* 四欄，各 100px */
+grid-template-columns: 200px repeat(2, 1fr); /* 可與其他值混用 */
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>5. minmax() 函式</h3>
+<p>設定 Grid 軌道的最小與最大尺寸。</p>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+grid-template-columns: repeat(3, minmax(200px, 1fr));
+/* 每欄最小 200px，最大平分剩餘空間 */
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>6. gap</h3>
+<p>設定 Grid 軌道之間的間距（用法與 Flexbox 相同）。<br>
+<strong>小常識：</strong>gap 語法最早出現在 grid 排版中，因為太好用了，所以後來才在 flexbox 排版中也導入 gap 語法。</p>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+gap: 20px;        /* 行列間距都是 20px */
+gap: 20px 10px;   /* 列間距 20px，欄間距 10px */
+row-gap: 20px;
+column-gap: 10px;
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>7. 自動換欄：auto-fit</h3>
+<p>讓瀏覽器根據容器寬度，自動決定能放幾欄，非常適合用在響應式的版面。<br>
+<strong>小常識：</strong>gap 語法最早出現在 grid 排版中，因為太好用了，所以後來才在 flexbox 排版中也導入 gap 語法。</p>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>意思是：</strong> 每欄至少 200px，空間夠就多放一欄，不夠就自動換行。不需要 Media Query 就能做出基本的響應式效果。</p>
+
+
+<h3>8. 項目對齊</h3>
+<p>在 <strong>儲存格內</strong>對齊項目：<br>
+<strong>小常識：</strong>gap 語法最早出現在 grid 排版中，因為太好用了，所以後來才在 flexbox 排版中也導入 gap 語法。</p>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+justify-items: stretch;  /* 水平：拉伸填滿（預設） */
+justify-items: start;    /* 靠左 */
+justify-items: center;   /* 置中 */
+justify-items: end;      /* 靠右 */
+
+align-items: stretch;    /* 垂直：拉伸填滿（預設） */
+align-items: start;      /* 靠上 */
+align-items: center;     /* 置中 */
+align-items: end;        /* 靠下 */
+
+place-items: center;     /* 簡寫：align-items + justify-items */
+</code></pre>
+<!-- Code Block Ends-->
+<p><strong>整個網格</strong>在容器內的對齊（網格比容器小時才有效）：</p>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+justify-content: center;  /* 水平置中整個網格 */
+align-content: center;    /* 垂直置中整個網格 */
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>9. grid-auto-rows</h3>
+<p>當項目數量超過已定義的列數，Grid 會自動產生新列。用這個屬性控制自動產生列的高度。<br>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+grid-auto-rows: 100px;
+grid-auto-rows: minmax(100px, auto);  /* 最小 100px，內容多就長高 */
+</code></pre>
+<!-- Code Block Ends-->
+
+<hr>
+
+<h2>四、Grid Items 屬性</h2>
+
+
+<h3>1. grid-column / grid-row</h3>
+<p>指定項目從哪條網格線開始、到哪條結束。<br>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+grid-column: 1 / 3;     /* 從第 1 條線到第 3 條線（橫跨 2 欄） */
+grid-column: 2 / 4;     /* 從第 2 條線到第 4 條線 */
+grid-row: 1 / 3;        /* 橫跨 2 列 */
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>使用 span 指定跨越數量：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+grid-column: 1 / 3;     /* 從第 1 條線到第 3 條線（橫跨 2 欄） */
+grid-column: 2 / 4;     /* 從第 2 條線到第 4 條線 */
+grid-row: 1 / 3;        /* 橫跨 2 列 */
+</code></pre>
+<!-- Code Block Ends-->
+
+<h4>使用 -1 代表最後一條線：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+grid-column: span 2;      /* 橫跨 2 欄 */
+grid-row: span 3;         /* 橫跨 3 列 */
+grid-column: 1 / span 2;  /* 從第 1 條線開始，橫跨 2 欄 */
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>2. justify-self / align-self</h3>
+<p>這邊的用法跟 flex 很像，單獨控制某個項目在<strong>儲存格內</strong>的對齊（覆蓋容器的 justify-items / align-items）。<br>
+
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+justify-self: center;
+align-self: end;
+place-self: center;  /* 簡寫 */
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>3. grid-template-areas 與 grid-area</h3>
+<p>用類似「畫圖」的方式命名區域，再把項目放進去，是最直觀的版面寫法。<br>
+<h4>步驟 1：在容器中定義區域</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+grid-template-areas:
+  "header header"
+  "sidebar main"
+  "footer footer";
+</code></pre>
+<!-- Code Block Ends-->
+<h4>步驟 2：在項目中指定區域名稱</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+.header { grid-area: header; }
+</code></pre>
+<!-- Code Block Ends-->
+<h4>規則：</h4>
+<ul>
+    <li>每個字串代表一列</li>
+    <li>同名稱的相鄰儲存格會合併為一個區域，且必須是矩形</li>
+    <li>用 . 表示空白儲存格</li>
+</ul>
+
+<hr>
+
+<h2>五、Grid 程式碼範例</h2>
+
+<h3>1. 基本網格</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* 三欄等寬 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* 固定側邊欄 + 彈性內容 */
+.layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 20px;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>2. 跨欄跨列</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 100px;
+  gap: 10px;
+}
+
+.wide {
+  grid-column: span 2;  /* 橫跨 2 欄 */
+}
+
+.tall {
+  grid-row: span 2;     /* 橫跨 2 列 */
+}
+
+.full {
+  grid-column: 1 / -1;  /* 橫跨整列 */
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>3. 自動換欄的卡片網格</h3>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>4. 經典網頁版面</h3>
+<h4>HTML：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
+&lt;div class="page"&gt;
+    &lt;header&gt; Header &lt;/header&gt;
+    &lt;aside&gt; Sidebar &lt;/aside&gt;
+    &lt;main&gt; Main &lt;/main&gt;
+    &lt;footer&gt; Footer &lt;/footer&gt;
+&lt;/div&gt;
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h4>CSS：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+.page {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+  min-height: 100vh;
+  gap: 20px;
+}
+
+header { grid-area: header; }
+aside  { grid-area: sidebar; }
+main   { grid-area: main; }
+footer { grid-area: footer; }
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h4>置中</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+.center {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<hr>
+
+<h2>六、常見錯誤與注意事項</h2>
+
+<h3>錯誤 1: 忘記設定 display: grid</h3>
+<h4>問題示範：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ 沒有 display: grid，欄位設定無效 */
+.container {
+  grid-template-columns: repeat(3, 1fr);
+}
+</code></pre>
+<!-- Code Block Ends-->
+<h4>正確做法：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ✅ 先啟用 Grid */
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>錯誤 2: 混淆「網格線」與「欄位」編號</h3>
+<p>grid-column: 1 / 3 的 3 是第 3 條線，不是第 3 欄。這個設定橫跨的是 2 欄，不是 3 欄。 <br>
+三欄網格有 4 條網格線（1、2、3、4）。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* 橫跨全部三欄 */
+grid-column: 1 / 4;   /* ✅ 從第 1 條線到第 4 條線 */
+grid-column: 1 / -1;  /* ✅ 更方便，不用數線 */
+}
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 3: grid-template-areas 區域不是矩形</h3>
+<h4>問題示範：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ L 形區域無效，整個設定會被忽略 */
+grid-template-areas:
+  "a a"
+  "a b";
+</code></pre>
+<!-- Code Block Ends-->
+ <h4>正確做法：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ✅ 區域必須是矩形 */
+grid-template-areas:
+  "a a"
+  "b b";
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<h3>錯誤 4: 每列的欄數不一致</h3>
+<h4>問題示範：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ❌ 第一列 3 欄，第二列 2 欄 */
+grid-template-areas:
+  "header header header"
+  "sidebar main";
+</code></pre>
+<!-- Code Block Ends-->
+ <h4>正確做法：</h4>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-css">
+/* ✅ 每列的欄數必須相同 */
+grid-template-areas:
+  "header  header header"
+  "sidebar main   main";
+</code></pre>
+<!-- Code Block Ends-->
+
+<h3>錯誤 5: 對孫層元素設定 Grid 屬性</h3>
+<p>Grid 屬性只對<strong>直接子元素</strong>有效，與 Flexbox 相同。</p>
+<!-- Code Block Begin-->
+<pre><button class="copy-btn" type="button" aria-label="Copy code"></button><code class="language-html">
+&lt;div class="grid"&gt;
+  &lt;div class="item"&gt;
+    &lt;p&gt;這裡的 p 不是 Grid Item&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<!-- Code Block Ends-->
+
+
+<hr>
+
+<h2>七、重點整理</h2>
+<h3>1. Grid 與 Flexbox 不是二選一</h3>
+<ul>
+    <li>整體版面用 Grid</li>
+    <li>元件內部排列用 Flexbox</li>
+</ul>
+
+<h3>2. fr 與 % 的差異</h3>
+<ul>
+    <li>fr 會自動扣除 gap</li>
+    <li>使用 % 加上 gap 容易超出容器寬度</li>
+</ul>
+
+<h3>3. 隱式網格</h3>
+<ul>
+    <li>項目數量超過定義的列數時，Grid 會自動新增列</li>
+    <li>使用 grid-auto-rows 控制其高度</li>
+</ul>
+
+<h3>4. 項目的順序</h3>
+<ul>
+    <li>沒有指定位置的項目，會依照 HTML 順序自動填入</li>
+    <li>指定位置的項目會先被放置</li>
+</ul>
+
+<h3>5. 瀏覽器開發者工具</h3>
+<ul>
+    <li>Chrome / Firefox 的開發者工具可以顯示 Grid 網格線</li>
+    <li>在 Elements 面板點擊元素旁的 grid 標籤即可開啟</li>
+</ul>
+
+<h3>6. 瀏覽器支援</h3>
+<ul>
+    <li>現代瀏覽器全面支援 CSS Grid 語法（<a href="https://caniuse.com/?search=grid" target="_blank" rel="noreferrer">全球瀏覽器支援超過97%</a>）</li>
+    <li>IE 10-11 只有部分支援，有 IE 瀏覽器相容需求的話不建議使用（支援性有 bug，但目前 IE 已幾乎完全退役）</li>
+    <li>CSS Grid 目前已成為 <a href="https://web.dev/baseline?hl=zh-tw" target="_blank" rel="noreferrer">實際使用基準 Baseline</a></li>
+</ul>
+
+<hr>
+
+    <section class="footer-nav">
+        <a class="prev" href="day6.htm">
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+            DAY 6
+            </a>
+        <a class="next" href="day8.htm">
+            DAY 8
+            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+        </a>
+    </section>
+
+
+<!-- Main Content Ends -->
+    <footer>
+        <div class="share">
+            <h4>請掃描 QR Code <br>連結本頁面</h4>
+            <img src="image/qr-code.svg" alt="">
+        </div>
+        <p>&copy; 2026 2mistudio All RIghts Reserved.</p>
+    </footer>
+    </div>
+<script src="/js/prism.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>
