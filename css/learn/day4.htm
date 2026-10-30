@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="理解 CSS 盒子模型的組成，學會 margin、padding、border、border-radius 與 box-sizing，精準控制元素的尺寸、間距與背景樣式。">
         <link href="/style/style.css" rel="stylesheet" >
         <link href="/style/prism.css" rel="stylesheet">
     <title>Day 4: Box Model 與間距控制 - CSS 9天快速入門</title>
@@ -35,7 +36,7 @@
         </ul>
 
 <!-- Main Content Starts -->
-<h1>Day 4: Box Model 與間距控制</h1>
+<h1><span class="date">Day 4:</span> Box Model 與間距控制</h1>
 <h3 class="sub-title">Box Model, Margin and Padding</h3>
 <p>這個單元可以說是 「CSS 最重要的概念」之一。初學者通常很難將 CSS 的 Box Model 一次弄清楚。只要能夠弄清楚區塊與間距的邏輯，後續遇到的問題會少非常多。所以本單元雖然段落章節比較多，但是內容不算長，非常值得多花點時間理解跟練習。</p>
 
@@ -49,10 +50,17 @@
     <li>設定元素的背景樣式</li>
 </ul>
 <h2>二、CSS Box Model 盒子模型</h2>
-<p>每個 HTML 元素都可被看作是一個「方塊盒子」，由內到外包含四個部分：</p>
-<p>Content（內容）→ Padding（內邊距）→ Border（邊框）→ Margin（外邊距）</p>
-<h3>視覺示意：</h3>
+<p>在 CSS 中，每個 HTML 元素都會產生一個「盒子」，由內到外包含四個部分： <br>
+Content（內容）→ Padding（內邊距）→ Border（邊框）→ Margin（外邊距）</p>
+<p>本日內容以 「block 元素」為主來說明盒子模型。<br>
+    「inline 元素」的行為略有不同（例如無法設定寬高、上下 margin 無效），詳細差異 <a href="day5.htm">Day 5</a> 會再說明。</p>
 
+<h3>視覺示意：</h3>
+<picture>
+  <source media="(width < 800px)" srcset="image/img-box-model-mobile.svg" />
+  <source media="(width >= 800px)" srcset="image/img-box-model-desktop.svg" />
+  <img src="image/img-box-model-desktop.svg" alt="CSS Box Model 盒子模型說明" />
+</picture>
     <hr>
 
 <h2>三、Margin 外邊距</h2>
