@@ -2,13 +2,13 @@
 
 *,::before, ::after {box-sizing: border-box;}
 :root {
-    --prime-green:rgb(48, 207, 154);
-    --light-green:rgb(117, 240, 199);
+    --prime-green:hsl(160, 62%, 50%);
+    --light-green:#75f0c7;
     --dark-green:rgb(15, 138, 97);
-    --dark-gray:hsl(0, 0%, 16%);
-    --mild-gray:hsl(0, 0%, 32%);
+    --dark-gray:#292929;
+    --mild-gray:#525252;
     --muted-gray:hsl(0, 0%, 64%);
-    --light-gray:hsl(0, 0%, 88%);
+    --light-gray:#e0e0e0;
     --pale-gray: hsl(0, 0%, 96%);
     --blank-gray: hsl(0, 0%, 98%);
     --alert: hsl(48, 80%, 90%);
@@ -64,6 +64,10 @@ details {
 summary {
     font-size: 1.2rem;
     cursor: pointer;
+}
+picture img{
+    overflow: hidden;
+    border-radius: 1rem;
 }
 figure {
     width: 100%;
@@ -591,6 +595,12 @@ footer p {
 #page-js-faq .sub-nav .link-faq a {
     color: white;
     background-color: var(--prime-green);
+}
+
+h1 span.date {
+    font-family: "Space Grotesk", sans-serif;
+    background: linear-gradient(to top,var(--light-green) 40%, transparent 0% );
+    border-radius: 0.2rem; 
 }
 @media screen and (max-width:720px) {
 
